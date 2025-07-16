@@ -1,195 +1,197 @@
-E-commerce Application
-This is a microservices-based e-commerce application built using .NET, incorporating multiple services to handle various functionalities. Below is an overview of the project, its architecture, services, and setup instructions.
-Table of Contents
+# E-commerce Application
 
-Project Overview
-Architecture
-Services
-Technologies Used
-Prerequisites
-Setup Instructions
-Running the Application
-Contributing
-License
+A microservices-based e-commerce application built with .NET, featuring product management, catalog browsing, order processing, authentication, and inventory tracking.
 
-Project Overview
-This e-commerce application is designed to provide a scalable and modular platform for online shopping. It leverages a microservices architecture, allowing each service to operate independently, communicate asynchronously, and scale as needed. The application supports product management, catalog browsing, order processing, authentication, and inventory tracking.
-Architecture
-The application follows a microservices architecture with the following components:
+## Table of Contents
 
-Product Service: Manages product information, including creation, updating, and deletion of products.
-Catalog Service: Handles product catalog browsing and searching.
-Order Service: Processes customer orders and manages order history.
-Auth Service: Provides authentication and authorization using Microsoft Identity.
-Inventory Service: Tracks product stock levels and updates inventory.
-Message Broker (RabbitMQ): Facilitates asynchronous communication between services.
-Caching (Redis): Improves performance by caching frequently accessed data.
-Databases:
-PostgreSQL: Stores relational data for orders and user information.
-MongoDB: Stores product and catalog data in a NoSQL format.
+* Project Overview
+* Architecture
+* Services
+* Technologies Used
+* Prerequisites
+* Setup Instructions
+* Running the Application
+* Contributing
+* License
 
+## Project Overview
 
+This e-commerce application provides a scalable platform for online shopping using a microservices architecture. Each service operates independently, communicates asynchronously, and scales as needed. The application supports product management, catalog browsing, order processing, authentication, and inventory tracking.
 
-Each service is built as a separate .NET application, communicating via REST APIs and RabbitMQ for event-driven interactions.
-Services
-Product Service
+## Architecture
 
-Responsibility: Manages product data (e.g., name, description, price).
-Database: MongoDB
-Endpoints:
-GET /api/products: List all products.
-POST /api/products: Create a new product.
-PUT /api/products/{id}: Update a product.
-DELETE /api/products/{id}: Delete a product.
+The application uses a microservices architecture with the following components:
 
+* **Product Service**: Manages product information (e.g., creation, updates, deletion).
+* **Catalog Service**: Handles product browsing and searching.
+* **Order Service**: Processes customer orders and maintains order history.
+* **Auth Service**: Manages user authentication and authorization.
+* **Inventory Service**: Tracks and updates product stock levels.
+* **Message Broker**: RabbitMQ enables asynchronous communication.
+* **Caching**: Redis improves performance by caching frequent data.
 
+### Databases:
 
-Catalog Service
+* PostgreSQL for relational data (orders, inventory).
+* MongoDB for NoSQL data (products, catalog).
 
-Responsibility: Provides product browsing and searching capabilities.
-Database: MongoDB
-Endpoints:
-GET /api/catalog: Retrieve product catalog.
-GET /api/catalog/search?query={searchTerm}: Search products by keyword.
+Each service is a separate .NET application, communicating via REST APIs and RabbitMQ events.
 
+## Services
 
+### Product Service
 
-Order Service
+* **Responsibility**: Manages product data (name, description, price).
+* **Database**: MongoDB
+* **Endpoints**:
 
-Responsibility: Handles order creation, updates, and history.
-Database: PostgreSQL
-Endpoints:
-POST /api/orders: Create a new order.
-GET /api/orders/{userId}: Get order history for a user.
-Events: Publishes OrderCreated event to RabbitMQ.
+  * GET /api/products: Lists all products.
+  * POST /api/products: Creates a new product.
+  * PUT /api/products/{id}: Updates a product.
+  * DELETE /api/products/{id}: Deletes a product.
 
+### Catalog Service
 
+* **Responsibility**: Provides product browsing and searching.
+* **Database**: MongoDB
+* **Endpoints**:
 
-Auth Service
+  * GET /api/catalog: Retrieves the product catalog.
+  * GET /api/catalog/search?query={searchTerm}: Searches products by keyword.
 
-Responsibility: Manages user authentication and authorization.
-Technology: Microsoft Identity (ASP.NET Core Identity with JWT).
-Endpoints:
-POST /api/auth/register: Register a new user.
-POST /api/auth/login: Authenticate a user and return a JWT token.
+### Order Service
 
+* **Responsibility**: Handles order creation and history.
+* **Database**: PostgreSQL
+* **Endpoints**:
 
+  * POST /api/orders: Creates a new order.
+  * GET /api/orders/{userId}: Retrieves order history for a user.
+* **Events**: Publishes `OrderCreated` event to RabbitMQ.
 
-Inventory Service
+### Auth Service
 
-Responsibility: Tracks and updates product stock levels.
-Database: PostgreSQL
-Endpoints:
-GET /api/inventory/{productId}: Check stock for a product.
-PUT /api/inventory/{productId}: Update stock levels.
-Events: Subscribes to OrderCreated event to update inventory.
+* **Responsibility**: Manages authentication and authorization.
+* **Technology**: Microsoft Identity (JWT-based).
+* **Endpoints**:
 
+  * POST /api/auth/register: Registers a new user.
+  * POST /api/auth/login: Authenticates a user and returns a JWT token.
 
+### Inventory Service
 
-Technologies Used
+* **Responsibility**: Tracks and updates product stock.
+* **Database**: PostgreSQL
+* **Endpoints**:
 
-Framework: .NET 8 (ASP.NET Core for APIs)
-Databases:
-PostgreSQL (Relational database for orders and inventory)
-MongoDB (NoSQL database for products and catalog)
+  * GET /api/inventory/{productId}: Checks stock for a product.
+  * PUT /api/inventory/{productId}: Updates stock levels.
+* **Events**: Subscribes to `OrderCreated` event to update inventory.
 
+## Technologies Used
 
-Message Broker: RabbitMQ (for event-driven communication)
-Caching: Redis (for caching product and catalog data)
-Authentication: Microsoft Identity (JWT-based authentication)
-Containerization: Docker (optional, for deployment)
-CI/CD: Configurable with GitHub Actions or similar (not included in this repo)
+* **Framework**: .NET 8 (ASP.NET Core)
+* **Databases**:
 
-Prerequisites
-Ensure you have the following installed:
+  * PostgreSQL (v14+)
+  * MongoDB (v5+)
+* **Message Broker**: RabbitMQ (v3.9+)
+* **Caching**: Redis (v6+)
+* **Authentication**: Microsoft Identity (JWT)
+* **Containerization**: Docker (optional)
+* **CI/CD**: Configurable with GitHub Actions (not included)
 
-.NET 8 SDK
-PostgreSQL (v14 or higher)
-MongoDB (v5 or higher)
-RabbitMQ (v3.9 or higher)
-Redis (v6 or higher)
-Docker (optional, for containerized setup)
-A code editor like Visual Studio Code or Visual Studio
+## Prerequisites
 
-Setup Instructions
+* .NET 9 SDK
+* PostgreSQL (v14+)
+* MongoDB (v5+)
+* RabbitMQ (v3.9+)
+* Redis (v6+)
+* Docker (optional)
+* Code editor: Visual Studio Code or Visual Studio
 
-Clone the Repository:
-git clone https://github.com/your-repo/ecommerce-app.git
+## Setup Instructions
+
+### Clone the Repository:
+
+```bash
+git clone https://github.com/lotfi029/ecommerce.git
 cd ecommerce-app
+```
 
+### Configure Environment Variables:
 
-Configure Environment Variables:
+Create a `.env` file in the root directory:
 
-Create a .env file in the root directory or configure environment variables for each service.
+### Install Dependencies:
 
-Example .env:
-ConnectionStrings__PostgreSQL=Host=localhost;Database=ecommerce;Username=postgres;Password=your_password
-ConnectionStrings__MongoDB=mongodb://localhost:27017/ecommerce
-RabbitMQ__Host=localhost
-RabbitMQ__Username=guest
-RabbitMQ__Password=guest
-Redis__Connection=localhost:6379
-Jwt__Key=your_jwt_secret_key
-Jwt__Issuer=your_issuer
-Jwt__Audience=your_audience
+For each service (e.g., ProductService, OrderService):
 
-
-
-
-Install Dependencies:
-
-Navigate to each service directory (e.g., ProductService, OrderService) and run:
+```bash
+cd ServiceName
 dotnet restore
+```
 
+### Set Up Databases:
 
+* **PostgreSQL**: Create an `ecommerce` database and run SQL scripts from `scripts/postgres`.
+* **MongoDB**: Ensure MongoDB is running (no manual schema setup needed).
 
+### Start RabbitMQ and Redis:
 
-Set Up Databases:
-
-PostgreSQL: Create a database named ecommerce and run the SQL scripts in the scripts/postgres folder to initialize tables.
-MongoDB: Ensure MongoDB is running; no manual schema setup is required (handled by the application).
-
-
-Start RabbitMQ and Redis:
-
-Ensure RabbitMQ and Redis servers are running locally or in Docker:
+```bash
 docker run -d --name rabbitmq -p 5672:5672 -p 15672:15672 rabbitmq:3-management
 docker run -d --name redis -p 6379:6379 redis
+```
 
+### Build and Run Services:
 
+For each service:
 
-
-Build and Run Services:
-
-For each service, navigate to its directory and run:
+```bash
+cd ServiceName
 dotnet build
 dotnet run
+```
 
+## Running the Application
 
+* Start all services using `dotnet run` or Docker.
+* Use the Auth Service to register/login and obtain a JWT token.
+* Interact with services using the token (e.g., via Postman or cURL).
 
+### Example API call:
 
-
-Running the Application
-
-Start all services (Product, Catalog, Order, Auth, Inventory) using dotnet run or deploy using Docker.
-
-Access the Auth Service to register/login and obtain a JWT token.
-
-Use the token to interact with other services via their APIs (e.g., using Postman or cURL).
-
-Example API call to get products:
+```bash
 curl -H "Authorization: Bearer <your_jwt_token>" http://localhost:5001/api/products
+```
 
+## Contributing
 
+We welcome contributions! Follow these steps:
 
-Contributing
-Contributions are welcome! Please follow these steps:
+1. Fork the repository.
+2. Create a feature branch:
 
-Fork the repository.
-Create a feature branch (git checkout -b feature/your-feature).
-Commit your changes (git commit -m 'Add your feature').
-Push to the branch (git push origin feature/your-feature).
-Open a Pull Request.
+```bash
+git checkout -b feature/your-feature
+```
 
-License
-This project is licensed under the MIT License. See the LICENSE file for details.
+3. Commit changes:
+
+```bash
+git commit -m "Add your feature"
+```
+
+4. Push to the branch:
+
+```bash
+git push origin feature/your-feature
+```
+
+5. Open a Pull Request.
+
+## License
+
+This project is licensed under the MIT License.
