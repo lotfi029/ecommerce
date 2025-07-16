@@ -1,0 +1,46 @@
+{
+  "profiles": {
+    "http": {
+      "commandName": "Project",
+      "environmentVariables": {
+        "ASPNETCORE_ENVIRONMENT": "Development",
+        "POSTGRES_HOST": "localhost",
+        "POSTGRES_PORT": "5432",
+        "POSTGRES_DATABASE": "ecommerce.products",
+        "POSTGRES_USER": "postgres",
+        "POSTGRES_PASSWORD": "String"
+      },
+      "dotnetRunMessages": true,
+      "applicationUrl": "http://localhost:7006"
+    },
+    "https": {
+      "commandName": "Project",
+      "environmentVariables": {
+        "ASPNETCORE_ENVIRONMENT": "Development",
+        "POSTGRES_HOST": "localhost",
+        "POSTGRES_PORT": "5432",
+        "POSTGRES_DATABASE": "ecommerce.products",
+        "POSTGRES_USER": "postgres",
+        "POSTGRES_PASSWORD": "String"
+      },
+      "dotnetRunMessages": true,
+      "applicationUrl": "https://localhost:7007;http://localhost:7006"
+    },
+    "Container (Dockerfile)": {
+      "commandName": "Docker",
+      "launchUrl": "{Scheme}://{ServiceHost}:{ServicePort}",
+      "environmentVariables": {
+        "ASPNETCORE_HTTPS_PORTS": "8081",
+        "ASPNETCORE_HTTP_PORTS": "8080",
+        "POSTGRES_HOST": "localhost",
+        "POSTGRES_PORT": "5432",
+        "POSTGRES_DATABASE": "ecommerce.products",
+        "POSTGRES_USER": "postgres",
+        "POSTGRES_PASSWORD": "String"
+      },
+      "publishAllPorts": true,
+      "useSSL": true
+    }
+  },
+  "$schema": "https://json.schemastore.org/launchsettings.json"
+}

@@ -1,0 +1,16 @@
+D:\Micro\ecommerce\eCommerceSolution.OrderService\eCommerce.Infrastructure\bin\Debug\net9.0\eCommerce.Infrastructure.deps.json
+D:\Micro\ecommerce\eCommerceSolution.OrderService\eCommerce.Infrastructure\bin\Debug\net9.0\eCommerce.Infrastructure.dll
+D:\Micro\ecommerce\eCommerceSolution.OrderService\eCommerce.Infrastructure\bin\Debug\net9.0\eCommerce.Infrastructure.pdb
+D:\Micro\ecommerce\eCommerceSolution.OrderService\eCommerce.Infrastructure\bin\Debug\net9.0\eCommerce.Core.dll
+D:\Micro\ecommerce\eCommerceSolution.OrderService\eCommerce.Infrastructure\bin\Debug\net9.0\eCommerce.Core.pdb
+D:\Micro\ecommerce\eCommerceSolution.OrderService\eCommerce.Infrastructure\obj\Debug\net9.0\eCommerce.Infrastructure.csproj.AssemblyReference.cache
+D:\Micro\ecommerce\eCommerceSolution.OrderService\eCommerce.Infrastructure\obj\Debug\net9.0\eCommerce.Infrastructure.GeneratedMSBuildEditorConfig.editorconfig
+D:\Micro\ecommerce\eCommerceSolution.OrderService\eCommerce.Infrastructure\obj\Debug\net9.0\eCommerce.Infrastructure.AssemblyInfoInputs.cache
+D:\Micro\ecommerce\eCommerceSolution.OrderService\eCommerce.Infrastructure\obj\Debug\net9.0\eCommerce.Infrastructure.AssemblyInfo.cs
+D:\Micro\ecommerce\eCommerceSolution.OrderService\eCommerce.Infrastructure\obj\Debug\net9.0\eCommerce.Infrastructure.csproj.CoreCompileInputs.cache
+D:\Micro\ecommerce\eCommerceSolution.OrderService\eCommerce.Infrastructure\obj\Debug\net9.0\eCommerce.Infrastructure.sourcelink.json
+D:\Micro\ecommerce\eCommerceSolution.OrderService\eCommerce.Infrastructure\obj\Debug\net9.0\eCommerc.0C272DDA.Up2Date
+D:\Micro\ecommerce\eCommerceSolution.OrderService\eCommerce.Infrastructure\obj\Debug\net9.0\eCommerce.Infrastructure.dll
+D:\Micro\ecommerce\eCommerceSolution.OrderService\eCommerce.Infrastructure\obj\Debug\net9.0\refint\eCommerce.Infrastructure.dll
+D:\Micro\ecommerce\eCommerceSolution.OrderService\eCommerce.Infrastructure\obj\Debug\net9.0\eCommerce.Infrastructure.pdb
+D:\Micro\ecommerce\eCommerceSolution.OrderService\eCommerce.Infrastructure\obj\Debug\net9.0\ref\eCommerce.Infrastructure.dll

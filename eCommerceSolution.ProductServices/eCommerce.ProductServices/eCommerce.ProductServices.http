@@ -1,0 +1,9 @@
+@baseUrl = http://localhost:5001
+
+GET {{baseUrl}}/api/products/
+Accept: application/json
+###
+
+GET {{baseUrl}}/api/products/48c9840a-752d-4191-bd1c-8df3876f4bcf
+Accept: application/json
+###

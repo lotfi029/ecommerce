@@ -1,0 +1,13 @@
+D:\Micro\ecommerce\eCommerceSolution.UsersServices\eCommers.Core\bin\Debug\net9.0\eCommers.Core.deps.json
+D:\Micro\ecommerce\eCommerceSolution.UsersServices\eCommers.Core\bin\Debug\net9.0\eCommers.Core.dll
+D:\Micro\ecommerce\eCommerceSolution.UsersServices\eCommers.Core\bin\Debug\net9.0\eCommers.Core.pdb
+D:\Micro\ecommerce\eCommerceSolution.UsersServices\eCommers.Core\obj\Debug\net9.0\eCommers.Core.csproj.AssemblyReference.cache
+D:\Micro\ecommerce\eCommerceSolution.UsersServices\eCommers.Core\obj\Debug\net9.0\eCommers.Core.GeneratedMSBuildEditorConfig.editorconfig
+D:\Micro\ecommerce\eCommerceSolution.UsersServices\eCommers.Core\obj\Debug\net9.0\eCommers.Core.AssemblyInfoInputs.cache
+D:\Micro\ecommerce\eCommerceSolution.UsersServices\eCommers.Core\obj\Debug\net9.0\eCommers.Core.AssemblyInfo.cs
+D:\Micro\ecommerce\eCommerceSolution.UsersServices\eCommers.Core\obj\Debug\net9.0\eCommers.Core.csproj.CoreCompileInputs.cache
+D:\Micro\ecommerce\eCommerceSolution.UsersServices\eCommers.Core\obj\Debug\net9.0\eCommers.Core.sourcelink.json
+D:\Micro\ecommerce\eCommerceSolution.UsersServices\eCommers.Core\obj\Debug\net9.0\eCommers.Core.dll
+D:\Micro\ecommerce\eCommerceSolution.UsersServices\eCommers.Core\obj\Debug\net9.0\refint\eCommers.Core.dll
+D:\Micro\ecommerce\eCommerceSolution.UsersServices\eCommers.Core\obj\Debug\net9.0\eCommers.Core.pdb
+D:\Micro\ecommerce\eCommerceSolution.UsersServices\eCommers.Core\obj\Debug\net9.0\ref\eCommers.Core.dll

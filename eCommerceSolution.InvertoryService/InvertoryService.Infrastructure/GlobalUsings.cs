@@ -1,0 +1,1 @@
+﻿global using InvertoryService.Core.Entities;

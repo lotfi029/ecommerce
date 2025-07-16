@@ -1,0 +1,39 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v9.0",
+    "signature": ""
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v9.0": {
+      "InvertoryService.Core/1.0.0": {
+        "dependencies": {
+          "eCommerce.SharedKernal": "1.0.0"
+        },
+        "runtime": {
+          "InvertoryService.Core.dll": {}
+        }
+      },
+      "eCommerce.SharedKernal/1.0.0": {
+        "runtime": {
+          "eCommerce.SharedKernal.dll": {
+            "assemblyVersion": "1.0.0.0",
+            "fileVersion": "1.0.0.0"
+          }
+        }
+      }
+    }
+  },
+  "libraries": {
+    "InvertoryService.Core/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "eCommerce.SharedKernal/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    }
+  }
+}

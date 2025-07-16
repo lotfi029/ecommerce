@@ -1,0 +1,140 @@
+version: '3.8'
+
+services:
+  postgres_user:
+    image: postgres:17
+    container_name: ecommerceuserdb
+    restart: always
+    environment:
+      POSTGRES_PASSWORD: String
+      POSTGRES_DB: ecommerce.users
+    ports:
+      - "5434:5432"
+    hostname: postgres-userservicedb
+    volumes:
+      - ecommerce_user_postgres:/var/lib/postgresql/data
+    networks:
+      - user-network
+
+  postgres_product:
+    image: postgres:17
+    container_name: ecommerceproductdb
+    restart: always
+    environment:
+      POSTGRES_PASSWORD: String
+      POSTGRES_DB: ecommerce.products
+    ports:
+      - "5433:5432"
+    hostname: postgres-productservicedb
+    volumes:
+      - ecommerce_product_postgres:/var/lib/postgresql/data
+    networks:
+      - product-network
+
+  mongo_order:
+    image: mongo:latest
+    container_name: ecommerceorderdb
+    restart: always
+    volumes:
+      - D:\Micro\ecommerce\ordersdb:/docker-entrypoint-initdb.d
+    ports:
+      - "27017:27017"
+    networks:
+      - order-network
+  redis:
+    image: redis:latest
+    container_name: ecommerceredis
+    restart: always
+    ports:
+      - "6379:6379" 
+    volumes: 
+      - D:/Micro/ecommerce/redis-cach:/data
+    networks:
+      - service-network
+
+   
+  userservice:
+    image: lotfi029/ecommerceuserservice
+    container_name: ecommerce_userservice
+    restart: always
+    ports:
+      - "6001:9090"
+    environment:
+      POSTGRES_PASSWORD: String
+      POSTGRES_DATABASE: ecommerce.users
+      POSTGRES_HOST: postgres-userservicedb
+      POSTGRES_PORT: 5432
+    depends_on:
+      - postgres_user
+    networks:
+      - user-network
+      - service-network
+
+  productservice:
+    image: lotfi029/ecommerceproductservice
+    container_name: ecommerce_productservice
+    restart: always
+    ports:
+      - "6002:8080"
+    environment:
+      POSTGRES_DATABASE: ecommerce.products
+      POSTGRES_PASSWORD: String
+      POSTGRES_HOST: postgres-productservicedb
+      POSTGRES_PORT: 5432
+      RABBITMQ_USERNAME: rabbitmq
+      RABBITMQ_PASSWORD: string
+      RABBITMQ_HOST: rabbitmq
+      RABBITMQ_PORT: 5672
+    depends_on:
+      - postgres_product
+      - rabbitmq_messaging
+    networks:
+      - product-network
+      - service-network
+
+  ecommerce.api:
+    image: ${DOCKER_REGISTRY-}ecommerceapi
+    container_name: ecommverce_orderservice
+    build:
+      context: .
+      dockerfile: eCommerce.API/Dockerfile
+    environment:
+      MONGO_HOST: mongo_order
+      MONGO_PORT: 27017
+      PRODUCT_SERVICE_URL: http://productservice:8080
+      USER_SERVICE_URL: http://userservice:9090
+    ports:
+      - "6003:700"
+    depends_on:
+      - mongo_order
+      - productservice
+      - userservice
+    networks:
+      - order-network
+      - service-network
+  
+  rabbitmq_messaging:
+    image: rabbitmq:4.1-management
+    container_name: ecommerce_rabbitmq
+    ports:
+      - "5672:5672"
+      - "15672:15672"
+    environment:
+      - RABBITMQ_DEFAULT_PASS=string
+      - RABBITMQ_DEFAULT_USER=user
+    networks:
+      - service-network
+    
+networks:
+  user-network:
+    driver: bridge
+  product-network:
+    driver: bridge
+  order-network:
+    driver: bridge
+  service-network:
+    driver: bridge
+
+volumes:
+  ecommerce_user_postgres:
+  ecommerce_product_postgres:

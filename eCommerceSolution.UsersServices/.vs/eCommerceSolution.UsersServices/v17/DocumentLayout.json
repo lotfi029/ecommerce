@@ -1,0 +1,57 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "D:\\Micro\\ecommerce\\eCommerceSolution.UsersServices\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{1ADBF729-77E9-4068-BE52-B52705C85B57}|eCommerce.Infrastructure\\eCommerce.Infrastructure.csproj|d:\\micro\\ecommerce\\ecommercesolution.usersservices\\ecommerce.infrastructure\\repositories\\authrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{1ADBF729-77E9-4068-BE52-B52705C85B57}|eCommerce.Infrastructure\\eCommerce.Infrastructure.csproj|solutionrelative:ecommerce.infrastructure\\repositories\\authrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1ADBF729-77E9-4068-BE52-B52705C85B57}|eCommerce.Infrastructure\\eCommerce.Infrastructure.csproj|d:\\micro\\ecommerce\\ecommercesolution.usersservices\\ecommerce.infrastructure\\authentication\\defaults\\defaultroles.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{1ADBF729-77E9-4068-BE52-B52705C85B57}|eCommerce.Infrastructure\\eCommerce.Infrastructure.csproj|solutionrelative:ecommerce.infrastructure\\authentication\\defaults\\defaultroles.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 2,
+          "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{1c4feeaa-4718-4aa9-859d-94ce25d182ba}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "DefaultRoles.cs",
+              "DocumentMoniker": "D:\\Micro\\ecommerce\\eCommerceSolution.UsersServices\\eCommerce.Infrastructure\\Authentication\\Defaults\\DefaultRoles.cs",
+              "RelativeDocumentMoniker": "eCommerce.Infrastructure\\Authentication\\Defaults\\DefaultRoles.cs",
+              "ToolTip": "D:\\Micro\\ecommerce\\eCommerceSolution.UsersServices\\eCommerce.Infrastructure\\Authentication\\Defaults\\DefaultRoles.cs",
+              "RelativeToolTip": "eCommerce.Infrastructure\\Authentication\\Defaults\\DefaultRoles.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAYAAABUAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-12T23:03:04.149Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "AuthRepository.cs",
+              "DocumentMoniker": "D:\\Micro\\ecommerce\\eCommerceSolution.UsersServices\\eCommerce.Infrastructure\\Repositories\\AuthRepository.cs",
+              "RelativeDocumentMoniker": "eCommerce.Infrastructure\\Repositories\\AuthRepository.cs",
+              "ToolTip": "D:\\Micro\\ecommerce\\eCommerceSolution.UsersServices\\eCommerce.Infrastructure\\Repositories\\AuthRepository.cs",
+              "RelativeToolTip": "eCommerce.Infrastructure\\Repositories\\AuthRepository.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABMAAAAiAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-12T22:45:17.259Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
