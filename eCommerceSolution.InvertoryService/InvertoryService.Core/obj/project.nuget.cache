@@ -1,8 +1,14 @@
 {
   "version": 2,
-  "dgSpecHash": "bpgWygOfLtE=",
+  "dgSpecHash": "/6w1GREtKJw=",
   "success": true,
-  "projectFilePath": "D:\\Micro\\ecommerce\\eCommerceSolution.InvertoryService\\InvertoryService.Core\\InvertoryService.Core.csproj",
-  "expectedPackageFiles": [],
+  "projectFilePath": "D:\\Micro\\ecommerce\\eCommerceSolution.InvertoryService\\InvertoryService.Core\\InventoryService.Core.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\moham\\.nuget\\packages\\mapster\\7.4.0\\mapster.7.4.0.nupkg.sha512",
+    "C:\\Users\\moham\\.nuget\\packages\\mapster.core\\1.2.1\\mapster.core.1.2.1.nupkg.sha512",
+    "C:\\Users\\moham\\.nuget\\packages\\microsoft.extensions.dependencyinjection.abstractions\\9.0.7\\microsoft.extensions.dependencyinjection.abstractions.9.0.7.nupkg.sha512",
+    "C:\\Users\\moham\\.nuget\\packages\\microsoft.extensions.dependencymodel\\8.0.2\\microsoft.extensions.dependencymodel.8.0.2.nupkg.sha512",
+    "C:\\Users\\moham\\.nuget\\packages\\scrutor\\6.1.0\\scrutor.6.1.0.nupkg.sha512"
+  ],
   "logs": []
 }

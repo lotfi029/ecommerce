@@ -16,3 +16,16 @@ D:\Micro\ecommerce\eCommerce.AnotherServices\InvertoryService.Core\obj\Debug\net
 D:\Micro\ecommerce\eCommerceSolution.InvertoryService\InvertoryService.Core\obj\Debug\net9.0\InvertoryService.Core.dll
 D:\Micro\ecommerce\eCommerceSolution.InvertoryService\InvertoryService.Core\obj\Debug\net9.0\refint\InvertoryService.Core.dll
 D:\Micro\ecommerce\eCommerceSolution.InvertoryService\InvertoryService.Core\obj\Debug\net9.0\InvertoryService.Core.pdb
+D:\Micro\ecommerce\eCommerceSolution.InvertoryService\InvertoryService.Core\bin\Debug\net9.0\InvertoryService.Core.deps.json
+D:\Micro\ecommerce\eCommerceSolution.InvertoryService\InvertoryService.Core\bin\Debug\net9.0\InvertoryService.Core.dll
+D:\Micro\ecommerce\eCommerceSolution.InvertoryService\InvertoryService.Core\bin\Debug\net9.0\InvertoryService.Core.pdb
+D:\Micro\ecommerce\eCommerceSolution.InvertoryService\InvertoryService.Core\bin\Debug\net9.0\eCommerce.SharedKernal.dll
+D:\Micro\ecommerce\eCommerceSolution.InvertoryService\InvertoryService.Core\bin\Debug\net9.0\eCommerce.SharedKernal.pdb
+D:\Micro\ecommerce\eCommerceSolution.InvertoryService\InvertoryService.Core\obj\Debug\net9.0\InvertoryService.Core.csproj.AssemblyReference.cache
+D:\Micro\ecommerce\eCommerceSolution.InvertoryService\InvertoryService.Core\obj\Debug\net9.0\InvertoryService.Core.GeneratedMSBuildEditorConfig.editorconfig
+D:\Micro\ecommerce\eCommerceSolution.InvertoryService\InvertoryService.Core\obj\Debug\net9.0\InvertoryService.Core.AssemblyInfoInputs.cache
+D:\Micro\ecommerce\eCommerceSolution.InvertoryService\InvertoryService.Core\obj\Debug\net9.0\InvertoryService.Core.AssemblyInfo.cs
+D:\Micro\ecommerce\eCommerceSolution.InvertoryService\InvertoryService.Core\obj\Debug\net9.0\InvertoryService.Core.csproj.CoreCompileInputs.cache
+D:\Micro\ecommerce\eCommerceSolution.InvertoryService\InvertoryService.Core\obj\Debug\net9.0\InvertoryService.Core.sourcelink.json
+D:\Micro\ecommerce\eCommerceSolution.InvertoryService\InvertoryService.Core\obj\Debug\net9.0\Invertor.EB1F19C3.Up2Date
+D:\Micro\ecommerce\eCommerceSolution.InvertoryService\InvertoryService.Core\obj\Debug\net9.0\ref\InvertoryService.Core.dll

@@ -1,10 +1,11 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using InventoryService.Core.Entities;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
-namespace InvertoryService.Infrastructure.Presestense.Configuration;
-public class InvertoryConfiguration : IEntityTypeConfiguration<Invertory>
+namespace InventoryService.Infrastructure.Presestense.Configuration;
+public class InvertoryConfiguration : IEntityTypeConfiguration<Inventory>
 {
-    public void Configure(EntityTypeBuilder<Invertory> builder)
+    public void Configure(EntityTypeBuilder<Inventory> builder)
     {
         builder.ToTable("invertories");
 
@@ -15,6 +16,10 @@ public class InvertoryConfiguration : IEntityTypeConfiguration<Invertory>
         builder.Property(x => x.Quantity)
             .IsRequired()
             .HasColumnName("quantity");
+        
+        builder.Property(x => x.Reserved)
+            .IsRequired()
+            .HasColumnName("reserved");
 
         builder.HasKey(x => x.Id);
 

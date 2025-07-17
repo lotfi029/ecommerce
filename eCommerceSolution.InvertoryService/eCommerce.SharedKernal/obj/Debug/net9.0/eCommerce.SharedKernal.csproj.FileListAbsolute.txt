@@ -20,3 +20,15 @@ D:\Micro\ecommerce\eCommerceSolution.CatalogService\eCommerce.SharedKernal\obj\D
 D:\Micro\ecommerce\eCommerceSolution.CatalogService\eCommerce.SharedKernal\obj\Debug\net9.0\refint\eCommerce.SharedKernal.dll
 D:\Micro\ecommerce\eCommerceSolution.CatalogService\eCommerce.SharedKernal\obj\Debug\net9.0\eCommerce.SharedKernal.pdb
 D:\Micro\ecommerce\eCommerceSolution.CatalogService\eCommerce.SharedKernal\obj\Debug\net9.0\ref\eCommerce.SharedKernal.dll
+D:\Micro\ecommerce\eCommerceSolution.InvertoryService\eCommerce.SharedKernal\bin\Debug\net9.0\eCommerce.SharedKernal.deps.json
+D:\Micro\ecommerce\eCommerceSolution.InvertoryService\eCommerce.SharedKernal\bin\Debug\net9.0\eCommerce.SharedKernal.dll
+D:\Micro\ecommerce\eCommerceSolution.InvertoryService\eCommerce.SharedKernal\bin\Debug\net9.0\eCommerce.SharedKernal.pdb
+D:\Micro\ecommerce\eCommerceSolution.InvertoryService\eCommerce.SharedKernal\obj\Debug\net9.0\eCommerce.SharedKernal.GeneratedMSBuildEditorConfig.editorconfig
+D:\Micro\ecommerce\eCommerceSolution.InvertoryService\eCommerce.SharedKernal\obj\Debug\net9.0\eCommerce.SharedKernal.AssemblyInfoInputs.cache
+D:\Micro\ecommerce\eCommerceSolution.InvertoryService\eCommerce.SharedKernal\obj\Debug\net9.0\eCommerce.SharedKernal.AssemblyInfo.cs
+D:\Micro\ecommerce\eCommerceSolution.InvertoryService\eCommerce.SharedKernal\obj\Debug\net9.0\eCommerce.SharedKernal.csproj.CoreCompileInputs.cache
+D:\Micro\ecommerce\eCommerceSolution.InvertoryService\eCommerce.SharedKernal\obj\Debug\net9.0\eCommerce.SharedKernal.sourcelink.json
+D:\Micro\ecommerce\eCommerceSolution.InvertoryService\eCommerce.SharedKernal\obj\Debug\net9.0\eCommerce.SharedKernal.dll
+D:\Micro\ecommerce\eCommerceSolution.InvertoryService\eCommerce.SharedKernal\obj\Debug\net9.0\refint\eCommerce.SharedKernal.dll
+D:\Micro\ecommerce\eCommerceSolution.InvertoryService\eCommerce.SharedKernal\obj\Debug\net9.0\eCommerce.SharedKernal.pdb
+D:\Micro\ecommerce\eCommerceSolution.InvertoryService\eCommerce.SharedKernal\obj\Debug\net9.0\ref\eCommerce.SharedKernal.dll

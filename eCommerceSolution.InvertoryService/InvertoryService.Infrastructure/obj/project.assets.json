@@ -15,6 +15,27 @@
           }
         }
       },
+      "Mapster/7.4.0": {
+        "type": "package",
+        "dependencies": {
+          "Mapster.Core": "1.2.1"
+        },
+        "compile": {
+          "lib/net7.0/Mapster.dll": {}
+        },
+        "runtime": {
+          "lib/net7.0/Mapster.dll": {}
+        }
+      },
+      "Mapster.Core/1.2.1": {
+        "type": "package",
+        "compile": {
+          "lib/net7.0/Mapster.Core.dll": {}
+        },
+        "runtime": {
+          "lib/net7.0/Mapster.Core.dll": {}
+        }
+      },
       "Microsoft.Bcl.AsyncInterfaces/7.0.0": {
         "type": "package",
         "compile": {
@@ -555,7 +576,7 @@
       "Microsoft.Extensions.DependencyModel/9.0.7": {
         "type": "package",
         "compile": {
-          "lib/net9.0/_._": {
+          "lib/net9.0/Microsoft.Extensions.DependencyModel.dll": {
             "related": ".xml"
           }
         },
@@ -690,6 +711,23 @@
         "runtime": {
           "lib/net8.0/Npgsql.EntityFrameworkCore.PostgreSQL.dll": {
             "related": ".xml"
+          }
+        }
+      },
+      "Scrutor/6.1.0": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.Extensions.DependencyInjection.Abstractions": "8.0.1",
+          "Microsoft.Extensions.DependencyModel": "8.0.2"
+        },
+        "compile": {
+          "lib/net8.0/Scrutor.dll": {
+            "related": ".pdb;.xml"
+          }
+        },
+        "runtime": {
+          "lib/net8.0/Scrutor.dll": {
+            "related": ".pdb;.xml"
           }
         }
       },
@@ -928,17 +966,20 @@
           "bin/placeholder/eCommerce.SharedKernal.dll": {}
         }
       },
-      "InvertoryService.Core/1.0.0": {
+      "InventoryService.Core/1.0.0": {
         "type": "project",
         "framework": ".NETCoreApp,Version=v9.0",
         "dependencies": {
-          "eCommerce.SharedKernal": "1.0.0"
+          "Microsoft.Extensions.DependencyInjection.Abstractions": "9.0.7",
+          "Scrutor": "6.1.0",
+          "eCommerce.SharedKernal": "1.0.0",
+          "mapster": "7.4.0"
         },
         "compile": {
-          "bin/placeholder/InvertoryService.Core.dll": {}
+          "bin/placeholder/InventoryService.Core.dll": {}
         },
         "runtime": {
-          "bin/placeholder/InvertoryService.Core.dll": {}
+          "bin/placeholder/InventoryService.Core.dll": {}
         }
       }
     }
@@ -960,6 +1001,34 @@
         "lib/netstandard2.0/Humanizer.dll",
         "lib/netstandard2.0/Humanizer.xml",
         "logo.png"
+      ]
+    },
+    "Mapster/7.4.0": {
+      "sha512": "RYGoDqvS4WTKIq0HDyPBBVIj6N0mluOCXQ1Vk95JKseMHEsbCXSEGKSlP95oL+s42IXAXbqvHj7p0YaRBUcfqg==",
+      "type": "package",
+      "path": "mapster/7.4.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "icon.png",
+        "lib/net6.0/Mapster.dll",
+        "lib/net7.0/Mapster.dll",
+        "mapster.7.4.0.nupkg.sha512",
+        "mapster.nuspec"
+      ]
+    },
+    "Mapster.Core/1.2.1": {
+      "sha512": "11lokmfliBEMMmjeqxFGNpqGXq6tN96zFqpBmfYeahr4Ybk63oDmeJmOflsATjobYkX248g5Y62oQ2NNnZaeww==",
+      "type": "package",
+      "path": "mapster.core/1.2.1",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "icon.png",
+        "lib/net6.0/Mapster.Core.dll",
+        "lib/net7.0/Mapster.Core.dll",
+        "mapster.core.1.2.1.nupkg.sha512",
+        "mapster.core.nuspec"
       ]
     },
     "Microsoft.Bcl.AsyncInterfaces/7.0.0": {
@@ -2440,6 +2509,27 @@
         "postgresql.png"
       ]
     },
+    "Scrutor/6.1.0": {
+      "sha512": "m4+0RdgnX+jeiaqteq9x5SwEtuCjWG0KTw1jBjCzn7V8mCanXKoeF8+59E0fcoRbAjdEq6YqHFCmxZ49Kvqp3g==",
+      "type": "package",
+      "path": "scrutor/6.1.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "README.md",
+        "lib/net462/Scrutor.dll",
+        "lib/net462/Scrutor.pdb",
+        "lib/net462/Scrutor.xml",
+        "lib/net8.0/Scrutor.dll",
+        "lib/net8.0/Scrutor.pdb",
+        "lib/net8.0/Scrutor.xml",
+        "lib/netstandard2.0/Scrutor.dll",
+        "lib/netstandard2.0/Scrutor.pdb",
+        "lib/netstandard2.0/Scrutor.xml",
+        "scrutor.6.1.0.nupkg.sha512",
+        "scrutor.nuspec"
+      ]
+    },
     "System.CodeDom/6.0.0": {
       "sha512": "CPc6tWO1LAer3IzfZufDBRL+UZQcj5uS207NHALQzP84Vp/z6wF0Aa0YZImOQY8iStY0A2zI/e3ihKNPfUm8XA==",
       "type": "package",
@@ -2833,17 +2923,18 @@
       "path": "../eCommerce.SharedKernal/eCommerce.SharedKernal.csproj",
       "msbuildProject": "../eCommerce.SharedKernal/eCommerce.SharedKernal.csproj"
     },
-    "InvertoryService.Core/1.0.0": {
+    "InventoryService.Core/1.0.0": {
       "type": "project",
-      "path": "../InvertoryService.Core/InvertoryService.Core.csproj",
-      "msbuildProject": "../InvertoryService.Core/InvertoryService.Core.csproj"
+      "path": "../InvertoryService.Core/InventoryService.Core.csproj",
+      "msbuildProject": "../InvertoryService.Core/InventoryService.Core.csproj"
     }
   },
   "projectFileDependencyGroups": {
     "net9.0": [
-      "InvertoryService.Core >= 1.0.0",
+      "InventoryService.Core >= 1.0.0",
       "Microsoft.EntityFrameworkCore >= 9.0.7",
       "Npgsql.EntityFrameworkCore.PostgreSQL >= 9.0.4",
+      "eCommerce.SharedKernal >= 1.0.0",
       "microsoft.EntityFrameworkCore.tools >= 9.0.7"
     ]
   },
@@ -2854,9 +2945,9 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\Micro\\ecommerce\\eCommerceSolution.InvertoryService\\InvertoryService.Infrastructure\\InvertoryService.Infrastructure.csproj",
-      "projectName": "InvertoryService.Infrastructure",
-      "projectPath": "D:\\Micro\\ecommerce\\eCommerceSolution.InvertoryService\\InvertoryService.Infrastructure\\InvertoryService.Infrastructure.csproj",
+      "projectUniqueName": "D:\\Micro\\ecommerce\\eCommerceSolution.InvertoryService\\InvertoryService.Infrastructure\\InventoryService.Infrastructure.csproj",
+      "projectName": "InventoryService.Infrastructure",
+      "projectPath": "D:\\Micro\\ecommerce\\eCommerceSolution.InvertoryService\\InvertoryService.Infrastructure\\InventoryService.Infrastructure.csproj",
       "packagesPath": "C:\\Users\\moham\\.nuget\\packages\\",
       "outputPath": "D:\\Micro\\ecommerce\\eCommerceSolution.InvertoryService\\InvertoryService.Infrastructure\\obj\\",
       "projectStyle": "PackageReference",
@@ -2879,8 +2970,11 @@
         "net9.0": {
           "targetAlias": "net9.0",
           "projectReferences": {
-            "D:\\Micro\\ecommerce\\eCommerceSolution.InvertoryService\\InvertoryService.Core\\InvertoryService.Core.csproj": {
-              "projectPath": "D:\\Micro\\ecommerce\\eCommerceSolution.InvertoryService\\InvertoryService.Core\\InvertoryService.Core.csproj"
+            "D:\\Micro\\ecommerce\\eCommerceSolution.InvertoryService\\eCommerce.SharedKernal\\eCommerce.SharedKernal.csproj": {
+              "projectPath": "D:\\Micro\\ecommerce\\eCommerceSolution.InvertoryService\\eCommerce.SharedKernal\\eCommerce.SharedKernal.csproj"
+            },
+            "D:\\Micro\\ecommerce\\eCommerceSolution.InvertoryService\\InvertoryService.Core\\InventoryService.Core.csproj": {
+              "projectPath": "D:\\Micro\\ecommerce\\eCommerceSolution.InvertoryService\\InvertoryService.Core\\InventoryService.Core.csproj"
             }
           }
         }

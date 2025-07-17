@@ -16,7 +16,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\InvertoryService.Core\InvertoryService.Core.csproj" />
+    <ProjectReference Include="..\eCommerce.SharedKernal\eCommerce.SharedKernal.csproj" />
+    <ProjectReference Include="..\InvertoryService.Core\InventoryService.Core.csproj" />
   </ItemGroup>
 
 </Project>

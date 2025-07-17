@@ -1,9 +1,10 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using InventoryService.Core.Entities;
+using Microsoft.EntityFrameworkCore;
 
-namespace InvertoryService.Infrastructure.Presestense;
+namespace InventoryService.Infrastructure.Presestense;
 public class ApplicationDbContext(DbContextOptions<ApplicationDbContext> options) : DbContext(options)
 {
-    public DbSet<Invertory> Invertories { get; set; }
+    public DbSet<Inventory> Invertories { get; set; }
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
         modelBuilder.ApplyConfigurationsFromAssembly(typeof(ApplicationDbContext).Assembly);

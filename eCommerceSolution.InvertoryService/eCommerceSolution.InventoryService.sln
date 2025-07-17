@@ -3,11 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.14.36212.18
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "InvertoryService.Api", "InvertoryService.Api\InvertoryService.Api.csproj", "{5EBB83AB-4F4E-0709-1D5F-FDED5AE4B6B0}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "InventoryService.Api", "InvertoryService.Api\InventoryService.Api.csproj", "{5EBB83AB-4F4E-0709-1D5F-FDED5AE4B6B0}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "InvertoryService.Core", "InvertoryService.Core\InvertoryService.Core.csproj", "{CC83A776-F533-4D94-AC33-740595BAFE22}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "InventoryService.Core", "InvertoryService.Core\InventoryService.Core.csproj", "{CC83A776-F533-4D94-AC33-740595BAFE22}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "InvertoryService.Infrastructure", "InvertoryService.Infrastructure\InvertoryService.Infrastructure.csproj", "{73B4771E-715F-61B0-142E-9563DE1483A1}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "InventoryService.Infrastructure", "InvertoryService.Infrastructure\InventoryService.Infrastructure.csproj", "{73B4771E-715F-61B0-142E-9563DE1483A1}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "eCommerce.SharedKernal", "eCommerce.SharedKernal\eCommerce.SharedKernal.csproj", "{33E3D7C7-8550-BBA3-CBF7-21F883BE34C0}"
 EndProject

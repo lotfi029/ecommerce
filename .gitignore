@@ -1,0 +1,14 @@
+# .NET stuff
+bin/
+obj/
+.vs/
+*.user
+*.suo
+
+# Env and sensitive
+.env
+.env.*
+secrets.json
+
+# Others
+logs/

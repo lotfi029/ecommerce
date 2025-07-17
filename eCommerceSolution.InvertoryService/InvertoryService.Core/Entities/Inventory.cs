@@ -1,8 +1,9 @@
 ﻿using eCommerce.SharedKernal.Entities;
 
-namespace InvertoryService.Core.Entities;
-public class Invertory : BaseEntity
+namespace InventoryService.Core.Entities;
+public class Inventory : BaseEntity
 {
     public Guid ProductId { get; set; }
     public int Quantity { get; set; }
+    public int Reserved { get; set; }
 }

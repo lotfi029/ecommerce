@@ -69,12 +69,12 @@
         }
       }
     },
-    "D:\\Micro\\ecommerce\\eCommerceSolution.InvertoryService\\InvertoryService.Core\\InvertoryService.Core.csproj": {
+    "D:\\Micro\\ecommerce\\eCommerceSolution.InvertoryService\\InvertoryService.Core\\InventoryService.Core.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\Micro\\ecommerce\\eCommerceSolution.InvertoryService\\InvertoryService.Core\\InvertoryService.Core.csproj",
-        "projectName": "InvertoryService.Core",
-        "projectPath": "D:\\Micro\\ecommerce\\eCommerceSolution.InvertoryService\\InvertoryService.Core\\InvertoryService.Core.csproj",
+        "projectUniqueName": "D:\\Micro\\ecommerce\\eCommerceSolution.InvertoryService\\InvertoryService.Core\\InventoryService.Core.csproj",
+        "projectName": "InventoryService.Core",
+        "projectPath": "D:\\Micro\\ecommerce\\eCommerceSolution.InvertoryService\\InvertoryService.Core\\InventoryService.Core.csproj",
         "packagesPath": "C:\\Users\\moham\\.nuget\\packages\\",
         "outputPath": "D:\\Micro\\ecommerce\\eCommerceSolution.InvertoryService\\InvertoryService.Core\\obj\\",
         "projectStyle": "PackageReference",
@@ -118,6 +118,20 @@
       "frameworks": {
         "net9.0": {
           "targetAlias": "net9.0",
+          "dependencies": {
+            "Microsoft.Extensions.DependencyInjection.Abstractions": {
+              "target": "Package",
+              "version": "[9.0.7, )"
+            },
+            "Scrutor": {
+              "target": "Package",
+              "version": "[6.1.0, )"
+            },
+            "mapster": {
+              "target": "Package",
+              "version": "[7.4.0, )"
+            }
+          },
           "imports": [
             "net461",
             "net462",
@@ -166,8 +180,11 @@
           "net9.0": {
             "targetAlias": "net9.0",
             "projectReferences": {
-              "D:\\Micro\\ecommerce\\eCommerceSolution.InvertoryService\\InvertoryService.Core\\InvertoryService.Core.csproj": {
-                "projectPath": "D:\\Micro\\ecommerce\\eCommerceSolution.InvertoryService\\InvertoryService.Core\\InvertoryService.Core.csproj"
+              "D:\\Micro\\ecommerce\\eCommerceSolution.InvertoryService\\eCommerce.SharedKernal\\eCommerce.SharedKernal.csproj": {
+                "projectPath": "D:\\Micro\\ecommerce\\eCommerceSolution.InvertoryService\\eCommerce.SharedKernal\\eCommerce.SharedKernal.csproj"
+              },
+              "D:\\Micro\\ecommerce\\eCommerceSolution.InvertoryService\\InvertoryService.Core\\InventoryService.Core.csproj": {
+                "projectPath": "D:\\Micro\\ecommerce\\eCommerceSolution.InvertoryService\\InvertoryService.Core\\InventoryService.Core.csproj"
               }
             }
           }

@@ -17,4 +17,9 @@
     <PackageReference Include="Microsoft.VisualStudio.Azure.Containers.Tools.Targets" Version="1.22.1" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\InvertoryService.Core\InventoryService.Core.csproj" />
+    <ProjectReference Include="..\InvertoryService.Infrastructure\InventoryService.Infrastructure.csproj" />
+  </ItemGroup>
+
 </Project>

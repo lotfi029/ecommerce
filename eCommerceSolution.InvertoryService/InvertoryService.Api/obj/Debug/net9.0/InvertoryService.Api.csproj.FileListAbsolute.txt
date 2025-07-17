@@ -174,3 +174,15 @@ D:\Micro\ecommerce\eCommerceSolution.InvertoryService\InvertoryService.Api\obj\D
 D:\Micro\ecommerce\eCommerceSolution.InvertoryService\InvertoryService.Api\obj\Debug\net9.0\InvertoryService.Api.pdb
 D:\Micro\ecommerce\eCommerceSolution.InvertoryService\InvertoryService.Api\obj\Debug\net9.0\InvertoryService.Api.genruntimeconfig.cache
 D:\Micro\ecommerce\eCommerceSolution.InvertoryService\InvertoryService.Api\obj\Debug\net9.0\ref\InvertoryService.Api.dll
+D:\Micro\ecommerce\eCommerceSolution.InvertoryService\InvertoryService.Api\obj\Debug\net9.0\InvertoryService.Api.sourcelink.json
+D:\Micro\ecommerce\eCommerceSolution.InvertoryService\InvertoryService.Api\bin\Debug\net9.0\Npgsql.dll
+D:\Micro\ecommerce\eCommerceSolution.InvertoryService\InvertoryService.Api\bin\Debug\net9.0\Npgsql.EntityFrameworkCore.PostgreSQL.dll
+D:\Micro\ecommerce\eCommerceSolution.InvertoryService\InvertoryService.Api\bin\Debug\net9.0\Scrutor.dll
+D:\Micro\ecommerce\eCommerceSolution.InvertoryService\InvertoryService.Api\bin\Debug\net9.0\eCommerce.SharedKernal.dll
+D:\Micro\ecommerce\eCommerceSolution.InvertoryService\InvertoryService.Api\bin\Debug\net9.0\InvertoryService.Core.dll
+D:\Micro\ecommerce\eCommerceSolution.InvertoryService\InvertoryService.Api\bin\Debug\net9.0\InvertoryService.Infrastructure.dll
+D:\Micro\ecommerce\eCommerceSolution.InvertoryService\InvertoryService.Api\bin\Debug\net9.0\InvertoryService.Core.pdb
+D:\Micro\ecommerce\eCommerceSolution.InvertoryService\InvertoryService.Api\bin\Debug\net9.0\InvertoryService.Infrastructure.pdb
+D:\Micro\ecommerce\eCommerceSolution.InvertoryService\InvertoryService.Api\bin\Debug\net9.0\eCommerce.SharedKernal.pdb
+D:\Micro\ecommerce\eCommerceSolution.InvertoryService\InvertoryService.Api\bin\Debug\net9.0\Mapster.dll
+D:\Micro\ecommerce\eCommerceSolution.InvertoryService\InvertoryService.Api\bin\Debug\net9.0\Mapster.Core.dll

@@ -1,1 +1,1 @@
-﻿global using InvertoryService.Core.Entities;
+﻿global using InventoryService.Core.Entities;
