@@ -2,9 +2,6 @@
 
 public record Error(string Code, string Description, int? Status)
 {
-    //public static implicit operator Result(Error error)
-    //    => Result.Failure(error);
-
     public static Error Non
         => new(string.Empty, string.Empty, null);
 
@@ -25,4 +22,7 @@ public record Error(string Code, string Description, int? Status)
 
     public static Error FromException(string  Code, string Description)
         => new(Code, Description, 500);
+
+    public static Error Unexpected(string Description)
+        => new("Unexpected", Description, 500);
 }

@@ -1,9 +1,13 @@
 ﻿using InventoryService.Core.IRepositories;
+using InventoryService.Infrastructure.Authentication;
 using InventoryService.Infrastructure.Presestense;
 using InventoryService.Infrastructure.Repository;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.IdentityModel.Tokens;
+using System.Text;
 
 namespace InventoryService.Infrastructure;
 
@@ -13,7 +17,7 @@ public static class DependancyInjection
     {
         services.AddPresestense(configuration);
         services.AddServices();
-
+        services.AddAuth(configuration);
         return services;
     }
     private static IServiceCollection AddPresestense(this IServiceCollection services, IConfiguration configuration)
@@ -31,6 +35,37 @@ public static class DependancyInjection
     {
         services.AddScoped<IInventoryRepository, InventoryRepository>();
 
+        return services;
+    }
+    private static IServiceCollection AddAuth(this IServiceCollection services, IConfiguration configuration)
+    {
+        services.AddOptions<JwtSettings>()
+            .BindConfiguration(JwtSettings.SectionName)
+            .ValidateDataAnnotations()
+            .ValidateOnStart();
+
+        var settings = configuration.GetSection(JwtSettings.SectionName).Get<JwtSettings>();
+
+        services.AddAuthentication(options =>
+        {
+            options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
+            options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
+        }).AddJwtBearer(o =>
+        {
+            o.SaveToken = true;
+            o.TokenValidationParameters = new TokenValidationParameters
+            {
+                ValidateIssuerSigningKey = true,
+                ValidateIssuer = true,
+                ValidateAudience = true,
+                ValidateLifetime = true,
+                IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(settings!.Key)),
+                ValidIssuer = settings.Issuer,
+                ValidAudience = settings.Audience,
+            };
+        });
+
+        services.AddAuthorization();
         return services;
     }
 }

@@ -1,5 +1,4 @@
-﻿using InventoryService.Core.Entities;
-using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
 namespace InventoryService.Infrastructure.Presestense.Configuration;
@@ -12,6 +11,15 @@ public class InvertoryConfiguration : IEntityTypeConfiguration<Inventory>
         builder.Property(x => x.ProductId)
             .IsRequired()
             .HasColumnName("product_id");
+        
+        builder.Property(x => x.SKU)
+            .IsRequired()
+            .HasMaxLength(50)
+            .HasColumnName("sku");
+
+        builder.Property(x => x.WarehouseId)
+            .IsRequired()
+            .HasColumnName("warehouse_id");
 
         builder.Property(x => x.Quantity)
             .IsRequired()
@@ -19,10 +27,23 @@ public class InvertoryConfiguration : IEntityTypeConfiguration<Inventory>
         
         builder.Property(x => x.Reserved)
             .IsRequired()
+            .HasDefaultValue(0)
             .HasColumnName("reserved");
+        
+        builder.HasOne(x => x.Warehouse)
+            .WithMany(e => e.Inventories)
+            .HasForeignKey(x => x.WarehouseId)
+            .OnDelete(DeleteBehavior.Cascade)
+            .IsRequired();
 
+        builder.HasIndex(e => new { e.ProductId, e.SKU })
+            .IsUnique()
+            .HasDatabaseName("IX_Inventories_ProductId_SKU");
+    
+
+        // audit properties configuration
         builder.HasKey(x => x.Id);
-
+         
         builder.Property(e => e.Id)
             .HasColumnName("id");
 

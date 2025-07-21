@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 #nullable disable
 
-namespace InventoryService.Infrastructure.Presestense.Migrations
+namespace InventoryService.Infrastructure.Migrations
 {
     /// <inheritdoc />
     public partial class InitMigration : Migration
@@ -18,6 +18,7 @@ namespace InventoryService.Infrastructure.Presestense.Migrations
                     id = table.Column<Guid>(type: "uuid", nullable: false),
                     product_id = table.Column<Guid>(type: "uuid", nullable: false),
                     quantity = table.Column<int>(type: "integer", nullable: false),
+                    reserved = table.Column<int>(type: "integer", nullable: false, defaultValue: 0),
                     created_at = table.Column<DateTime>(type: "timestamp with time zone", nullable: false),
                     updated_at = table.Column<DateTime>(type: "timestamp with time zone", nullable: true),
                     created_by = table.Column<string>(type: "text", nullable: false),

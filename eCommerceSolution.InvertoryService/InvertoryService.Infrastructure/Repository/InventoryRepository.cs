@@ -1,5 +1,4 @@
-﻿using InventoryService.Core.Entities;
-using InventoryService.Core.IRepositories;
+﻿using InventoryService.Core.IRepositories;
 using InventoryService.Infrastructure.Presestense;
 using Mapster;
 using Microsoft.EntityFrameworkCore;
@@ -24,7 +23,7 @@ public class InventoryRepository(
         catch (OperationCanceledException)
         {
             _logger.LogWarning("Operation was canceled while adding entity with ID: {Id}", entity.Id);
-            throw;
+            return Guid.Empty;
         }
         catch (Exception ex)
         {

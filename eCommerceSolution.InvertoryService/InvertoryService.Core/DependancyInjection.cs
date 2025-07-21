@@ -1,4 +1,6 @@
 ﻿using eCommerce.SharedKernal.Messaging;
+using FluentValidation;
+using InventoryService.Core.DTOs.Inventories;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace InventoryService.Core;
@@ -19,6 +21,9 @@ public static class DependancyInjection
                 .WithScopedLifetime()
         );
 
+
+        services
+            .AddValidatorsFromAssemblyContaining<InventoryRequestValidator>(includeInternalTypes: true);
 
         return services;
     }

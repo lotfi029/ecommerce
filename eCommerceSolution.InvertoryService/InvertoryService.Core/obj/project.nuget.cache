@@ -1,9 +1,11 @@
 {
   "version": 2,
-  "dgSpecHash": "/6w1GREtKJw=",
+  "dgSpecHash": "3WWurnt39Oo=",
   "success": true,
   "projectFilePath": "D:\\Micro\\ecommerce\\eCommerceSolution.InvertoryService\\InvertoryService.Core\\InventoryService.Core.csproj",
   "expectedPackageFiles": [
+    "C:\\Users\\moham\\.nuget\\packages\\fluentvalidation\\12.0.0\\fluentvalidation.12.0.0.nupkg.sha512",
+    "C:\\Users\\moham\\.nuget\\packages\\fluentvalidation.dependencyinjectionextensions\\12.0.0\\fluentvalidation.dependencyinjectionextensions.12.0.0.nupkg.sha512",
     "C:\\Users\\moham\\.nuget\\packages\\mapster\\7.4.0\\mapster.7.4.0.nupkg.sha512",
     "C:\\Users\\moham\\.nuget\\packages\\mapster.core\\1.2.1\\mapster.core.1.2.1.nupkg.sha512",
     "C:\\Users\\moham\\.nuget\\packages\\microsoft.extensions.dependencyinjection.abstractions\\9.0.7\\microsoft.extensions.dependencyinjection.abstractions.9.0.7.nupkg.sha512",
