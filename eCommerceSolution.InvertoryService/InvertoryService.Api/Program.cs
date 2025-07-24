@@ -2,8 +2,8 @@ using eCommerce.SharedKernal.Messaging;
 using FluentValidation;
 using InventoryService.Api;
 using InventoryService.Core;
+using InventoryService.Core.CQRS.Inventories.Commands.Add;
 using InventoryService.Core.DTOs.Inventories;
-using InventoryService.Core.Features.Inventories.Commands.Add;
 using InventoryService.Infrastructure;
 
 var builder = WebApplication.CreateBuilder(args);

@@ -1,4 +1,5 @@
 ﻿using eCommerce.SharedKernal.Entities;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace InventoryService.Core.Entities;
 public class Inventory : BaseEntity
@@ -9,8 +10,8 @@ public class Inventory : BaseEntity
     public int Reserved { get; set; }
     public Guid WarehouseId { get; set; }
     public Warehouse Warehouse { get; set; } = null!;
-
-
+    [NotMapped]
+    public int Available => Quantity - Reserved;
     public static Inventory Create(Guid productId, int quantity, string createdBy)
     {
         return new()
@@ -18,16 +19,30 @@ public class Inventory : BaseEntity
             ProductId = productId,
             Quantity = quantity,
             CreatedBy = createdBy,
+            Reserved = 0,
             CreatedAt = DateTime.UtcNow
         };
     }
-
-    public static Inventory UpdateQuantity(Inventory inventory, int quantity)
+    public void Reserve(int quantity)
     {
-        inventory.Quantity += quantity;
-        inventory.UpdatedAt = DateTime.UtcNow;
-        inventory.UpdatedBy = inventory.CreatedBy;
-        
-        return inventory;
+        if (quantity > Available)
+            throw new InvalidOperationException("Insufficient stock to reserve.");
+
+        Reserved += quantity;
+    }
+    public void Release(int quantity)
+    {
+        Reserved = Math.Max(0, Reserved - quantity);
+    }
+    public void Restock(int quantity)
+    {
+        Quantity += quantity;
+    }
+    public void Deduct(int quantity)
+    {
+        if (quantity > Available)
+            throw new InvalidOperationException("Insufficient stock to deduct.");
+
+        Quantity -= quantity;
     }
 }

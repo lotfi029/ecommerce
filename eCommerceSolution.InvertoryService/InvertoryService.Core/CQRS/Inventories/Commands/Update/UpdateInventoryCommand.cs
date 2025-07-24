@@ -1,4 +1,4 @@
-﻿namespace InventoryService.Core.Features.Inventories.Commands.Update;
+﻿namespace InventoryService.Core.CQRS.Inventories.Commands.Update;
 
 public record UpdateInventoryCommand(
     string UserId,
@@ -27,12 +27,10 @@ public class UpdateInventoryCommandHandler(
             }
             else
             {
-                var updatedInventory = Inventory.UpdateQuantity(inventory, command.Quantity);
-                
-                if (updatedInventory.Quantity < updatedInventory.Reserved)
+                inventory.Reserve(command.Quantity);
+
+                if (inventory.Quantity < inventory.Reserved)
                     return Result.Failure(Error.BadRequest("Inventory.InsufficientStock", "Cannot reduce quantity below reserved amount."));
-                
-                inventory = updatedInventory;
             }
 
             await inventoryRepository.UpdateAsync(inventory, ct);

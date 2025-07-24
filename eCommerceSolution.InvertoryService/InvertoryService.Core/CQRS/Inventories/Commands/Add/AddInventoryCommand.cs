@@ -1,4 +1,4 @@
-﻿namespace InventoryService.Core.Features.Inventories.Commands.Add;
+﻿namespace InventoryService.Core.CQRS.Inventories.Commands.Add;
 public record AddInventoryCommand(string UserId, Guid ProductId, int Quantity) : ICommand<Guid>;
 
 public class AddInventoryCommandHandler(

@@ -7,3 +7,5 @@ public enum InventoryChangeType
     Deduct,
     Restock
 }
+
+// cart - payment - order - product - catalog
