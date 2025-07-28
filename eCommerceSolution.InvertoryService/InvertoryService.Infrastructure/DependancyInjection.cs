@@ -18,6 +18,9 @@ public static class DependancyInjection
         services.AddPresestense(configuration);
         services.AddServices();
         services.AddAuth(configuration);
+
+        services.AddHttpContextAccessor();
+
         return services;
     }
     private static IServiceCollection AddPresestense(this IServiceCollection services, IConfiguration configuration)
@@ -34,6 +37,7 @@ public static class DependancyInjection
     private static IServiceCollection AddServices(this IServiceCollection services)
     {
         services.AddScoped<IInventoryRepository, InventoryRepository>();
+        services.AddScoped<IWarehouseRepository, WarehouseRepository>();
 
         return services;
     }

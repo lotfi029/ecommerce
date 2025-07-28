@@ -890,6 +890,22 @@
           }
         }
       },
+      "Scalar.AspNetCore/2.6.4": {
+        "type": "package",
+        "compile": {
+          "lib/net9.0/Scalar.AspNetCore.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net9.0/Scalar.AspNetCore.dll": {
+            "related": ".xml"
+          }
+        },
+        "frameworkReferences": [
+          "Microsoft.AspNetCore.App"
+        ]
+      },
       "Scrutor/6.1.0": {
         "type": "package",
         "dependencies": {
@@ -905,6 +921,22 @@
           "lib/net8.0/Scrutor.dll": {
             "related": ".pdb;.xml"
           }
+        }
+      },
+      "Serilog/4.3.0": {
+        "type": "package",
+        "compile": {
+          "lib/net9.0/Serilog.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net9.0/Serilog.dll": {
+            "related": ".xml"
+          }
+        },
+        "build": {
+          "build/Serilog.targets": {}
         }
       },
       "System.CodeDom/6.0.0": {
@@ -2990,6 +3022,23 @@
         "postgresql.png"
       ]
     },
+    "Scalar.AspNetCore/2.6.4": {
+      "sha512": "sZxJ8icJMNxaZrdzZ3pIFl9AHLy4H3nYG0dCTEPwhpqB+3De3Q8c7mWQyt83wrcs7tUhJubuevjteiig/h4i3g==",
+      "type": "package",
+      "path": "scalar.aspnetcore/2.6.4",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "README.md",
+        "icon.png",
+        "lib/net8.0/Scalar.AspNetCore.dll",
+        "lib/net8.0/Scalar.AspNetCore.xml",
+        "lib/net9.0/Scalar.AspNetCore.dll",
+        "lib/net9.0/Scalar.AspNetCore.xml",
+        "scalar.aspnetcore.2.6.4.nupkg.sha512",
+        "scalar.aspnetcore.nuspec"
+      ]
+    },
     "Scrutor/6.1.0": {
       "sha512": "m4+0RdgnX+jeiaqteq9x5SwEtuCjWG0KTw1jBjCzn7V8mCanXKoeF8+59E0fcoRbAjdEq6YqHFCmxZ49Kvqp3g==",
       "type": "package",
@@ -3009,6 +3058,32 @@
         "lib/netstandard2.0/Scrutor.xml",
         "scrutor.6.1.0.nupkg.sha512",
         "scrutor.nuspec"
+      ]
+    },
+    "Serilog/4.3.0": {
+      "sha512": "+cDryFR0GRhsGOnZSKwaDzRRl4MupvJ42FhCE4zhQRVanX0Jpg6WuCBk59OVhVDPmab1bB+nRykAnykYELA9qQ==",
+      "type": "package",
+      "path": "serilog/4.3.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "README.md",
+        "build/Serilog.targets",
+        "icon.png",
+        "lib/net462/Serilog.dll",
+        "lib/net462/Serilog.xml",
+        "lib/net471/Serilog.dll",
+        "lib/net471/Serilog.xml",
+        "lib/net6.0/Serilog.dll",
+        "lib/net6.0/Serilog.xml",
+        "lib/net8.0/Serilog.dll",
+        "lib/net8.0/Serilog.xml",
+        "lib/net9.0/Serilog.dll",
+        "lib/net9.0/Serilog.xml",
+        "lib/netstandard2.0/Serilog.dll",
+        "lib/netstandard2.0/Serilog.xml",
+        "serilog.4.3.0.nupkg.sha512",
+        "serilog.nuspec"
       ]
     },
     "System.CodeDom/6.0.0": {
@@ -3444,6 +3519,8 @@
       "InventoryService.Infrastructure >= 1.0.0",
       "Microsoft.AspNetCore.OpenApi >= 9.0.7",
       "Microsoft.VisualStudio.Azure.Containers.Tools.Targets >= 1.22.1",
+      "Scalar.AspNetCore >= 2.6.4",
+      "Serilog >= 4.3.0",
       "microsoft.EntityFrameworkCore.design >= 9.0.7"
     ]
   },
@@ -3511,6 +3588,14 @@
           "Microsoft.VisualStudio.Azure.Containers.Tools.Targets": {
             "target": "Package",
             "version": "[1.22.1, )"
+          },
+          "Scalar.AspNetCore": {
+            "target": "Package",
+            "version": "[2.6.4, )"
+          },
+          "Serilog": {
+            "target": "Package",
+            "version": "[4.3.0, )"
           },
           "microsoft.EntityFrameworkCore.design": {
             "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",

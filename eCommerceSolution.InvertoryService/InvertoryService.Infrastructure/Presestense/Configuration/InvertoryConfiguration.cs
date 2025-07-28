@@ -43,7 +43,7 @@ public class InvertoryConfiguration : IEntityTypeConfiguration<Inventory>
 
         // audit properties configuration
         builder.HasKey(x => x.Id);
-         
+
         builder.Property(e => e.Id)
             .HasColumnName("id");
 

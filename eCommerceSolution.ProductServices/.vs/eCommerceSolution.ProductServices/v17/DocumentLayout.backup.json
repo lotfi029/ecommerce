@@ -3,6 +3,10 @@
   "WorkspaceRootPath": "D:\\Micro\\ecommerce\\eCommerceSolution.ProductServices\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{75132C84-78FF-4422-BD34-7D1989F28C05}|eCommerce.Infrastructure\\eCommerce.Infrastructure.csproj|d:\\micro\\ecommerce\\ecommercesolution.productservices\\ecommerce.infrastructure\\dependencyinjection.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{75132C84-78FF-4422-BD34-7D1989F28C05}|eCommerce.Infrastructure\\eCommerce.Infrastructure.csproj|solutionrelative:ecommerce.infrastructure\\dependencyinjection.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{4734EDBE-84F8-4F64-93F1-AF39DB808243}|eCommerce.Core\\eCommerce.Core.csproj|d:\\micro\\ecommerce\\ecommercesolution.productservices\\ecommerce.core\\dependencyinjection.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{4734EDBE-84F8-4F64-93F1-AF39DB808243}|eCommerce.Core\\eCommerce.Core.csproj|solutionrelative:ecommerce.core\\dependencyinjection.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
@@ -30,7 +34,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 4,
+          "SelectedChildIndex": 1,
           "Children": [
             {
               "$type": "Bookmark",
@@ -38,7 +42,20 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 0,
+              "Title": "DependencyInjection.cs",
+              "DocumentMoniker": "D:\\Micro\\ecommerce\\eCommerceSolution.ProductServices\\eCommerce.Infrastructure\\DependencyInjection.cs",
+              "RelativeDocumentMoniker": "eCommerce.Infrastructure\\DependencyInjection.cs",
+              "ToolTip": "D:\\Micro\\ecommerce\\eCommerceSolution.ProductServices\\eCommerce.Infrastructure\\DependencyInjection.cs",
+              "RelativeToolTip": "eCommerce.Infrastructure\\DependencyInjection.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAC4AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-07-15T18:00:15.249Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
               "Title": "MappingConfiguration.cs",
               "DocumentMoniker": "D:\\Micro\\ecommerce\\eCommerceSolution.ProductServices\\eCommerce.Core\\Profiles\\MappingConfiguration.cs",
               "RelativeDocumentMoniker": "eCommerce.Core\\Profiles\\MappingConfiguration.cs",
@@ -50,7 +67,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 3,
               "Title": "ProductResponse.cs",
               "DocumentMoniker": "D:\\Micro\\ecommerce\\eCommerceSolution.ProductServices\\eCommerce.Core\\DTO\\Products\\ProductResponse.cs",
               "RelativeDocumentMoniker": "eCommerce.Core\\DTO\\Products\\ProductResponse.cs",
@@ -62,7 +79,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 2,
               "Title": "GetAllProductsQuery.cs",
               "DocumentMoniker": "D:\\Micro\\ecommerce\\eCommerceSolution.ProductServices\\eCommerce.Core\\Features\\Products\\Queries\\AllProducts\\GetAllProductsQuery.cs",
               "RelativeDocumentMoniker": "eCommerce.Core\\Features\\Products\\Queries\\AllProducts\\GetAllProductsQuery.cs",
@@ -74,7 +91,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 1,
               "Title": "DependencyInjection.cs",
               "DocumentMoniker": "D:\\Micro\\ecommerce\\eCommerceSolution.ProductServices\\eCommerce.Core\\DependencyInjection.cs",
               "RelativeDocumentMoniker": "eCommerce.Core\\DependencyInjection.cs",
@@ -82,12 +99,11 @@
               "RelativeToolTip": "eCommerce.Core\\DependencyInjection.cs",
               "ViewState": "AgIAAA0AAAAAAAAAAAAgwB0AAAAlAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-07-12T20:52:01.88Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-07-12T20:52:01.88Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 5,
               "Title": "ProductRepository.cs",
               "DocumentMoniker": "D:\\Micro\\ecommerce\\eCommerceSolution.ProductServices\\eCommerce.Infrastructure\\Repositories\\ProductRepository.cs",
               "RelativeDocumentMoniker": "eCommerce.Infrastructure\\Repositories\\ProductRepository.cs",

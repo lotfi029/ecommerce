@@ -1,15 +1,15 @@
 [
   {
-    "ContainingType": "Program\u002B\u003C\u003Ec",
-    "Method": "\u003C\u003CMain\u003E$\u003Eb__0_0",
-    "RelativePath": "inventory",
+    "ContainingType": "InventoryService.Api.Endpoints.ProductEndpoint",
+    "Method": "AddWarehouse",
+    "RelativePath": "api/warehouses/",
     "HttpMethod": "POST",
     "IsController": false,
     "Order": 0,
     "Parameters": [
       {
         "Name": "request",
-        "Type": "InventoryService.Core.DTOs.Inventories.InventoryRequest",
+        "Type": "InventoryService.Core.DTOs.Warehouses.WarehouseRequest",
         "IsRequired": true
       }
     ],
@@ -19,6 +19,108 @@
         "MediaTypes": [],
         "StatusCode": 200
       }
+    ],
+    "Tags": [
+      "Warehouses"
+    ]
+  },
+  {
+    "ContainingType": "InventoryService.Api.Endpoints.ProductEndpoint",
+    "Method": "GetWarehouses",
+    "RelativePath": "api/warehouses/",
+    "HttpMethod": "GET",
+    "IsController": false,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": [
+      {
+        "Type": "System.Void",
+        "MediaTypes": [],
+        "StatusCode": 200
+      }
+    ],
+    "Tags": [
+      "Warehouses"
+    ]
+  },
+  {
+    "ContainingType": "InventoryService.Api.Endpoints.ProductEndpoint",
+    "Method": "UpdateWarehouse",
+    "RelativePath": "api/warehouses/{id:guid}",
+    "HttpMethod": "PUT",
+    "IsController": false,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Guid",
+        "IsRequired": true
+      },
+      {
+        "Name": "request",
+        "Type": "InventoryService.Core.DTOs.Warehouses.WarehouseRequest",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "System.Void",
+        "MediaTypes": [],
+        "StatusCode": 200
+      }
+    ],
+    "Tags": [
+      "Warehouses"
+    ]
+  },
+  {
+    "ContainingType": "InventoryService.Api.Endpoints.ProductEndpoint",
+    "Method": "DeleteWarehouse",
+    "RelativePath": "api/warehouses/{id:guid}",
+    "HttpMethod": "DELETE",
+    "IsController": false,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Guid",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "System.Void",
+        "MediaTypes": [],
+        "StatusCode": 200
+      }
+    ],
+    "Tags": [
+      "Warehouses"
+    ]
+  },
+  {
+    "ContainingType": "InventoryService.Api.Endpoints.ProductEndpoint",
+    "Method": "GetWarehouse",
+    "RelativePath": "api/warehouses/{id:guid}",
+    "HttpMethod": "GET",
+    "IsController": false,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Guid",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "System.Void",
+        "MediaTypes": [],
+        "StatusCode": 200
+      }
+    ],
+    "Tags": [
+      "Warehouses"
     ]
   }
 ]
