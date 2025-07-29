@@ -1,5 +1,7 @@
-﻿namespace InventoryService.Core.CQRS.Inventories.Commands.Add;
-public record AddInventoryCommand(string UserId, Guid ProductId, int Quantity) : ICommand<Guid>;
+﻿using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
+
+namespace InventoryService.Core.CQRS.Inventories.Commands.Add;
+public record AddInventoryCommand(string UserId, Guid ProductId, int Quantity, string SKU, Guid Warehouse) : ICommand<Guid>;
 
 public class AddInventoryCommandHandler(
     IUnitOfWork unitOfWork) : ICommandHandler<AddInventoryCommand, Guid>
@@ -16,7 +18,9 @@ public class AddInventoryCommandHandler(
 
             var inventory = Inventory.Create(
                 command.ProductId,
+                command.SKU,
                 command.Quantity,
+                command.Warehouse,
                 command.UserId
             );
 

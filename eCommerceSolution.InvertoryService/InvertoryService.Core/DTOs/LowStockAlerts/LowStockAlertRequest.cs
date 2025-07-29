@@ -1,5 +1,5 @@
 ﻿namespace InventoryService.Core.DTOs.LowStockAlerts;
-public record LowStockRequest(
+public record LowStockAlertRequest(
     Guid ProductId,
     int Threshold,
     string SKU

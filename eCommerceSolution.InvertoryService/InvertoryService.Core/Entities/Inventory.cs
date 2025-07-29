@@ -12,15 +12,17 @@ public class Inventory : BaseEntity
     public Warehouse Warehouse { get; set; } = null!;
     [NotMapped]
     public int Available => Quantity - Reserved;
-    public static Inventory Create(Guid productId, int quantity, string createdBy)
+    public static Inventory Create(Guid productId, string sku, int quantity, Guid warehouse, string createdBy)
     {
         return new()
         {
             ProductId = productId,
             Quantity = quantity,
+            SKU = sku,
             CreatedBy = createdBy,
             Reserved = 0,
-            CreatedAt = DateTime.UtcNow
+            CreatedAt = DateTime.UtcNow,
+            WarehouseId = warehouse
         };
     }
     public void Reserve(int quantity)

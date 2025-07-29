@@ -1,4 +1,5 @@
 ﻿using eCommerce.SharedKernal.Entities;
+using System.Linq.Expressions;
 
 namespace eCommerce.SharedKernal.Interfaces;
 public interface IRepository<T> where T : BaseEntity
@@ -7,7 +8,10 @@ public interface IRepository<T> where T : BaseEntity
     Task AddRangeAsync(IEnumerable<T> entities, CancellationToken ct = default);
     Task UpdateAsync(T entity, CancellationToken ct = default);
     Task DeleteAsync(Guid id, CancellationToken ct = default);
+    Task<int> DeleteAsync(Expression<Func<T, bool>> predicate, CancellationToken ct = default);
     Task<IEnumerable<T>> GetAllAsync(CancellationToken ct = default);
     Task<T?> GetByIdAsync(Guid id, CancellationToken ct = default);
+    Task<T?> GetAsync(Expression<Func<T, bool>> predicate, CancellationToken ct = default);
     Task<bool> ExistsAsync(Guid id, CancellationToken ct = default);
+    Task<bool> ExistsAsync(Expression<Func<T, bool>> predicate, CancellationToken ct = default);
 }

@@ -2,7 +2,7 @@
 
 namespace InventoryService.Core.DTOs.LowStockAlerts;
 
-public class LowStockRequestValidator : AbstractValidator<LowStockRequest>
+public class LowStockRequestValidator : AbstractValidator<LowStockAlertRequest>
 {
     public LowStockRequestValidator()
     {
