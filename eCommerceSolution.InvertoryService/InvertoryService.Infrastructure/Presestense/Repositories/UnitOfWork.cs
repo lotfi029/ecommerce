@@ -1,6 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore.Storage;
 
-namespace InventoryService.Infrastructure.Presestense.Repository;
+namespace InventoryService.Infrastructure.Presestense.Repositories;
 public class UnitOfWork(
     ApplicationDbContext context,
     ILoggerFactory loggerFactory) : IUnitOfWork
@@ -12,13 +12,13 @@ public class UnitOfWork(
 
     private bool _disposed = false;
     public IInventoryRepository InventoryRepository => 
-        new InventoryRepository(_context, _loggerFactory.CreateLogger<InventoryRepository>());
+        new InventoryRepository(_context, _loggerFactory.CreateLogger<Repository<Inventory>>(), _loggerFactory.CreateLogger<InventoryRepository>());
 
     public ILowStockAlertRepository LowStockAlertRepository =>
-        new LowStockAlertRepository(_context, _loggerFactory.CreateLogger<LowStockAlertRepository>());
+        new LowStockAlertRepository(_context, _loggerFactory.CreateLogger<Repository<LowStockAlert>>(), _loggerFactory.CreateLogger<LowStockAlertRepository>());
 
     public IWarehouseRepository WarehouseRepository => 
-        new WarehouseRepository(_context, _loggerFactory.CreateLogger<WarehouseRepository>());
+        new WarehouseRepository(_context, _loggerFactory.CreateLogger<Repository<Warehouse>>(), _loggerFactory.CreateLogger<WarehouseRepository>());
 
 
     public async Task<IDbContextTransaction> BeginTransactionAsync(CancellationToken cancellationToken = default)

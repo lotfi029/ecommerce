@@ -7,13 +7,13 @@ public record UpdateInventoryCommand(
     bool IsReservation) : ICommand;
 
 public class UpdateInventoryCommandHandler(
-    IInventoryRepository inventoryRepository) : ICommandHandler<UpdateInventoryCommand>
+    IUnitOfWork unitOfWork) : ICommandHandler<UpdateInventoryCommand>
 {
     public async Task<Result> HandleAsync(UpdateInventoryCommand command, CancellationToken ct = default)
     {
         try
         {
-            var inventory = await inventoryRepository.GetByIdAsync(command.ProductId, ct);
+            var inventory = await unitOfWork.InventoryRepository.GetByIdAsync(command.ProductId, ct);
             
             if (inventory is null)
                 return Result.Failure(Error.NotFound("Inventory.NotFound", $"Inventory with ProductId {command.ProductId} not found."));
@@ -33,7 +33,7 @@ public class UpdateInventoryCommandHandler(
                     return Result.Failure(Error.BadRequest("Inventory.InsufficientStock", "Cannot reduce quantity below reserved amount."));
             }
 
-            await inventoryRepository.UpdateAsync(inventory, ct);
+            await unitOfWork.InventoryRepository.UpdateAsync(inventory, ct);
             return Result.Success();
         }
         catch (Exception ex)

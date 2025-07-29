@@ -1,6 +1,6 @@
 ﻿using InventoryService.Infrastructure.Authentication;
 using InventoryService.Infrastructure.Presestense;
-using InventoryService.Infrastructure.Presestense.Repository;
+using InventoryService.Infrastructure.Presestense.Repositories;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;

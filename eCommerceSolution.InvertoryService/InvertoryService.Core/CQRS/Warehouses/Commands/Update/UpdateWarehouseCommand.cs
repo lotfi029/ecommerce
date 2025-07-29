@@ -3,11 +3,11 @@
 namespace InventoryService.Core.CQRS.Warehouses.Commands.Update;
 public record UpdateWarehouseCommand(string UserId, Guid Id, WarehouseRequest Request) : ICommand;
 
-public record UpdateWarehouseCommandHandler(IWarehouseRepository warehouseRepository) : ICommandHandler<UpdateWarehouseCommand>
+public class UpdateWarehouseCommandHandler(IUnitOfWork unitOfWork) : ICommandHandler<UpdateWarehouseCommand>
 {
     public async Task<Result> HandleAsync(UpdateWarehouseCommand command, CancellationToken ct = default)
     {
-        if (await warehouseRepository.GetByIdAsync(command.Id, ct) is not { } warehouse)
+        if (await unitOfWork.WarehouseRepository.GetByIdAsync(command.Id, ct) is not { } warehouse)
             return WarehouseErrors.NotFound(command.Id);
 
         if (warehouse.CreatedBy != command.UserId)
@@ -18,7 +18,7 @@ public record UpdateWarehouseCommandHandler(IWarehouseRepository warehouseReposi
 
         try
         {
-            await warehouseRepository.UpdateAsync(warehouse, ct);
+            await unitOfWork.WarehouseRepository.UpdateAsync(warehouse, ct);
             return Result.Success();
         }
         catch (Exception ex)

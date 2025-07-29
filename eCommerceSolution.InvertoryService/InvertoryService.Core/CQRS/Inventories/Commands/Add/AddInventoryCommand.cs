@@ -2,13 +2,13 @@
 public record AddInventoryCommand(string UserId, Guid ProductId, int Quantity) : ICommand<Guid>;
 
 public class AddInventoryCommandHandler(
-    IInventoryRepository inventoryRepository) : ICommandHandler<AddInventoryCommand, Guid>
+    IUnitOfWork unitOfWork) : ICommandHandler<AddInventoryCommand, Guid>
 {
     public async Task<Result<Guid>> HandleAsync(AddInventoryCommand command, CancellationToken ct = default)
     {
         try
         {
-            if (await inventoryRepository.ExistsAsync(command.ProductId, ct))
+            if (await unitOfWork.InventoryRepository.ExistsAsync(command.ProductId, ct))
                 return InventoryErrors.AlreadyExists(command.ProductId);
 
             if (command.Quantity <= 0)
@@ -20,7 +20,7 @@ public class AddInventoryCommandHandler(
                 command.UserId
             );
 
-            var inventoryId = await inventoryRepository.AddAsync(inventory, ct);
+            var inventoryId = await unitOfWork.InventoryRepository.AddAsync(inventory, ct);
 
             if (inventoryId == Guid.Empty)
                 return InventoryErrors.InventoryCreationFailed(command.ProductId);
