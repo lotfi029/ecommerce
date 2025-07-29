@@ -4,7 +4,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
 using System.Linq.Expressions;
 
-namespace InventoryService.Infrastructure.Repository
+namespace InventoryService.Infrastructure.Presestense.Repository
 {
     public class WarehouseRepository(
         ApplicationDbContext context,

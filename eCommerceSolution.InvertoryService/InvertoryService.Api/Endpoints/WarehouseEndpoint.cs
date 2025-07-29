@@ -27,6 +27,7 @@ public class WarehouseEndpoint : IEndpoint
 
         group.MapGet("/", GetWarehouses);
         group.MapGet("/{id:guid}", GetWarehouse);
+          
     }
 
     private async Task<IResult> AddWarehouse(

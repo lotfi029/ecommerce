@@ -1,9 +1,7 @@
-﻿using InventoryService.Core.IRepositories;
-using InventoryService.Infrastructure.Authentication;
+﻿using InventoryService.Infrastructure.Authentication;
 using InventoryService.Infrastructure.Presestense;
-using InventoryService.Infrastructure.Repository;
+using InventoryService.Infrastructure.Presestense.Repository;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
-using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.IdentityModel.Tokens;
@@ -36,8 +34,7 @@ public static class DependancyInjection
     }
     private static IServiceCollection AddServices(this IServiceCollection services)
     {
-        services.AddScoped<IInventoryRepository, InventoryRepository>();
-        services.AddScoped<IWarehouseRepository, WarehouseRepository>();
+        services.AddScoped<IUnitOfWork, UnitOfWork>();
 
         return services;
     }

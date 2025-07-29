@@ -1,6 +1,6 @@
 [
   {
-    "ContainingType": "InventoryService.Api.Endpoints.ProductEndpoint",
+    "ContainingType": "InventoryService.Api.Endpoints.WarehouseEndpoint",
     "Method": "AddWarehouse",
     "RelativePath": "api/warehouses/",
     "HttpMethod": "POST",
@@ -25,7 +25,7 @@
     ]
   },
   {
-    "ContainingType": "InventoryService.Api.Endpoints.ProductEndpoint",
+    "ContainingType": "InventoryService.Api.Endpoints.WarehouseEndpoint",
     "Method": "GetWarehouses",
     "RelativePath": "api/warehouses/",
     "HttpMethod": "GET",
@@ -44,7 +44,7 @@
     ]
   },
   {
-    "ContainingType": "InventoryService.Api.Endpoints.ProductEndpoint",
+    "ContainingType": "InventoryService.Api.Endpoints.WarehouseEndpoint",
     "Method": "UpdateWarehouse",
     "RelativePath": "api/warehouses/{id:guid}",
     "HttpMethod": "PUT",
@@ -74,7 +74,7 @@
     ]
   },
   {
-    "ContainingType": "InventoryService.Api.Endpoints.ProductEndpoint",
+    "ContainingType": "InventoryService.Api.Endpoints.WarehouseEndpoint",
     "Method": "DeleteWarehouse",
     "RelativePath": "api/warehouses/{id:guid}",
     "HttpMethod": "DELETE",
@@ -99,7 +99,7 @@
     ]
   },
   {
-    "ContainingType": "InventoryService.Api.Endpoints.ProductEndpoint",
+    "ContainingType": "InventoryService.Api.Endpoints.WarehouseEndpoint",
     "Method": "GetWarehouse",
     "RelativePath": "api/warehouses/{id:guid}",
     "HttpMethod": "GET",

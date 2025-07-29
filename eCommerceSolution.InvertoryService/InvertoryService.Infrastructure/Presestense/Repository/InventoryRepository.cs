@@ -1,10 +1,4 @@
-﻿using InventoryService.Core.IRepositories;
-using InventoryService.Infrastructure.Presestense;
-using Mapster;
-using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.Logging;
-
-namespace InventoryService.Infrastructure.Repository;
+﻿namespace InventoryService.Infrastructure.Presestense.Repository;
 public class InventoryRepository(
     ApplicationDbContext _context,
     ILogger<InventoryRepository> _logger) : IInventoryRepository
@@ -131,7 +125,7 @@ public class InventoryRepository(
         }
     }
 
-    public async Task<Inventory> GetByIdAsync(Guid id, CancellationToken ct = default)
+    public async Task<Inventory?> GetByIdAsync(Guid id, CancellationToken ct = default)
     {
         if (id == Guid.Empty)
             throw new ArgumentException("Invalid Invertory ID", nameof(id));
