@@ -1,8 +1,7 @@
 ﻿namespace InventoryService.Core.Entities;
 
-public enum InventoryChangeType
-{
-    Reserve,
+public enum InventoryChangeType {
+    Reserve = 1,
     Release,
     Deduct,
     Restock

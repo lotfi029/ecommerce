@@ -1,13 +1,12 @@
-﻿namespace InventoryService.Core.Entities;
+﻿using eCommerce.SharedKernal.Entities;
 
-public class Transaction
+namespace InventoryService.Core.Entities;
+
+public class Transaction : BaseEntity
 {
-    public Guid Id { get; set; }
     public Guid ProductId { get; set; }
     public string SKU { get; set; } = string.Empty;
     public InventoryChangeType ChangeType { get; set; }
     public int QuantityChanged { get; set; }
-    public DateTime Timestamp { get; set; }
-    public string? UserId { get; set; }
-    public string? OrderId { get; set; }
+    public Guid? OrderId { get; set; }
 }

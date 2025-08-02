@@ -9,3 +9,5 @@ global using InventoryService.Core.IRepositories;
 
 
 global using Mapster;
+global using FluentValidation;
+global using Microsoft.Extensions.Logging;

@@ -20,6 +20,8 @@ public class UnitOfWork(
     public IWarehouseRepository WarehouseRepository => 
         new WarehouseRepository(_context, _loggerFactory.CreateLogger<Repository<Warehouse>>(), _loggerFactory.CreateLogger<WarehouseRepository>());
 
+    public ITransactionRepository TransactionRepository =>
+        new TransactionRepository(_context, _loggerFactory.CreateLogger<Repository<Transaction>>(), _loggerFactory.CreateLogger<TransactionRepository>());
 
     public async Task<IDbContextTransaction> BeginTransactionAsync(CancellationToken cancellationToken = default)
         => await _context.Database.BeginTransactionAsync(cancellationToken);
