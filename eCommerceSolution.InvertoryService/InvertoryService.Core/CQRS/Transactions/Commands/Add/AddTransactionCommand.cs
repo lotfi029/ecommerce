@@ -15,6 +15,8 @@ public class AddTransactionCommandHandler(
     private static readonly EventId EventTransactionAddError = new(1002, nameof(EventTransactionAddError));
     private static readonly EventId EventTransactionValidationError = new(1003, nameof(EventTransactionValidationError));
     private static readonly EventId EventTransactionCanceled = new(1004, nameof(EventTransactionCanceled));
+    private static readonly EventId EventTransactionAlreadyExist = new(1005, nameof(EventTransactionAlreadyExist));
+
     public Task<Result<Guid>> HandleAsync(AddTransactionCommand request, CancellationToken cancellationToken)
     {
         using var scope = _logger.BeginScope(new Dictionary<string, object>
@@ -28,7 +30,7 @@ public class AddTransactionCommandHandler(
         });
 
         _logger.LogDebug(EventTransactionAdded, "Adding transaction.");
-
+        
         throw new NotImplementedException("Transaction addition logic is not implemented yet.");
     }
 }

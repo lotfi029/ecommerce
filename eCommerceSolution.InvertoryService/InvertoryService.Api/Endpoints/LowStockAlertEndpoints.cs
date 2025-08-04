@@ -18,10 +18,10 @@ public class LowStockAlertEndpoints : IEndpoint
 
         group.MapPost("/", AddLowStockAlert);
         group.MapPut("/{id:guid}", UpdateLowStockAlert);
-        group.MapDelete("/{productId:guid}", DeleteLowStockAlert);
+        group.MapDelete("/{inventoryId:guid}", DeleteLowStockAlert);
 
         group.MapGet("/", GetLowStockAlerts);
-        group.MapGet("/{productId:guid}", GetLowStockAlert);
+        group.MapGet("/{inventoryId:guid}", GetLowStockAlert);
     }
 
     private async Task<IResult> AddLowStockAlert(
@@ -38,7 +38,7 @@ public class LowStockAlertEndpoints : IEndpoint
         }
 
         var userId = httpContext.User.FindFirst(ClaimTypes.NameIdentifier)?.Value!;
-        var command = new AddLowStockAlertCommand(userId, request.ProductId, request.SKU);
+        var command = new AddLowStockAlertCommand(userId, request.InventoryId, request.Threshold);
         var result = await handler.HandleAsync(command, ct);
         return result.Match(TypedResults.Created, CustomResults.ToProblem);
     }
@@ -57,13 +57,13 @@ public class LowStockAlertEndpoints : IEndpoint
             return Results.ValidationProblem(validationResult.ToDictionary());
         }
         var userId = httpContext.User.FindFirst(ClaimTypes.NameIdentifier)?.Value!;
-        var command = new UpdateLowStockAlertCommand(userId, request.ProductId, request.SKU, request.Threshold, false);
+        var command = new UpdateLowStockAlertCommand(userId, request.InventoryId, request.Threshold, false);
         var result = await handler.HandleAsync(command, ct);
         return result.Match(TypedResults.NoContent, CustomResults.ToProblem);
     }
 
     private async Task<IResult> DeleteLowStockAlert(
-        [FromRoute] Guid productId,
+        [FromRoute] Guid inventoryId,
         [FromQuery] string sku,
         [FromServices] ICommandHandler<DeleteLowStockAlertCommand> handler,
         HttpContext httpContext,
@@ -71,7 +71,7 @@ public class LowStockAlertEndpoints : IEndpoint
         )
     {
         var userId = httpContext.User.FindFirst(ClaimTypes.NameIdentifier)?.Value!;
-        var command = new DeleteLowStockAlertCommand(userId, productId, sku);
+        var command = new DeleteLowStockAlertCommand(userId, inventoryId);
         var result = await handler.HandleAsync(command, ct);
         return result.Match(TypedResults.NoContent, CustomResults.ToProblem);
     }
@@ -88,7 +88,7 @@ public class LowStockAlertEndpoints : IEndpoint
     }
 
     private async Task<IResult> GetLowStockAlert(
-        [FromRoute] Guid productId,
+        [FromRoute] Guid inventoryId,
         [FromQuery] string sku,
         [FromServices] IQueryHandler<GetLowStockAlertQuery, LowStockAlertResponse> handler,
         HttpContext httpContext,
@@ -96,7 +96,7 @@ public class LowStockAlertEndpoints : IEndpoint
         )
     {
         var userId = httpContext.User.FindFirst(ClaimTypes.NameIdentifier)?.Value!;
-        var query = new GetLowStockAlertQuery(userId, productId, sku);
+        var query = new GetLowStockAlertQuery(userId, inventoryId);
         var result = await handler.HandleAsync(query, ct);
 
         return result.Match(Results.Ok, CustomResults.ToProblem);

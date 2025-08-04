@@ -1,8 +1,6 @@
-﻿using Microsoft.Extensions.Logging;
+﻿namespace InventoryService.Core.CQRS.LowStockAlerts.Commands.Add;
 
-namespace InventoryService.Core.CQRS.LowStockAlerts.Commands.Add;
-
-public record AddLowStockAlertCommand(string UserId, Guid ProductId, string SKU) : ICommand<Guid>;
+public record AddLowStockAlertCommand(string UserId, Guid InventoryId, int Threshold) : ICommand<Guid>;
 
 public class AddLowStockAlertCommandHandler(IUnitOfWork unitOfWork, ILogger<AddLowStockAlertCommandHandler> logger) : ICommandHandler<AddLowStockAlertCommand, Guid>
 {
@@ -13,41 +11,39 @@ public class AddLowStockAlertCommandHandler(IUnitOfWork unitOfWork, ILogger<AddL
     {
         using var scope = _logger.BeginScope(new Dictionary<string, object>
         {
-            ["ProductId"] = command.ProductId,
-            ["SKU"] = command.SKU,
+            ["InventoryId"] = command.InventoryId,
+            ["Threshold"] = command.Threshold,
             ["UserId"] = command.UserId
         });
 
         _logger.LogInformation(
             LowStockAlertAddLogEvents.AddStarted,
-            "Starting to add low stock alert. ProductId: {ProductId}, SKU: {SKU}, UserId: {UserId}",
-            command.ProductId, command.SKU, command.UserId);
+            "Starting to add low stock alert.");
 
         try
         {
-            if (!await _unitOfWork.InventoryRepository.ExistsAsync(e => e.CreatedBy == command.UserId && e.SKU == command.SKU && e.ProductId == command.ProductId, ct))
+            if (!await _unitOfWork.InventoryRepository.ExistsAsync(e => e.CreatedBy == command.UserId && e.Id == command.InventoryId, ct))
             {
                 _logger.LogWarning(
                     LowStockAlertAddLogEvents.InventoryNotFound,
-                    "Inventory not found for ProductId: {ProductId}, SKU: {SKU}, UserId: {UserId}",
-                    command.ProductId, command.SKU, command.UserId);
-                return InventoryErrors.NotFound(command.ProductId);
+                    "Inventory not found for inventory: {inventory}, UserId: {UserId}",
+                    command.InventoryId, command.UserId);
+                return LowStockAlertErrors.NotFound(command.InventoryId);
             }
 
-            if (await _unitOfWork.LowStockAlertRepository.ExistsAsync(e => e.SKU == command.SKU && e.ProductId == command.ProductId, ct))
+            if (await _unitOfWork.LowStockAlertRepository.ExistsAsync(e => e.InventoryId == command.InventoryId, ct))
             {
                 _logger.LogWarning(
                     LowStockAlertAddLogEvents.AlreadyExists,
-                    "Low stock alert already exists for ProductId: {ProductId}, SKU: {SKU}",
-                    command.ProductId, command.SKU);
-                return LowStockAlertErrors.AlreadyExists(command.ProductId, command.SKU);
+                    "Low stock alert already exists for InventoryId: {InventoryId}",
+                    command.InventoryId);
+                return LowStockAlertErrors.AlreadyExists(command.InventoryId);
             }
 
             var lowStockAlert = new LowStockAlert
             {
-                ProductId = command.ProductId,
-                SKU = command.SKU,
-                Threshold = 10,
+                InventoryId = command.InventoryId,
+                Threshold = command.Threshold,
                 AlertSent = false
             };
 
@@ -57,15 +53,15 @@ public class AddLowStockAlertCommandHandler(IUnitOfWork unitOfWork, ILogger<AddL
             {
                 _logger.LogError(
                     LowStockAlertAddLogEvents.CreationFailed,
-                    "Failed to create low stock alert for ProductId: {ProductId}, SKU: {SKU}",
-                    command.ProductId, command.SKU);
-                return LowStockAlertErrors.CreationFailed(command.ProductId, command.SKU);
+                    "Failed to create low stock alert for InventoryId: {InventoryId}",
+                    command.InventoryId);
+                return LowStockAlertErrors.CreationFailed(command.InventoryId);
             }
 
             _logger.LogInformation(
                 LowStockAlertAddLogEvents.AddSuccessful,
-                "Successfully added low stock alert. ProductId: {ProductId}, SKU: {SKU}, AlertId: {AlertId}",
-                command.ProductId, command.SKU, alertId);
+                "Successfully added low stock alert. InventoryId: {InventoryId}, AlertId: {AlertId}",
+                command.InventoryId, alertId);
 
             return alertId;
         }
@@ -73,8 +69,8 @@ public class AddLowStockAlertCommandHandler(IUnitOfWork unitOfWork, ILogger<AddL
         {
             _logger.LogWarning(
                 LowStockAlertAddLogEvents.AddCancelled,
-                "Low stock alert add operation was cancelled. ProductId: {ProductId}, SKU: {SKU}, UserId: {UserId}",
-                command.ProductId, command.SKU, command.UserId);
+                "Low stock alert add operation was cancelled. InventoryId: {InventoryId}, UserId: {UserId}",
+                command.InventoryId, command.UserId);
             throw;
         }
         catch (Exception ex)
@@ -82,9 +78,9 @@ public class AddLowStockAlertCommandHandler(IUnitOfWork unitOfWork, ILogger<AddL
             _logger.LogError(
                 LowStockAlertAddLogEvents.AddFailed,
                 ex,
-                "Error adding low stock alert. ProductId: {ProductId}, SKU: {SKU}, UserId: {UserId}",
-                command.ProductId, command.SKU, command.UserId);
-            return LowStockAlertErrors.CreationFailed(command.ProductId, command.SKU);
+                "Error adding low stock alert. InventoryId: {InventoryId}, UserId: {UserId}",
+                command.InventoryId, command.UserId);
+            return LowStockAlertErrors.CreationFailed(command.InventoryId);
         }
     }
 }

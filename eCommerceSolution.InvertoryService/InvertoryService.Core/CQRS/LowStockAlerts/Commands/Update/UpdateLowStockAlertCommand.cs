@@ -2,7 +2,7 @@
 
 namespace InventoryService.Core.CQRS.LowStockAlerts.Commands.Update;
 
-public record UpdateLowStockAlertCommand(string UserId, Guid ProductId, string SKU, int? Threshold = null, bool? AlertSent = null) : ICommand;
+public record UpdateLowStockAlertCommand(string UserId, Guid Inventory, int? Threshold = null, bool? AlertSent = null) : ICommand;
 
 public class UpdateLowStockAlertCommandHandler(
     IUnitOfWork unitOfWork,
@@ -15,28 +15,25 @@ public class UpdateLowStockAlertCommandHandler(
     {
         using var scope = _logger.BeginScope(new Dictionary<string, object>
         {
-            ["ProductId"] = command.ProductId,
-            ["SKU"] = command.SKU,
+            ["Inventory"] = command.Inventory,
             ["UserId"] = command.UserId
         });
 
         _logger.LogInformation(
             LowStockAlertUpdateLogEvents.UpdateStarted,
-            "Starting update of low stock alert. ProductId: {ProductId}, SKU: {SKU}, UserId: {UserId}",
-            command.ProductId, command.SKU, command.UserId);
+            "Starting update of low stock alert.");
 
         try
         {
             var alert = await _unitOfWork.LowStockAlertRepository.GetAsync(
-                e => e.ProductId == command.ProductId && e.SKU == command.SKU && e.CreatedBy == command.UserId, ct);
+                e => e.InventoryId == command.Inventory && e.CreatedBy == command.UserId, ct);
 
             if (alert is null)
             {
                 _logger.LogWarning(
                     LowStockAlertUpdateLogEvents.NotFound,
-                    "Low stock alert not found for update. ProductId: {ProductId}, SKU: {SKU}, UserId: {UserId}",
-                    command.ProductId, command.SKU, command.UserId);
-                return LowStockAlertErrors.NotFound(command.ProductId);
+                    "Low stock alert not found for update.");
+                return LowStockAlertErrors.NotFound(command.Inventory);
             }
 
             bool changed = false;
@@ -55,8 +52,7 @@ public class UpdateLowStockAlertCommandHandler(
             {
                 _logger.LogInformation(
                     LowStockAlertUpdateLogEvents.NoChange,
-                    "No changes detected for low stock alert. ProductId: {ProductId}, SKU: {SKU}, UserId: {UserId}",
-                    command.ProductId, command.SKU, command.UserId);
+                    "No changes detected for low stock alert.");
                 return Result.Success();
             }
 
@@ -65,8 +61,7 @@ public class UpdateLowStockAlertCommandHandler(
 
             _logger.LogInformation(
                 LowStockAlertUpdateLogEvents.UpdateSuccessful,
-                "Successfully updated low stock alert. ProductId: {ProductId}, SKU: {SKU}, UserId: {UserId}",
-                command.ProductId, command.SKU, command.UserId);
+                "Successfully updated low stock alert.");
 
             return Result.Success();
         }
@@ -74,8 +69,7 @@ public class UpdateLowStockAlertCommandHandler(
         {
             _logger.LogWarning(
                 LowStockAlertUpdateLogEvents.UpdateCancelled,
-                "Low stock alert update was cancelled. ProductId: {ProductId}, SKU: {SKU}, UserId: {UserId}",
-                command.ProductId, command.SKU, command.UserId);
+                "Low stock alert update was cancelled.");
             throw;
         }
         catch (Exception ex)
@@ -83,9 +77,8 @@ public class UpdateLowStockAlertCommandHandler(
             _logger.LogError(
                 LowStockAlertUpdateLogEvents.UpdateFailed,
                 ex,
-                "Failed to update low stock alert. ProductId: {ProductId}, SKU: {SKU}, UserId: {UserId}",
-                command.ProductId, command.SKU, command.UserId);
-            return Result.Failure(LowStockAlertErrors.CreationFailed(command.ProductId, command.SKU));
+                "Failed to update low stock alert.");
+            return Result.Failure(LowStockAlertErrors.CreationFailed(command.Inventory));
         }
     }
 }

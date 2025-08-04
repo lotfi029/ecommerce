@@ -2,32 +2,28 @@
 
 public class LowStockAlertErrors
 {
-    public static Error NotFound(Guid productId) =>
+    public static Error NotFound(Guid inventoryId) =>
         Error.NotFound(
             "LowStockAlert.NotFound",
-            $"Low stock alert for product with ID '{productId}' was not found.");
+            $"Low stock alert for inventory with ID '{inventoryId}' was not found.");
 
     public static Error NotFound() => 
         Error.NotFound(
             "LowStockAlert.NotFound",
             "Low stock alert was not found.");
-    public static Error AlreadyExists(Guid productId, string sku) =>
+    public static Error AlreadyExists(Guid inventoryId) =>
         Error.Conflict(
             "LowStockAlert.AlreadyExists",
-            $"Low stock alert for product with ID '{productId}' and SKU '{sku}' already exists.");
+            $"Low stock alert for inventory with ID '{inventoryId}' already exists.");
 
-    public static Error CreationFailed(Guid productId, string sku) =>
+    public static Error CreationFailed(Guid inventoryId) =>
         Error.Conflict(
             "LowStockAlert.CreationFailed",
-            $"Failed to create low stock alert for product with ID '{productId}' and SKU '{sku}'. Please try again later.");
-    public static Error DeletionFailed(Guid productId, string sku) =>
+            $"Failed to create low stock alert for inventory with ID '{inventoryId}'. Please try again later.");
+    public static Error DeletionFailed(Guid inventoryId) =>
         Error.Conflict(
             "LowStockAlert.DeletionFailed",
-            $"Failed to delete low stock alert for product with ID '{productId}' and SKU '{sku}'. Please try again later.");
-    public static Error InvalidSKU(string sku) =>
-        Error.BadRequest(
-            "LowStockAlert.InvalidSKU",
-            $"The provided SKU '{sku}' is invalid.");
+            $"Failed to delete low stock alert for inventory with ID '{inventoryId}'. Please try again later.");
     public static Error InvalidAccess(string userId) =>
         Error.Forbidden(
             "LowStockAlert.InvalidAccess",

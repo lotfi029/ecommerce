@@ -9,14 +9,9 @@ public class LowStockAlertConfiguration : IEntityTypeConfiguration<LowStockAlert
     {
         builder.ToTable("low_stock_alerts");
         
-        builder.Property(x => x.ProductId)
+        builder.Property(x => x.InventoryId)
             .IsRequired()
-            .HasColumnName("product_id");
-        
-        builder.Property(x => x.SKU)
-            .IsRequired()
-            .HasMaxLength(50)
-            .HasColumnName("sku");
+            .HasColumnName("inventory_id");
 
         builder.Property(x => x.Threshold)
             .IsRequired()

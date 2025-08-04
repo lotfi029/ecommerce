@@ -101,13 +101,13 @@
   {
     "ContainingType": "InventoryService.Api.Endpoints.LowStockAlertEndpoints",
     "Method": "DeleteLowStockAlert",
-    "RelativePath": "api/low-stock-alerts/{productId:guid}",
+    "RelativePath": "api/low-stock-alerts/{inventoryId:guid}",
     "HttpMethod": "DELETE",
     "IsController": false,
     "Order": 0,
     "Parameters": [
       {
-        "Name": "productId",
+        "Name": "inventoryId",
         "Type": "System.Guid",
         "IsRequired": true
       },
@@ -131,13 +131,13 @@
   {
     "ContainingType": "InventoryService.Api.Endpoints.LowStockAlertEndpoints",
     "Method": "GetLowStockAlert",
-    "RelativePath": "api/low-stock-alerts/{productId:guid}",
+    "RelativePath": "api/low-stock-alerts/{inventoryId:guid}",
     "HttpMethod": "GET",
     "IsController": false,
     "Order": 0,
     "Parameters": [
       {
-        "Name": "productId",
+        "Name": "inventoryId",
         "Type": "System.Guid",
         "IsRequired": true
       },

@@ -1,6 +1,5 @@
 ﻿using eCommerce.SharedKernal.Entities;
 using Microsoft.AspNetCore.Http;
-using Microsoft.EntityFrameworkCore;
 using System.Security.Claims;
 
 namespace InventoryService.Infrastructure.Presestense;
@@ -26,18 +25,26 @@ public class ApplicationDbContext(
 
         foreach (var entityTrack in entries)
         {
-            if (entityTrack.State == EntityState.Added)
+            switch (entityTrack.State)
             {
-                entityTrack.Entity.CreatedBy = currentUserId;
-                entityTrack.Entity.CreatedAt = DateTime.UtcNow;
-            }
-            else if (entityTrack.State == EntityState.Modified)
-            {
-                entityTrack.Entity.UpdatedBy = currentUserId;
-                entityTrack.Entity.UpdatedAt = DateTime.UtcNow;
+                case EntityState.Added:
+                    entityTrack.Entity.CreatedBy = currentUserId;
+                    entityTrack.Entity.CreatedAt = DateTime.UtcNow;
+                    break;
+                case EntityState.Modified:
+                    entityTrack.Entity.UpdatedBy = currentUserId;
+                    entityTrack.Entity.UpdatedAt = DateTime.UtcNow;
+                    break;
+                case EntityState.Deleted:
+                    entityTrack.State = EntityState.Modified;
+                    entityTrack.Entity.DeletedBy = currentUserId;
+                    entityTrack.Entity.DeletedAt = DateTime.UtcNow;
+                    entityTrack.Entity.IsDeleted = true;
+                    break;
+                default:
+                    break;
             }
         }
-
         return base.SaveChangesAsync(acceptAllChangesOnSuccess, cancellationToken);
     }
 }

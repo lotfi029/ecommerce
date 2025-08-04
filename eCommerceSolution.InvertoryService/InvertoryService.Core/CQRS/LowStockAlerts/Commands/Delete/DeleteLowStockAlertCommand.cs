@@ -1,8 +1,6 @@
-﻿using Microsoft.Extensions.Logging;
+﻿namespace InventoryService.Core.CQRS.LowStockAlerts.Commands.Delete;
 
-namespace InventoryService.Core.CQRS.LowStockAlerts.Commands.Delete;
-
-public record DeleteLowStockAlertCommand(string UserId, Guid ProductId, string SKU) : ICommand;
+public record DeleteLowStockAlertCommand(string UserId, Guid InventoryId) : ICommand;
 
 public class DeleteLowStockAlertCommandHandler(
     IUnitOfWork unitOfWork,
@@ -15,38 +13,33 @@ public class DeleteLowStockAlertCommandHandler(
     {
         using var scope = _logger.BeginScope(new Dictionary<string, object>
         {
-            ["ProductId"] = command.ProductId,
-            ["SKU"] = command.SKU,
+            ["InventoryId"] = command.InventoryId,
             ["UserId"] = command.UserId
         });
 
         _logger.LogInformation(
             LowStockAlertLogEvents.DeletionStarted,
-            "Starting deletion of low stock alert. ProductId: {ProductId}, SKU: {SKU}, UserId: {UserId}",
-            command.ProductId, command.SKU, command.UserId);
+            "Starting deletion of low stock alert.");
 
         try
         {
             var lowStockAlert = await _unitOfWork.LowStockAlertRepository.DeleteAsync(
                 e => e.CreatedBy == command.UserId && 
-                     e.SKU == command.SKU && 
-                     e.ProductId == command.ProductId, 
+                     e.InventoryId == command.InventoryId,
                 ct);
 
             if (lowStockAlert == 0)
             {
                 _logger.LogWarning(
                     LowStockAlertLogEvents.NotFound,
-                    "Low stock alert not found. ProductId: {ProductId}, SKU: {SKU}, UserId: {UserId}",
-                    command.ProductId, command.SKU, command.UserId);
+                    "Low stock alert not found.");
                     
-                return LowStockAlertErrors.NotFound(command.ProductId);
+                return LowStockAlertErrors.NotFound(command.InventoryId);
             }
 
             _logger.LogInformation(
                 LowStockAlertLogEvents.DeletionSuccessful,
-                "Successfully deleted low stock alert. ProductId: {ProductId}, SKU: {SKU}, UserId: {UserId}",
-                command.ProductId, command.SKU, command.UserId);
+                "Successfully deleted low stock alert.");
 
             return Result.Success();
         }
@@ -54,8 +47,7 @@ public class DeleteLowStockAlertCommandHandler(
         {
             _logger.LogWarning(
                 LowStockAlertLogEvents.DeletionCancelled,
-                "Low stock alert deletion was cancelled. ProductId: {ProductId}, SKU: {SKU}, UserId: {UserId}",
-                command.ProductId, command.SKU, command.UserId);
+                "Low stock alert deletion was cancelled.");
                 
             throw;
         }
@@ -64,10 +56,9 @@ public class DeleteLowStockAlertCommandHandler(
             _logger.LogError(
                 LowStockAlertLogEvents.DeletionFailed,
                 ex,
-                "Failed to delete low stock alert. ProductId: {ProductId}, SKU: {SKU}, UserId: {UserId}",
-                command.ProductId, command.SKU, command.UserId);
+                "Failed to delete low stock alert.");
 
-            return Result.Failure(LowStockAlertErrors.DeletionFailed(command.ProductId, command.SKU));
+            return Result.Failure(LowStockAlertErrors.DeletionFailed(command.InventoryId));
         }
     }
 }

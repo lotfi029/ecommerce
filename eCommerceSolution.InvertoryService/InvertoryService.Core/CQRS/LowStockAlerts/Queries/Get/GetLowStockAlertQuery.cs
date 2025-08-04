@@ -1,9 +1,8 @@
 ﻿using InventoryService.Core.DTOs.LowStockAlerts;
-using Microsoft.Extensions.Logging;
 
 namespace InventoryService.Core.CQRS.LowStockAlerts.Queries.Get;
 
-public record GetLowStockAlertQuery(string UserId, Guid ProductId, string SKU) : IQuery<LowStockAlertResponse>;
+public record GetLowStockAlertQuery(string UserId, Guid InventoryId) : IQuery<LowStockAlertResponse>;
 
 public class GetLowStockAlertQueryHandler(
     IUnitOfWork unitOfWork,
@@ -21,8 +20,7 @@ public class GetLowStockAlertQueryHandler(
     {
         using var scope = _logger.BeginScope(new Dictionary<string, object>
         {
-            ["ProductId"] = query.ProductId,
-            ["SKU"] = query.SKU,
+            ["InventoryId"] = query.InventoryId,
             ["UserId"] = query.UserId
         });
 
@@ -30,12 +28,12 @@ public class GetLowStockAlertQueryHandler(
         try
         {
             var alert = await _unitOfWork.LowStockAlertRepository.GetAsync(
-                e => e.ProductId == query.ProductId && e.SKU == query.SKU && e.CreatedBy == query.UserId, ct);
+                e => e.InventoryId == query.InventoryId && e.CreatedBy == query.UserId, ct);
 
             if (alert is null)
             {
                 _logger.LogWarning(EventAlertNotFound, "Low stock alert not found.");
-                return Result.Failure<LowStockAlertResponse>(LowStockAlertErrors.NotFound(query.ProductId));
+                return Result.Failure<LowStockAlertResponse>(LowStockAlertErrors.NotFound(query.InventoryId));
             }
 
             var response = alert.Adapt<LowStockAlertResponse>();
