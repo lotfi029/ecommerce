@@ -4,6 +4,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 namespace InventoryService.Core.Entities;
 public class Inventory : BaseEntity
 {
+    public string Title { get; set; } = string.Empty;
     public Guid ProductId { get; set; }
     public string SKU { get; set; } = string.Empty;
     public int Quantity { get; set; }
