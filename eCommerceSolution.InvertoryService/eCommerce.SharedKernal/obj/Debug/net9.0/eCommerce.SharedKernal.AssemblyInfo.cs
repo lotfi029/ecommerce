@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("eCommerce.SharedKernal")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+62f05f0cf7c6f8feb984d415eb640254cc0f704a")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+1622614ecd898f3ecd3bd4bd6edb66405ad8ec5b")]
 [assembly: System.Reflection.AssemblyProductAttribute("eCommerce.SharedKernal")]
 [assembly: System.Reflection.AssemblyTitleAttribute("eCommerce.SharedKernal")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

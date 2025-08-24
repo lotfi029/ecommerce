@@ -1,5 +1,4 @@
-﻿using Microsoft.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore.Metadata.Builders;
+﻿using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
 namespace InventoryService.Infrastructure.Presestense.Configuration;
 public class InvertoryConfiguration : IEntityTypeConfiguration<Inventory>
@@ -25,11 +24,6 @@ public class InvertoryConfiguration : IEntityTypeConfiguration<Inventory>
             .IsRequired()
             .HasColumnName("quantity");
         
-        builder.Property(x => x.Reserved)
-            .IsRequired()
-            .HasDefaultValue(0)
-            .HasColumnName("reserved");
-        
         builder.HasOne(x => x.Warehouse)
             .WithMany(e => e.Inventories)
             .HasForeignKey(x => x.WarehouseId)
@@ -39,7 +33,6 @@ public class InvertoryConfiguration : IEntityTypeConfiguration<Inventory>
         builder.HasIndex(e => new { e.ProductId, e.SKU })
             .IsUnique()
             .HasDatabaseName("IX_Inventories_ProductId_SKU");
-    
 
         // audit properties configuration
         builder.HasKey(x => x.Id);
@@ -62,5 +55,17 @@ public class InvertoryConfiguration : IEntityTypeConfiguration<Inventory>
         builder.Property(e => e.UpdatedBy)
             .IsRequired(false)
             .HasColumnName("updated_by");
+
+        builder.Property(e => e.IsDeleted)
+            .IsRequired()
+            .HasColumnName("is_deleted");
+
+        builder.Property(e => e.DeletedAt)
+            .IsRequired(false)
+            .HasColumnName("deleted_at");
+
+        builder.Property(e => e.DeletedBy)
+            .IsRequired(false)
+            .HasColumnName("deleted_by");
     }
 }

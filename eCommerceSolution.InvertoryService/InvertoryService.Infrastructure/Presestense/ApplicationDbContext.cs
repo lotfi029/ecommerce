@@ -10,7 +10,6 @@ public class ApplicationDbContext(
     public DbSet<Inventory> Invertories { get; set; }
     public DbSet<Warehouse> Warehouses { get; set; }
     public DbSet<LowStockAlert> LowStockAlerts { get; set; }
-    public DbSet<Batch> Batches { get; set; }
     public DbSet<Transaction> Transactions { get; set; }
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {

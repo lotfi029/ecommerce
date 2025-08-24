@@ -1,6 +1,4 @@
-﻿using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
-
-namespace InventoryService.Core.CQRS.Inventories.Commands.Add;
+﻿namespace InventoryService.Core.CQRS.Inventories.Commands.Add;
 public record AddInventoryCommand(string UserId, Guid ProductId, int Quantity, string SKU, Guid Warehouse) : ICommand<Guid>;
 
 public class AddInventoryCommandHandler(
@@ -16,7 +14,7 @@ public class AddInventoryCommandHandler(
             if (command.Quantity <= 0)
                 return InventoryErrors.InvalidQuantity(command.Quantity);
 
-            var inventory = Inventory.Create(
+            var inventory = new Inventory(
                 command.ProductId,
                 command.SKU,
                 command.Quantity,
