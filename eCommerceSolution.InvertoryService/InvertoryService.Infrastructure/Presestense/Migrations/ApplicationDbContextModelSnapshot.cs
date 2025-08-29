@@ -3,7 +3,6 @@ using System;
 using InventoryService.Infrastructure.Presestense;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
-using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
@@ -12,11 +11,9 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace InventoryService.Infrastructure.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20250824155321_UpdateEntitiesDesign")]
-    partial class UpdateEntitiesDesign
+    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
     {
-        /// <inheritdoc />
-        protected override void BuildTargetModel(ModelBuilder modelBuilder)
+        protected override void BuildModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -84,6 +81,9 @@ namespace InventoryService.Infrastructure.Migrations
 
                     b.HasKey("Id");
 
+                    b.HasIndex("IsDeleted")
+                        .HasFilter("is_deleted = 0");
+
                     b.HasIndex("WarehouseId");
 
                     b.HasIndex("ProductId", "SKU")
@@ -145,7 +145,11 @@ namespace InventoryService.Infrastructure.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("InventoryId");
+                    b.HasIndex("InventoryId")
+                        .IsUnique();
+
+                    b.HasIndex("IsDeleted")
+                        .HasFilter("is_deleted = 0");
 
                     b.ToTable("low_stock_alerts", (string)null);
                 });
@@ -181,16 +185,15 @@ namespace InventoryService.Infrastructure.Migrations
                         .HasColumnType("boolean")
                         .HasColumnName("is_deleted");
 
-                    b.Property<Guid>("OrderId")
+                    b.Property<Guid?>("OrderId")
                         .HasColumnType("uuid");
 
-                    b.Property<int>("ReservedQuantity")
+                    b.Property<int>("Quantity")
                         .HasColumnType("integer")
-                        .HasColumnName("reserved_quantity");
+                        .HasColumnName("quantity");
 
-                    b.Property<string>("Status")
-                        .IsRequired()
-                        .HasColumnType("text")
+                    b.Property<int>("Status")
+                        .HasColumnType("integer")
                         .HasColumnName("status");
 
                     b.Property<DateTime?>("UpdatedAt")
@@ -204,6 +207,9 @@ namespace InventoryService.Infrastructure.Migrations
                     b.HasKey("Id");
 
                     b.HasIndex("InventoryId");
+
+                    b.HasIndex("IsDeleted")
+                        .HasFilter("is_deleted = 0");
 
                     b.ToTable("reservations", (string)null);
                 });
@@ -264,6 +270,9 @@ namespace InventoryService.Infrastructure.Migrations
 
                     b.HasIndex("InventoryId");
 
+                    b.HasIndex("IsDeleted")
+                        .HasFilter("is_deleted = 0");
+
                     b.ToTable("transactions", (string)null);
                 });
 
@@ -317,6 +326,9 @@ namespace InventoryService.Infrastructure.Migrations
 
                     b.HasKey("Id");
 
+                    b.HasIndex("IsDeleted")
+                        .HasFilter("is_deleted = 0");
+
                     b.ToTable("warehouses", (string)null);
                 });
 
@@ -334,8 +346,8 @@ namespace InventoryService.Infrastructure.Migrations
             modelBuilder.Entity("InventoryService.Core.Entities.LowStockAlert", b =>
                 {
                     b.HasOne("InventoryService.Core.Entities.Inventory", "Inventory")
-                        .WithMany()
-                        .HasForeignKey("InventoryId")
+                        .WithOne()
+                        .HasForeignKey("InventoryService.Core.Entities.LowStockAlert", "InventoryId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 

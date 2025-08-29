@@ -13,7 +13,8 @@ public class UnitOfWork(
     private bool _disposed = false;
     public IInventoryRepository InventoryRepository => 
         new InventoryRepository(_context, _loggerFactory.CreateLogger<Repository<Inventory>>(), _loggerFactory.CreateLogger<InventoryRepository>());
-
+    public IReservationRepository ReservationRepository => 
+        new ReservationRepository(_context, _loggerFactory.CreateLogger<Repository<Reservation>>(), _loggerFactory.CreateLogger<ReservationRepository>());
     public ILowStockAlertRepository LowStockAlertRepository =>
         new LowStockAlertRepository(_context, _loggerFactory.CreateLogger<Repository<LowStockAlert>>(), _loggerFactory.CreateLogger<LowStockAlertRepository>());
 

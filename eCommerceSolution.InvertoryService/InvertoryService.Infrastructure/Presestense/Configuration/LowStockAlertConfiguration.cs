@@ -22,6 +22,12 @@ public class LowStockAlertConfiguration : IEntityTypeConfiguration<LowStockAlert
             .HasDefaultValue(false)
             .HasColumnName("alert_sent");
 
+
+        builder.HasOne(e => e.Inventory)
+            .WithOne()
+            .HasForeignKey<LowStockAlert>(e => e.InventoryId)
+            .IsRequired();
+
         builder.HasKey(x => x.Id);
 
         builder.Property(e => e.Id)
@@ -54,5 +60,9 @@ public class LowStockAlertConfiguration : IEntityTypeConfiguration<LowStockAlert
         builder.Property(e => e.DeletedBy)
             .IsRequired(false)
             .HasColumnName("deleted_by");
+
+        builder.HasQueryFilter(p => !p.IsDeleted);
+
+        builder.HasIndex(e => e.IsDeleted).HasFilter("is_deleted = 0");
     }
 }

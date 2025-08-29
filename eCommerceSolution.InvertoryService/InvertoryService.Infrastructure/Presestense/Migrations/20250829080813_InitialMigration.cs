@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace InventoryService.Infrastructure.Migrations
 {
     /// <inheritdoc />
-    public partial class UpdateEntitiesDesign : Migration
+    public partial class InitialMigration : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -18,13 +18,13 @@ namespace InventoryService.Infrastructure.Migrations
                     id = table.Column<Guid>(type: "uuid", nullable: false),
                     name = table.Column<string>(type: "character varying(100)", maxLength: 100, nullable: false),
                     location = table.Column<string>(type: "character varying(200)", maxLength: 200, nullable: false),
-                    created_at = table.Column<DateTime>(type: "timestamp with time zone", nullable: false),
-                    updated_at = table.Column<DateTime>(type: "timestamp with time zone", nullable: true),
                     deleted_at = table.Column<DateTime>(type: "timestamp with time zone", nullable: true),
                     is_deleted = table.Column<bool>(type: "boolean", nullable: false),
+                    deleted_by = table.Column<string>(type: "text", nullable: true),
+                    created_at = table.Column<DateTime>(type: "timestamp with time zone", nullable: false),
+                    updated_at = table.Column<DateTime>(type: "timestamp with time zone", nullable: true),
                     created_by = table.Column<string>(type: "text", nullable: false),
-                    updated_by = table.Column<string>(type: "text", nullable: true),
-                    deleted_by = table.Column<string>(type: "text", nullable: true)
+                    updated_by = table.Column<string>(type: "text", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -41,13 +41,13 @@ namespace InventoryService.Infrastructure.Migrations
                     Price = table.Column<decimal>(type: "numeric", nullable: false),
                     quantity = table.Column<int>(type: "integer", nullable: false),
                     warehouse_id = table.Column<Guid>(type: "uuid", nullable: false),
-                    created_at = table.Column<DateTime>(type: "timestamp with time zone", nullable: false),
-                    updated_at = table.Column<DateTime>(type: "timestamp with time zone", nullable: true),
                     deleted_at = table.Column<DateTime>(type: "timestamp with time zone", nullable: true),
                     is_deleted = table.Column<bool>(type: "boolean", nullable: false),
+                    deleted_by = table.Column<string>(type: "text", nullable: true),
+                    created_at = table.Column<DateTime>(type: "timestamp with time zone", nullable: false),
+                    updated_at = table.Column<DateTime>(type: "timestamp with time zone", nullable: true),
                     created_by = table.Column<string>(type: "text", nullable: false),
-                    updated_by = table.Column<string>(type: "text", nullable: true),
-                    deleted_by = table.Column<string>(type: "text", nullable: true)
+                    updated_by = table.Column<string>(type: "text", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -68,13 +68,13 @@ namespace InventoryService.Infrastructure.Migrations
                     inventory_id = table.Column<Guid>(type: "uuid", nullable: false),
                     threshold = table.Column<int>(type: "integer", nullable: false),
                     alert_sent = table.Column<bool>(type: "boolean", nullable: false, defaultValue: false),
-                    created_at = table.Column<DateTime>(type: "timestamp with time zone", nullable: false),
-                    updated_at = table.Column<DateTime>(type: "timestamp with time zone", nullable: true),
                     deleted_at = table.Column<DateTime>(type: "timestamp with time zone", nullable: true),
                     is_deleted = table.Column<bool>(type: "boolean", nullable: false),
+                    deleted_by = table.Column<string>(type: "text", nullable: true),
+                    created_at = table.Column<DateTime>(type: "timestamp with time zone", nullable: false),
+                    updated_at = table.Column<DateTime>(type: "timestamp with time zone", nullable: true),
                     created_by = table.Column<string>(type: "text", nullable: false),
-                    updated_by = table.Column<string>(type: "text", nullable: true),
-                    deleted_by = table.Column<string>(type: "text", nullable: true)
+                    updated_by = table.Column<string>(type: "text", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -93,16 +93,16 @@ namespace InventoryService.Infrastructure.Migrations
                 {
                     id = table.Column<Guid>(type: "uuid", nullable: false),
                     InventoryId = table.Column<Guid>(type: "uuid", nullable: false),
-                    reserved_quantity = table.Column<int>(type: "integer", nullable: false),
-                    OrderId = table.Column<Guid>(type: "uuid", nullable: false),
-                    status = table.Column<string>(type: "text", nullable: false),
-                    created_at = table.Column<DateTime>(type: "timestamp with time zone", nullable: false),
-                    updated_at = table.Column<DateTime>(type: "timestamp with time zone", nullable: true),
+                    quantity = table.Column<int>(type: "integer", nullable: false),
+                    OrderId = table.Column<Guid>(type: "uuid", nullable: true),
+                    status = table.Column<int>(type: "integer", nullable: false),
                     deleted_at = table.Column<DateTime>(type: "timestamp with time zone", nullable: true),
                     is_deleted = table.Column<bool>(type: "boolean", nullable: false),
+                    deleted_by = table.Column<string>(type: "text", nullable: true),
+                    created_at = table.Column<DateTime>(type: "timestamp with time zone", nullable: false),
+                    updated_at = table.Column<DateTime>(type: "timestamp with time zone", nullable: true),
                     created_by = table.Column<string>(type: "text", nullable: false),
-                    updated_by = table.Column<string>(type: "text", nullable: true),
-                    deleted_by = table.Column<string>(type: "text", nullable: true)
+                    updated_by = table.Column<string>(type: "text", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -124,13 +124,13 @@ namespace InventoryService.Infrastructure.Migrations
                     ChangeType = table.Column<int>(type: "integer", nullable: false),
                     quantity_changed = table.Column<int>(type: "integer", nullable: false),
                     order_id = table.Column<Guid>(type: "uuid", maxLength: 450, nullable: true),
-                    created_at = table.Column<DateTime>(type: "timestamp with time zone", nullable: false),
-                    updated_at = table.Column<DateTime>(type: "timestamp with time zone", nullable: true),
                     deleted_at = table.Column<DateTime>(type: "timestamp with time zone", nullable: true),
                     is_deleted = table.Column<bool>(type: "boolean", nullable: false),
+                    deleted_by = table.Column<string>(type: "text", nullable: true),
+                    created_at = table.Column<DateTime>(type: "timestamp with time zone", nullable: false),
+                    updated_at = table.Column<DateTime>(type: "timestamp with time zone", nullable: true),
                     created_by = table.Column<string>(type: "text", nullable: false),
-                    updated_by = table.Column<string>(type: "text", nullable: true),
-                    deleted_by = table.Column<string>(type: "text", nullable: true)
+                    updated_by = table.Column<string>(type: "text", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -150,6 +150,12 @@ namespace InventoryService.Infrastructure.Migrations
                 unique: true);
 
             migrationBuilder.CreateIndex(
+                name: "IX_invertories_is_deleted",
+                table: "invertories",
+                column: "is_deleted",
+                filter: "is_deleted = 0");
+
+            migrationBuilder.CreateIndex(
                 name: "IX_invertories_warehouse_id",
                 table: "invertories",
                 column: "warehouse_id");
@@ -157,7 +163,14 @@ namespace InventoryService.Infrastructure.Migrations
             migrationBuilder.CreateIndex(
                 name: "IX_low_stock_alerts_inventory_id",
                 table: "low_stock_alerts",
-                column: "inventory_id");
+                column: "inventory_id",
+                unique: true);
+
+            migrationBuilder.CreateIndex(
+                name: "IX_low_stock_alerts_is_deleted",
+                table: "low_stock_alerts",
+                column: "is_deleted",
+                filter: "is_deleted = 0");
 
             migrationBuilder.CreateIndex(
                 name: "IX_reservations_InventoryId",
@@ -165,9 +178,27 @@ namespace InventoryService.Infrastructure.Migrations
                 column: "InventoryId");
 
             migrationBuilder.CreateIndex(
+                name: "IX_reservations_is_deleted",
+                table: "reservations",
+                column: "is_deleted",
+                filter: "is_deleted = 0");
+
+            migrationBuilder.CreateIndex(
                 name: "IX_transactions_inventory_id",
                 table: "transactions",
                 column: "inventory_id");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_transactions_is_deleted",
+                table: "transactions",
+                column: "is_deleted",
+                filter: "is_deleted = 0");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_warehouses_is_deleted",
+                table: "warehouses",
+                column: "is_deleted",
+                filter: "is_deleted = 0");
         }
 
         /// <inheritdoc />

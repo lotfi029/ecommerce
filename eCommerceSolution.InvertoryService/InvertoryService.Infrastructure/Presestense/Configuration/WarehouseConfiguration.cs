@@ -51,5 +51,9 @@ public class WarehouseConfiguration : IEntityTypeConfiguration<Warehouse>
         builder.Property(e => e.DeletedBy)
             .IsRequired(false)
             .HasColumnName("deleted_by");
+
+        builder.HasQueryFilter(p => !p.IsDeleted);
+
+        builder.HasIndex(e => e.IsDeleted).HasFilter("is_deleted = 0");
     }
 }

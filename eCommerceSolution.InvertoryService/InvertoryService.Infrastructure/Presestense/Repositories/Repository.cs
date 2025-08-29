@@ -113,7 +113,20 @@ public class Repository<T> : IRepository<T>
             throw new InvalidOperationException($"Error checking existence for entity of type {typeof(T).Name} matching predicate", ex);
         }
     }
-
+    public async Task<T?> FindAsync(CancellationToken ct = default, params object?[] keys)
+    {
+        try
+        {
+            var result = await _dbSet.FindAsync(keys, cancellationToken: ct);
+            
+            return result;
+        }
+        catch (Exception ex)
+        {
+            _logger.LogError(ex, "Error finding entity of type {EntityType} with parameters {Parameters}", typeof(T).Name, keys);
+            throw new InvalidOperationException($"Error finding entity of type {typeof(T).Name} with parameters {keys}", ex);
+        }
+    }
     public async Task<IEnumerable<T>> GetAllAsync(CancellationToken ct = default)
     {
         try

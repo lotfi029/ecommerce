@@ -13,9 +13,9 @@ public class ReservationConfiguration : IEntityTypeConfiguration<Reservation>
         builder.Property(e => e.Id)
             .HasColumnName("id");
 
-        builder.Property(e => e.ReservedQuantity)
+        builder.Property(e => e.Quantity)
             .IsRequired()
-            .HasColumnName("reserved_quantity");
+            .HasColumnName("quantity");
 
         builder.Property(e => e.Status)
             .IsRequired()
@@ -48,5 +48,14 @@ public class ReservationConfiguration : IEntityTypeConfiguration<Reservation>
         builder.Property(e => e.DeletedBy)
             .IsRequired(false)
             .HasColumnName("deleted_by");
+
+        builder.HasOne(e => e.Inventory)
+            .WithMany(e => e.Reservations)
+            .HasForeignKey(e => e.InventoryId)
+            .IsRequired();
+
+        builder.HasQueryFilter(p => !p.IsDeleted);
+
+        builder.HasIndex(e => e.IsDeleted).HasFilter("is_deleted = 0");
     }
 }

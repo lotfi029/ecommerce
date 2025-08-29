@@ -1,5 +1,10 @@
 ﻿namespace InventoryService.Core.CQRS.Inventories.Commands.Add;
-public record AddInventoryCommand(string UserId, Guid ProductId, int Quantity, string SKU, Guid Warehouse) : ICommand<Guid>;
+public record AddInventoryCommand(
+    string UserId, 
+    Guid ProductId, 
+    int Quantity, 
+    string SKU, 
+    Guid WarehouseId) : ICommand<Guid>;
 
 public class AddInventoryCommandHandler(
     IUnitOfWork unitOfWork) : ICommandHandler<AddInventoryCommand, Guid>
@@ -18,7 +23,7 @@ public class AddInventoryCommandHandler(
                 command.ProductId,
                 command.SKU,
                 command.Quantity,
-                command.Warehouse,
+                command.WarehouseId,
                 command.UserId
             );
 

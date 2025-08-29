@@ -1,4 +1,4 @@
-﻿namespace InventoryService.Core.Entities;
+﻿namespace InventoryService.Core.Enums;
 
 public enum InventoryChangeType {
     Reserve = 1,

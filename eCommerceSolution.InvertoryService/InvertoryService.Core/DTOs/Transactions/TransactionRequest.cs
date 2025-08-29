@@ -1,4 +1,6 @@
-﻿namespace InventoryService.Core.DTOs.Transactions;
+﻿using InventoryService.Core.Enums;
+
+namespace InventoryService.Core.DTOs.Transactions;
 public record TransactionRequest(
     Guid ProductId,
     string SKU,

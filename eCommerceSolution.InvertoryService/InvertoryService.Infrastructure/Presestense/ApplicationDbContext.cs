@@ -1,4 +1,5 @@
 ﻿using eCommerce.SharedKernal.Entities;
+using eCommerce.SharedKernal.Interfaces;
 using Microsoft.AspNetCore.Http;
 using System.Security.Claims;
 
@@ -8,6 +9,7 @@ public class ApplicationDbContext(
     IHttpContextAccessor httpContextAccessor) : DbContext(options)
 {
     public DbSet<Inventory> Invertories { get; set; }
+    public DbSet<Reservation> Reservations { get; set; }
     public DbSet<Warehouse> Warehouses { get; set; }
     public DbSet<LowStockAlert> LowStockAlerts { get; set; }
     public DbSet<Transaction> Transactions { get; set; }
@@ -19,10 +21,10 @@ public class ApplicationDbContext(
 
     public override Task<int> SaveChangesAsync(bool acceptAllChangesOnSuccess, CancellationToken cancellationToken = default)
     {
-        var entries = ChangeTracker.Entries<BaseEntity>();
+        var updateEntries = ChangeTracker.Entries<BaseEntity>();
         var currentUserId = httpContextAccessor.HttpContext?.User?.FindFirst(ClaimTypes.NameIdentifier)!.Value!;
 
-        foreach (var entityTrack in entries)
+        foreach (var entityTrack in updateEntries)
         {
             switch (entityTrack.State)
             {
@@ -34,16 +36,23 @@ public class ApplicationDbContext(
                     entityTrack.Entity.UpdatedBy = currentUserId;
                     entityTrack.Entity.UpdatedAt = DateTime.UtcNow;
                     break;
-                case EntityState.Deleted:
-                    entityTrack.State = EntityState.Modified;
-                    entityTrack.Entity.DeletedBy = currentUserId;
-                    entityTrack.Entity.DeletedAt = DateTime.UtcNow;
-                    entityTrack.Entity.IsDeleted = true;
-                    break;
                 default:
                     break;
             }
         }
+
+        var deletedEntries = ChangeTracker
+            .Entries<ISoftDeletable>()
+            .Where(x => x.State == EntityState.Deleted);
+        
+        foreach (var entityTrack in deletedEntries)
+        {
+            entityTrack.State = EntityState.Modified;
+            entityTrack.Property(nameof(ISoftDeletable.IsDeleted)).CurrentValue = true;
+            entityTrack.Property(nameof(ISoftDeletable.DeletedAt)).CurrentValue = DateTime.UtcNow;
+            entityTrack.Property(nameof(ISoftDeletable.DeletedBy)).CurrentValue = currentUserId;
+        }
+
         return base.SaveChangesAsync(acceptAllChangesOnSuccess, cancellationToken);
     }
 }

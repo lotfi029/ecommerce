@@ -5,10 +5,11 @@ namespace InventoryService.Infrastructure.Presestense.Repositories;
 public class InventoryRepository(
     ApplicationDbContext context,
     ILogger<Repository<Inventory>> repositoryLogger,
-    ILogger<InventoryRepository> _logger) : Repository<Inventory>(context, repositoryLogger), IInventoryRepository
+    ILogger<InventoryRepository> _logger
+    ) : Repository<Inventory>(context, repositoryLogger), IInventoryRepository
 {
 
-    public async Task<Inventory> GetAllWithFilter(Expression<Func<Inventory, bool>> expression, CancellationToken ct = default)
+    public async Task<IEnumerable<Inventory>> GetAllWithFilter(Expression<Func<Inventory, bool>> expression, CancellationToken ct = default)
     {
         ArgumentNullException.ThrowIfNull(expression, nameof(expression));
         try
@@ -21,7 +22,8 @@ public class InventoryRepository(
             
             var result = await _context.Invertories
                 .AsNoTracking()
-                .FirstOrDefaultAsync(expression, ct);
+                .Where(expression)
+                .ToListAsync(ct);
 
             if (result is null)
             {
@@ -29,7 +31,7 @@ public class InventoryRepository(
                 return default!;
             }
 
-            _logger.LogInformation("Successfully retrieved inventory with ID {InventoryId}", result.Id);
+            _logger.LogInformation("Successfully retrieved inventories");
             return result;
         }
         catch (Exception ex)

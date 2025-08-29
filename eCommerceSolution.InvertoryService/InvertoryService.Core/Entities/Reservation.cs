@@ -1,12 +1,16 @@
-﻿using eCommerce.SharedKernal.Entities;
+﻿namespace InventoryService.Core.Entities;
 
-namespace InventoryService.Core.Entities;
-
-public class Reservation : BaseEntity
+public class Reservation : BaseEntity, ISoftDeletable
 {
     public Guid InventoryId { get; set; }
-    public int ReservedQuantity { get; set; }
-    public Guid OrderId { get; set; }
-    public string Status { get; set; } = string.Empty;
+    public int Quantity { get; set; }
+    public Guid? OrderId { get; set; }
+    public ReservationStatus Status { get; set; } = ReservationStatus.Reserved;
     public Inventory Inventory { get; set; } = null!;
+
+    public DateTime? DeletedAt { get; private set; }
+
+    public bool IsDeleted { get; private set; }
+
+    public string? DeletedBy { get; private set; }
 }
