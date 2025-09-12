@@ -1,9 +1,6 @@
-﻿using InventoryService.Core.Enums;
-
-namespace InventoryService.Core.DTOs.Transactions;
+﻿namespace InventoryService.Core.DTOs.Transactions;
 public record TransactionRequest(
-    Guid ProductId,
-    string SKU,
+    Guid InventoryId,
     int QuantityChanged,
     InventoryChangeType ChangeType,
     DateTime CreatedAt,

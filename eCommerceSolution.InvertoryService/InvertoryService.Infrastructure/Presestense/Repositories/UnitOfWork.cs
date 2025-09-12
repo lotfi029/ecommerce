@@ -15,8 +15,6 @@ public class UnitOfWork(
         new InventoryRepository(_context, _loggerFactory.CreateLogger<Repository<Inventory>>(), _loggerFactory.CreateLogger<InventoryRepository>());
     public IReservationRepository ReservationRepository => 
         new ReservationRepository(_context, _loggerFactory.CreateLogger<Repository<Reservation>>(), _loggerFactory.CreateLogger<ReservationRepository>());
-    public ILowStockAlertRepository LowStockAlertRepository =>
-        new LowStockAlertRepository(_context, _loggerFactory.CreateLogger<Repository<LowStockAlert>>(), _loggerFactory.CreateLogger<LowStockAlertRepository>());
 
     public IWarehouseRepository WarehouseRepository => 
         new WarehouseRepository(_context, _loggerFactory.CreateLogger<Repository<Warehouse>>(), _loggerFactory.CreateLogger<WarehouseRepository>());

@@ -72,6 +72,6 @@ public class InvertoryConfiguration : IEntityTypeConfiguration<Inventory>
 
         builder.HasQueryFilter(p => !p.IsDeleted);
 
-        builder.HasIndex(e => e.IsDeleted).HasFilter("is_deleted = 0");
+        builder.HasIndex(e => e.IsDeleted).IsUnique();
     }
 }

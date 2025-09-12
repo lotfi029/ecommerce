@@ -1,6 +1,4 @@
-﻿using InventoryService.Core.Enums;
-
-namespace InventoryService.Core.CQRS.Reservations.Commands.AddReservation;
+﻿namespace InventoryService.Core.CQRS.Reservations.Commands.AddReservation;
 
 public record AddReservationCommand(
     string UserId,
@@ -35,7 +33,7 @@ public class AddReservationCommandHandler(
             }
 
             var totalReserved = (await _unitOfWork.ReservationRepository
-                .GetAllWithFilters(r => r.InventoryId == command.InventoryId && r.Status == ReservationStatus.Reserved, ct))
+                .GetAllWithFilters(r => r.InventoryId == command.InventoryId && r.Status == ReservationStatus.Pending, ct))
                 .Sum(r => r.Quantity);
 
             var availableQuantity = inventory.Quantity - totalReserved;

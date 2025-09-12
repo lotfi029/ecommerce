@@ -1,10 +1,10 @@
 ﻿namespace InventoryService.Core.CQRS.Inventories.Commands.Add;
 public record AddInventoryCommand(
-    string UserId, 
     Guid ProductId, 
     int Quantity, 
     string SKU, 
-    Guid WarehouseId) : ICommand<Guid>;
+    Guid WarehouseId,
+    int ReorderLevel = 0) : ICommand<Guid>;
 
 public class AddInventoryCommandHandler(
     IUnitOfWork unitOfWork) : ICommandHandler<AddInventoryCommand, Guid>
@@ -13,18 +13,18 @@ public class AddInventoryCommandHandler(
     {
         try
         {
-            if (await unitOfWork.InventoryRepository.ExistsAsync(command.ProductId, ct))
+            if (await unitOfWork.InventoryRepository.ExistsAsync(e => e.ProductId == command.ProductId && e.SKU == command.SKU, ct))
                 return InventoryErrors.AlreadyExists(command.ProductId);
 
             if (command.Quantity <= 0)
                 return InventoryErrors.InvalidQuantity(command.Quantity);
 
             var inventory = new Inventory(
-                command.ProductId,
-                command.SKU,
-                command.Quantity,
-                command.WarehouseId,
-                command.UserId
+                productId: command.ProductId,
+                sku: command.SKU,
+                quantity: command.Quantity,
+                reorderLevel: command.ReorderLevel,
+                warehouseId: command.WarehouseId
             );
 
             var inventoryId = await unitOfWork.InventoryRepository.AddAsync(inventory, ct);
@@ -33,10 +33,10 @@ public class AddInventoryCommandHandler(
                 return InventoryErrors.InventoryCreationFailed(command.ProductId);
 
             return inventoryId;
-
         }
         catch (Exception ex)
         {
+            // TODO: Log exception
             return Error.Unexpected(ex.Message);
         }
     }

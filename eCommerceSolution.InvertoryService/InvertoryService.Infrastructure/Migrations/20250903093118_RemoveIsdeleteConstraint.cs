@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace InventoryService.Infrastructure.Migrations
 {
     /// <inheritdoc />
-    public partial class InitialMigration : Migration
+    public partial class RemoveIsdeleteConstraint : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -153,7 +153,7 @@ namespace InventoryService.Infrastructure.Migrations
                 name: "IX_invertories_is_deleted",
                 table: "invertories",
                 column: "is_deleted",
-                filter: "is_deleted = 0");
+                unique: true);
 
             migrationBuilder.CreateIndex(
                 name: "IX_invertories_warehouse_id",
@@ -170,7 +170,7 @@ namespace InventoryService.Infrastructure.Migrations
                 name: "IX_low_stock_alerts_is_deleted",
                 table: "low_stock_alerts",
                 column: "is_deleted",
-                filter: "is_deleted = 0");
+                unique: true);
 
             migrationBuilder.CreateIndex(
                 name: "IX_reservations_InventoryId",
@@ -181,7 +181,7 @@ namespace InventoryService.Infrastructure.Migrations
                 name: "IX_reservations_is_deleted",
                 table: "reservations",
                 column: "is_deleted",
-                filter: "is_deleted = 0");
+                unique: true);
 
             migrationBuilder.CreateIndex(
                 name: "IX_transactions_inventory_id",
@@ -192,13 +192,13 @@ namespace InventoryService.Infrastructure.Migrations
                 name: "IX_transactions_is_deleted",
                 table: "transactions",
                 column: "is_deleted",
-                filter: "is_deleted = 0");
+                unique: true);
 
             migrationBuilder.CreateIndex(
                 name: "IX_warehouses_is_deleted",
                 table: "warehouses",
                 column: "is_deleted",
-                filter: "is_deleted = 0");
+                unique: true);
         }
 
         /// <inheritdoc />

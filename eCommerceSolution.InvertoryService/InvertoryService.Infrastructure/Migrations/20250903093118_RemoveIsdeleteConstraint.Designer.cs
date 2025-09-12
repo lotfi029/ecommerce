@@ -3,6 +3,7 @@ using System;
 using InventoryService.Infrastructure.Presestense;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
@@ -11,9 +12,11 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace InventoryService.Infrastructure.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20250903093118_RemoveIsdeleteConstraint")]
+    partial class RemoveIsdeleteConstraint
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -82,7 +85,7 @@ namespace InventoryService.Infrastructure.Migrations
                     b.HasKey("Id");
 
                     b.HasIndex("IsDeleted")
-                        .HasFilter("is_deleted = 0");
+                        .IsUnique();
 
                     b.HasIndex("WarehouseId");
 
@@ -149,7 +152,7 @@ namespace InventoryService.Infrastructure.Migrations
                         .IsUnique();
 
                     b.HasIndex("IsDeleted")
-                        .HasFilter("is_deleted = 0");
+                        .IsUnique();
 
                     b.ToTable("low_stock_alerts", (string)null);
                 });
@@ -209,7 +212,7 @@ namespace InventoryService.Infrastructure.Migrations
                     b.HasIndex("InventoryId");
 
                     b.HasIndex("IsDeleted")
-                        .HasFilter("is_deleted = 0");
+                        .IsUnique();
 
                     b.ToTable("reservations", (string)null);
                 });
@@ -271,7 +274,7 @@ namespace InventoryService.Infrastructure.Migrations
                     b.HasIndex("InventoryId");
 
                     b.HasIndex("IsDeleted")
-                        .HasFilter("is_deleted = 0");
+                        .IsUnique();
 
                     b.ToTable("transactions", (string)null);
                 });
@@ -327,7 +330,7 @@ namespace InventoryService.Infrastructure.Migrations
                     b.HasKey("Id");
 
                     b.HasIndex("IsDeleted")
-                        .HasFilter("is_deleted = 0");
+                        .IsUnique();
 
                     b.ToTable("warehouses", (string)null);
                 });

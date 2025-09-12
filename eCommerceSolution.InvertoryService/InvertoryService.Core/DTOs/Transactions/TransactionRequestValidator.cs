@@ -4,12 +4,8 @@ public class TransactionRequestValidator : AbstractValidator<TransactionRequest>
 {
     public TransactionRequestValidator()
     {
-        RuleFor(x => x.ProductId)
+        RuleFor(x => x.InventoryId)
             .NotEmpty().WithMessage("Product ID is required.");
-        
-        RuleFor(x => x.SKU)
-            .NotEmpty().WithMessage("SKU is required.")
-            .MaximumLength(50).WithMessage("SKU must not exceed 50 characters.");
         
         RuleFor(x => x.QuantityChanged)
             .NotEmpty().WithMessage("Quantity changed is required.")

@@ -22,8 +22,7 @@ public class AddTransactionCommandHandler(
         using var scope = _logger.BeginScope(new Dictionary<string, object>
         {
             ["UserId"] = request.UserId,
-            ["ProductId"] = request.Request.ProductId,
-            ["SKU"] = request.Request.SKU,
+            ["InventoryId"] = request.Request.InventoryId,
             ["ChangeType"] = request.Request.ChangeType,
             ["QuantityChanged"] = request.Request.QuantityChanged,
             ["OrderId"] = request.Request.OrderId ?? Guid.Empty

@@ -1,7 +1,4 @@
-﻿
-using InventoryService.Core.Enums;
-
-namespace InventoryService.Core.CQRS.Reservations.Commands.UpdateReservation;
+﻿namespace InventoryService.Core.CQRS.Reservations.Commands.UpdateReservation;
 public record UpdateReservationCommand(Guid Id, ReservationStatus Status) : ICommand;
 
 public class UpdateReservationCommandHandler(IUnitOfWork unitOfWork) : ICommandHandler<UpdateReservationCommand>
@@ -13,15 +10,15 @@ public class UpdateReservationCommandHandler(IUnitOfWork unitOfWork) : ICommandH
         if (await unitOfWork.ReservationRepository.GetByIdAsync(command.Id, ct) is not { } reservation)
             return ReservationErrors.NotFound(command.Id);
 
-        if (reservation.Status == ReservationStatus.Reserved)
+        if (reservation.Status == ReservationStatus.Pending)
         {
             return ReservationErrors.InvalidStatus(command.Status.ToString());
         }
         
 
-        if (command.Status == ReservationStatus.Cancelled)
+        if (command.Status == ReservationStatus.Released)
         {
-            reservation.Status = ReservationStatus.Cancelled;
+            reservation.Status = ReservationStatus.Released;
             reservation.UpdatedAt = DateTime.UtcNow;
             await unitOfWork.ReservationRepository.UpdateAsync(reservation, ct);
             await unitOfWork.CommitChangesAsync(ct);

@@ -5,7 +5,6 @@ public interface IUnitOfWork : IDisposable
 {
     IInventoryRepository InventoryRepository { get; }
     IReservationRepository ReservationRepository { get; }
-    ILowStockAlertRepository LowStockAlertRepository { get; }
     IWarehouseRepository WarehouseRepository { get; }
     ITransactionRepository TransactionRepository { get; }
 

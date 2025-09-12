@@ -62,6 +62,7 @@ public class TransactionConfiguration : IEntityTypeConfiguration<Transaction>
 
         builder.HasQueryFilter(p => !p.IsDeleted);
 
-        builder.HasIndex(e => e.IsDeleted).HasFilter("is_deleted = 0");
+        builder.HasIndex(e => e.IsDeleted)
+            .IsUnique();
     }
 }
