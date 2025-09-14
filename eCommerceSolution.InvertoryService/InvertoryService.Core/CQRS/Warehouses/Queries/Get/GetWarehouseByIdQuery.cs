@@ -7,11 +7,9 @@ public class GetWarehouseByIdQueryHandler(IUnitOfWork unitOfWork) : IQueryHandle
 {
     public async Task<Result<WarehouseResponse>> HandleAsync(GetWarehouseByIdQuery query, CancellationToken ct = default)
     {
-        if (await unitOfWork.WarehouseRepository.GetByIdAsync(query.Id, ct) is not { } warehouse)
+        if (await unitOfWork.WarehouseRepository.GetAsync(e => e.Id == query.Id && e.CreatedBy == query.UserId, ct) is not { } warehouse)
             return WarehouseErrors.NotFound(query.Id);
-        if (warehouse.CreatedBy != query.UserId)
-            return WarehouseErrors.InvalidAccess(query.UserId);
-
+        
         var response = warehouse.Adapt<WarehouseResponse>();
 
         return response;

@@ -6,24 +6,23 @@ public record UpdateReorderLevelCommand(
     int ReorderLevel) : ICommand;
 
 public class UpdateReorderLevelCommandHandler(
-    IUnitOfWork unitOfWork) : ICommandHandler<UpdateReorderLevelCommand>
+    IUnitOfWork unitOfWork,
+    ILogger<UpdateReorderLevelCommandHandler> logger) : ICommandHandler<UpdateReorderLevelCommand>
 {
     public async Task<Result> HandleAsync(UpdateReorderLevelCommand command, CancellationToken ct = default)
     {
+        if (await unitOfWork.InventoryRepository.FindAsync(ct, command.InventoryId) is not { } inventory) 
+            return Result.Failure(Error.NotFound("Inventory.NotFound", $"Inventory with Id {command.InventoryId} not found."));
+        inventory.ReorderLevel = command.ReorderLevel;
         try
-        {
-            if (await unitOfWork.InventoryRepository.FindAsync(ct, command.InventoryId) is not { } inventory) 
-                return Result.Failure(Error.NotFound("Inventory.NotFound", $"Inventory with Id {command.InventoryId} not found."));
-            
-            inventory.ReorderLevel = command.ReorderLevel;
-
+        {            
             await unitOfWork.InventoryRepository.UpdateAsync(inventory, ct);
-
             return Result.Success();
         }
         catch (Exception ex)
         {
-            return Result.Failure(Error.Unexpected(ex.Message));
+            logger.LogError(ex, "Error occurred while updating reorder level for inventory {InventoryId}", command.InventoryId);
+            return Error.Unexpected(ex.Message);
         }
     }   
 }

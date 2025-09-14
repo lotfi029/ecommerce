@@ -10,6 +10,5 @@ public class Reservation : BaseEntity, ISoftDeletable
     public bool IsDeleted { get; private set; }
     public string? DeletedBy { get; private set; }
 
-
     public Inventory Inventory { get; set; } = null!;
 }

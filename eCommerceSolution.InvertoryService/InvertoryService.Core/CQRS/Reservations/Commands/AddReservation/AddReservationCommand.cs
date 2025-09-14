@@ -3,8 +3,7 @@
 public record AddReservationCommand(
     string UserId,
     Guid InventoryId,
-    int Quantity,
-    Guid? OrderId
+    int Quantity
 ) : ICommand<Guid>;
 
 public class AddReservationCommandHandler(
@@ -16,41 +15,29 @@ public class AddReservationCommandHandler(
 
     public async Task<Result<Guid>> HandleAsync(AddReservationCommand command, CancellationToken ct = default)
     {
-        _logger.LogInformation("Creating reservation for inventory {InventoryId}", command.InventoryId);
-
         try
         {
             if (await _unitOfWork.InventoryRepository.GetByIdAsync(command.InventoryId, ct) is not { } inventory)
-            {
-                _logger.LogWarning("Inventory {InventoryId} not found", command.InventoryId);
-                return Result.Failure<Guid>(InventoryErrors.NotFound(command.InventoryId));
-            }
-
+                return InventoryErrors.NotFound(command.InventoryId);
+            
             if (command.Quantity <= 0)
-            {
-                _logger.LogWarning("Invalid quantity {Quantity} provided", command.Quantity);
-                return Result.Failure<Guid>(InventoryErrors.InvalidQuantity(command.Quantity));
-            }
+                return InventoryErrors.InvalidQuantity(command.Quantity);
 
             var totalReserved = (await _unitOfWork.ReservationRepository
-                .GetAllWithFilters(r => r.InventoryId == command.InventoryId && r.Status == ReservationStatus.Pending, ct))
+                .GetAllWithFilters(r => r.InventoryId == command.InventoryId && r.Status != ReservationStatus.Confirmed, ct))
                 .Sum(r => r.Quantity);
 
             var availableQuantity = inventory.Quantity - totalReserved;
-            if (command.Quantity > availableQuantity)
-            {
-                _logger.LogWarning("Insufficient stock. Available: {Available}, Requested: {Requested}", 
-                    availableQuantity, command.Quantity);
-                return Result.Failure<Guid>(InventoryErrors.InsufficientStock(
-                    command.InventoryId, command.Quantity, availableQuantity));
-            }
 
+            if (command.Quantity > availableQuantity)
+                return InventoryErrors.InsufficientStock(command.InventoryId, command.Quantity, availableQuantity);
+            
             var reservation = new Reservation
             {
                 CreatedBy = command.UserId,
                 InventoryId = command.InventoryId,
                 Quantity = command.Quantity,
-                OrderId = command.OrderId ?? Guid.Empty,
+                OrderId = Guid.Empty,
                 CreatedAt = DateTime.UtcNow
             };
 
@@ -81,7 +68,7 @@ public class AddReservationCommandHandler(
         {            
             _logger.LogError(ex, "Error creating reservation for inventory {InventoryId}", command.InventoryId);
 
-            return Result.Failure<Guid>(Error.Unexpected(ex.Message));
+            return Error.Unexpected(ex.Message);
         }
     }
 }

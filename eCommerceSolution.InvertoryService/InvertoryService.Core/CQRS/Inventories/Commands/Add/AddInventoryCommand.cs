@@ -1,5 +1,6 @@
 ﻿namespace InventoryService.Core.CQRS.Inventories.Commands.Add;
 public record AddInventoryCommand(
+    string UserId,
     Guid ProductId, 
     int Quantity, 
     string SKU, 
@@ -7,13 +8,14 @@ public record AddInventoryCommand(
     int ReorderLevel = 0) : ICommand<Guid>;
 
 public class AddInventoryCommandHandler(
-    IUnitOfWork unitOfWork) : ICommandHandler<AddInventoryCommand, Guid>
+    IUnitOfWork unitOfWork,
+    ILogger<AddInventoryCommandHandler> logger) : ICommandHandler<AddInventoryCommand, Guid>
 {
     public async Task<Result<Guid>> HandleAsync(AddInventoryCommand command, CancellationToken ct = default)
     {
         try
         {
-            if (await unitOfWork.InventoryRepository.ExistsAsync(e => e.ProductId == command.ProductId && e.SKU == command.SKU, ct))
+            if (await unitOfWork.InventoryRepository.ExistsAsync(e => e.ProductId == command.ProductId && e.SKU == command.SKU && command.UserId == e.CreatedBy, ct))
                 return InventoryErrors.AlreadyExists(command.ProductId);
 
             if (command.Quantity <= 0)
@@ -36,7 +38,7 @@ public class AddInventoryCommandHandler(
         }
         catch (Exception ex)
         {
-            // TODO: Log exception
+            logger.LogError(ex, "Error occurred while adding inventory");
             return Error.Unexpected(ex.Message);
         }
     }

@@ -1,7 +1,7 @@
 [
   {
     "ContainingType": "InventoryService.Api.Endpoints.InventoryEndpoints",
-    "Method": "AddInventory",
+    "Method": "Add",
     "RelativePath": "api/inventories/",
     "HttpMethod": "POST",
     "IsController": false,
@@ -13,6 +13,25 @@
         "IsRequired": true
       }
     ],
+    "ReturnTypes": [
+      {
+        "Type": "System.Void",
+        "MediaTypes": [],
+        "StatusCode": 200
+      }
+    ],
+    "Tags": [
+      "Inventories"
+    ]
+  },
+  {
+    "ContainingType": "InventoryService.Api.Endpoints.InventoryEndpoints",
+    "Method": "GetAll",
+    "RelativePath": "api/inventories/",
+    "HttpMethod": "GET",
+    "IsController": false,
+    "Order": 0,
+    "Parameters": [],
     "ReturnTypes": [
       {
         "Type": "System.Void",

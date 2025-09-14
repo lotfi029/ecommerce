@@ -1,14 +1,9 @@
-﻿using eCommerce.SharedKernal.Messaging;
-using FluentValidation;
-using InventoryService.Api.Extensions;
-using InventoryService.Api.Infrastracture;
-using InventoryService.Core.CQRS.Warehouses.Commands.Add;
+﻿using InventoryService.Core.CQRS.Warehouses.Commands.Add;
 using InventoryService.Core.CQRS.Warehouses.Commands.Delete;
 using InventoryService.Core.CQRS.Warehouses.Commands.Update;
 using InventoryService.Core.CQRS.Warehouses.Queries.Get;
 using InventoryService.Core.CQRS.Warehouses.Queries.GetAll;
 using InventoryService.Core.DTOs.Warehouses;
-using Microsoft.AspNetCore.Mvc;
 using System.Security.Claims;
 
 namespace InventoryService.Api.Endpoints;

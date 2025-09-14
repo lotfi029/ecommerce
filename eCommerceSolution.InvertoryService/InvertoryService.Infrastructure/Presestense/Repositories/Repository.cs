@@ -141,7 +141,21 @@ public class Repository<T> : IRepository<T>
             throw new InvalidOperationException($"Error retrieving entities of type {typeof(T).Name}", ex);
         }
     }
+    public async Task<IEnumerable<T>> GetAllAsync(Expression<Func<T, bool>> predicate, CancellationToken ct = default)
+    {
+        try
+        {
+            var result = await _dbSet
+                .Where(predicate).ToListAsync(ct);
 
+            return result;
+        }
+        catch (Exception ex)
+        {
+            _logger.LogError(ex, "Error retrieving entities of type {EntityType} matching predicate", typeof(T).Name);
+            throw new InvalidOperationException($"Error retrieving entities of type {typeof(T).Name} matching predicate", ex);
+        }
+    }
     public async Task<T?> GetByIdAsync(Guid id, CancellationToken ct = default)
     {
         try
