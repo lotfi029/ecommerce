@@ -4,12 +4,12 @@ public class ReservationRequestValidator : AbstractValidator<ReservationRequest>
 {
     public ReservationRequestValidator()
     {
-        RuleFor(e => e.InventoryId)
-            .NotEmpty()
-            .Must(e => e != Guid.Empty)
-            .WithMessage("{PropertiyName} must be not empty");
+        //RuleFor(e => e.InventoryId)
+        //    .NotEmpty()
+        //    .Must(e => e != Guid.Empty)
+        //    .WithMessage("{PropertiyName} must be not empty");
 
-        RuleFor(e => e.ReservationQuantity)
+        RuleFor(e => e.Quantity)
             .NotEmpty()
             .Must(e => e > 0)
             .WithMessage("{ProperityName} must be greater than 0");

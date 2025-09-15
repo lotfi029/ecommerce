@@ -55,7 +55,5 @@ public class ReservationConfiguration : IEntityTypeConfiguration<Reservation>
             .IsRequired();
 
         builder.HasQueryFilter(p => !p.IsDeleted);
-
-        builder.HasIndex(e => e.IsDeleted).IsUnique();
     }
 }

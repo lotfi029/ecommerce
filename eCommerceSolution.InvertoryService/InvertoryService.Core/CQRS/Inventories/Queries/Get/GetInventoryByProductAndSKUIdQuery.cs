@@ -19,7 +19,7 @@ public class GetInventoryByProductAndSKUIdQueryHandler(
                 .GetAsync(i => i.ProductId == query.ProductId && i.SKU == query.SKU && i.CreatedBy == query.UserId, ct);
 
             if (inventory is null)
-                return Error.NotFound("Inventory.NotFound", $"Inventory with ProductId {query.ProductId} and SKU {query.SKU} not found.");
+                return InventoryErrors.NotFound(query.ProductId);
             
             var response = new InventoryResponse(
                 Id: inventory.Id,

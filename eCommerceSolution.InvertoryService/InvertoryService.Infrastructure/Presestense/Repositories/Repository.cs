@@ -205,7 +205,6 @@ public class Repository<T> : IRepository<T>
                 throw new InvalidOperationException($"Entity of type {typeof(T).Name} with ID {entity.Id} not found");
             }
             _context.Entry(existingEntity).CurrentValues.SetValues(entity);
-            await _context.SaveChangesAsync(true, ct);
             _logger.LogInformation("Updated entity of type {EntityType} with ID {EntityId}", typeof(T).Name, entity.Id);
         }
         catch (DbUpdateException ex)

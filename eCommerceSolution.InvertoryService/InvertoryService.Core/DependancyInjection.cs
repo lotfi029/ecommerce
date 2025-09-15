@@ -1,6 +1,5 @@
-﻿using eCommerce.SharedKernal.Messaging;
-using FluentValidation;
-using InventoryService.Core.DTOs.Inventories;
+﻿using InventoryService.Core.DTOs.Inventories;
+using MapsterMapper;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace InventoryService.Core;
@@ -21,9 +20,21 @@ public static class DependancyInjection
                 .WithScopedLifetime()
         );
 
-
         services
             .AddValidatorsFromAssemblyContaining<InventoryRequestValidator>(includeInternalTypes: true);
+
+        services.AddMappingAndValidation();
+
+        return services;
+    }
+    private static IServiceCollection AddMappingAndValidation(this IServiceCollection services)
+    {
+        var config = TypeAdapterConfig.GlobalSettings;
+        config.Scan(typeof(DependancyInjection).Assembly);
+        services.AddSingleton<IMapper>(new Mapper(config));
+
+
+        services.AddValidatorsFromAssemblyContaining<InventoryRequestValidator>();
 
         return services;
     }

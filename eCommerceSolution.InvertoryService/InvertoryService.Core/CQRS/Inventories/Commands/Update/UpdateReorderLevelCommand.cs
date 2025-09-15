@@ -17,6 +17,7 @@ public class UpdateReorderLevelCommandHandler(
         try
         {            
             await unitOfWork.InventoryRepository.UpdateAsync(inventory, ct);
+            await unitOfWork.CommitChangesAsync(ct);
             return Result.Success();
         }
         catch (Exception ex)

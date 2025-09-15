@@ -7,18 +7,19 @@ public class UpdateWarehouseCommandHandler(IUnitOfWork unitOfWork) : ICommandHan
 {
     public async Task<Result> HandleAsync(UpdateWarehouseCommand command, CancellationToken ct = default)
     {
-        if (await unitOfWork.WarehouseRepository.GetByIdAsync(command.Id, ct) is not { } warehouse)
-            return WarehouseErrors.NotFound(command.Id);
-
-        if (warehouse.CreatedBy != command.UserId)
-            return WarehouseErrors.InvalidAccess(command.UserId);
-
-        warehouse.Name = command.Request.Name;
-        warehouse.Location = command.Request.Location;
-
         try
         {
+            if (await unitOfWork.WarehouseRepository.GetByIdAsync(command.Id, ct) is not { } warehouse)
+                return WarehouseErrors.NotFound(command.Id);
+
+            if (warehouse.CreatedBy != command.UserId)
+                return WarehouseErrors.InvalidAccess(command.UserId);
+
+            warehouse.Name = command.Request.Name;
+            warehouse.Location = command.Request.Location;
+
             await unitOfWork.WarehouseRepository.UpdateAsync(warehouse, ct);
+            await unitOfWork.CommitChangesAsync(ct);
             return Result.Success();
         }
         catch (Exception ex)

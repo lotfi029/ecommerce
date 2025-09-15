@@ -61,8 +61,5 @@ public class TransactionConfiguration : IEntityTypeConfiguration<Transaction>
             .HasColumnName("deleted_by");
 
         builder.HasQueryFilter(p => !p.IsDeleted);
-
-        builder.HasIndex(e => e.IsDeleted)
-            .IsUnique();
     }
 }

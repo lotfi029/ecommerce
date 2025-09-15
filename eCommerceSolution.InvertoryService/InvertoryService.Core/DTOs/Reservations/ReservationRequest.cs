@@ -1,6 +1,5 @@
 ﻿namespace InventoryService.Core.DTOs.Reservations;
-public record ReservationRequest(
-    Guid InventoryId,
-    int ReservationQuantity,
+public record ReservationRequest(    
+    int Quantity,
     Guid? OrderId
     );
