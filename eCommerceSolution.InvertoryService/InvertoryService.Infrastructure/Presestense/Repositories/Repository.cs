@@ -24,7 +24,6 @@ public class Repository<T> : IRepository<T>
         try
         {
             await _dbSet.AddAsync(entity, ct);
-            await _context.SaveChangesAsync(true, ct);
             _logger.LogInformation("Added entity of type {EntityType} with ID {EntityId}", typeof(T).Name, entity.Id);
             return entity.Id;
         }

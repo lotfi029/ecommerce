@@ -6,26 +6,26 @@ public class UnitOfWork(
     ILoggerFactory loggerFactory) : IUnitOfWork
 {
     private readonly ApplicationDbContext _context
-    = context ?? throw new ArgumentNullException(nameof(ApplicationDbContext));
+        = context ?? throw new ArgumentNullException(nameof(ApplicationDbContext));
     private readonly ILoggerFactory _loggerFactory
         = loggerFactory ?? throw new ArgumentNullException(nameof(ILoggerFactory));
 
     private bool _disposed = false;
+    
     public IInventoryRepository InventoryRepository => 
         new InventoryRepository(_context, _loggerFactory.CreateLogger<Repository<Inventory>>(), _loggerFactory.CreateLogger<InventoryRepository>());
+
     public IReservationRepository ReservationRepository => 
         new ReservationRepository(_context, _loggerFactory.CreateLogger<Repository<Reservation>>(), _loggerFactory.CreateLogger<ReservationRepository>());
 
     public IWarehouseRepository WarehouseRepository => 
         new WarehouseRepository(_context, _loggerFactory.CreateLogger<Repository<Warehouse>>(), _loggerFactory.CreateLogger<WarehouseRepository>());
 
+
     public ITransactionRepository TransactionRepository =>
         new TransactionRepository(_context, _loggerFactory.CreateLogger<Repository<Transaction>>(), _loggerFactory.CreateLogger<TransactionRepository>());
-
     public async Task<IDbContextTransaction> BeginTransactionAsync(CancellationToken cancellationToken = default)
         => await _context.Database.BeginTransactionAsync(cancellationToken);
-    
-
     public async Task<int> CommitChangesAsync(CancellationToken ct = default)
         => await _context.SaveChangesAsync(ct);
     
@@ -65,5 +65,4 @@ public class UnitOfWork(
             _disposed = true;
         }
     }
-
 }

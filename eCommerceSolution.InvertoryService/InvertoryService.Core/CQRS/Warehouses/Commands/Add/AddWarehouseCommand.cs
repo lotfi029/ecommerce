@@ -13,6 +13,7 @@ public class AddWarehouseCommandHandler(IUnitOfWork unitOfWork) : ICommandHandle
         try
         {
             var warehouseId = await unitOfWork.WarehouseRepository.AddAsync(warehouse, ct);
+            await unitOfWork.CommitChangesAsync(ct);
 
             return warehouseId;
         }

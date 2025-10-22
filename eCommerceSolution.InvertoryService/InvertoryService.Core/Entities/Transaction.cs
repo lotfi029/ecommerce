@@ -3,7 +3,8 @@
 public class Transaction : BaseEntity, ISoftDeletable
 {
     public Guid InventoryId { get; set; }
-    public InventoryChangeType ChangeType { get; set; }
+    public InventoryChangeType ChangeType { get; set; } 
+    public string Reason { get; set; } = string.Empty;
     public int QuantityChanged { get; set; }
     public Guid? OrderId { get; set; }
     public Inventory Inventory { get; set; } = default!;

@@ -1,35 +1,70 @@
 ﻿using InventoryService.Core.DTOs.Transactions;
 
 namespace InventoryService.Core.CQRS.Transactions.Commands.Add;
-public record AddTransactionCommand(string UserId, TransactionRequest Request) : ICommand<Guid>;
+public record AddTransactionCommand(
+    string UserId, 
+    Guid InventoryId, 
+    InventoryChangeType ChangeType,
+    TransactionRequest Request) : ICommand<Guid>;
 
 public class AddTransactionCommandHandler(
     IUnitOfWork unitOfWork, 
     ILogger<AddTransactionCommandHandler> logger
     ) : ICommandHandler<AddTransactionCommand, Guid>
 {
-    private readonly IUnitOfWork _unitOfWork = unitOfWork ?? throw new ArgumentNullException(nameof(unitOfWork));
-    private readonly ILogger<AddTransactionCommandHandler> _logger = logger ?? throw new ArgumentNullException(nameof(logger));
-
-    private static readonly EventId EventTransactionAdded = new(1001, nameof(EventTransactionAdded));
-    private static readonly EventId EventTransactionAddError = new(1002, nameof(EventTransactionAddError));
-    private static readonly EventId EventTransactionValidationError = new(1003, nameof(EventTransactionValidationError));
-    private static readonly EventId EventTransactionCanceled = new(1004, nameof(EventTransactionCanceled));
-    private static readonly EventId EventTransactionAlreadyExist = new(1005, nameof(EventTransactionAlreadyExist));
-
-    public Task<Result<Guid>> HandleAsync(AddTransactionCommand request, CancellationToken cancellationToken)
+    public async Task<Result<Guid>> HandleAsync(AddTransactionCommand command, CancellationToken ct)
     {
-        using var scope = _logger.BeginScope(new Dictionary<string, object>
+        try
         {
-            ["UserId"] = request.UserId,
-            ["InventoryId"] = request.Request.InventoryId,
-            ["ChangeType"] = request.Request.ChangeType,
-            ["QuantityChanged"] = request.Request.QuantityChanged,
-            ["OrderId"] = request.Request.OrderId ?? Guid.Empty
-        });
+            if (await unitOfWork.InventoryRepository.FindAsync(ct, command.InventoryId) is not { } inventory)
+                return TransactionErrors.NotFound(command.InventoryId);
 
-        _logger.LogDebug(EventTransactionAdded, "Adding transaction.");
-        
-        throw new NotImplementedException("Transaction addition logic is not implemented yet.");
+            if (command.ChangeType == InventoryChangeType.OUT && inventory.Quantity < command.Request.QuantityChanged)
+                return TransactionErrors.InsufficientInventory(command.InventoryId, inventory.Quantity, command.Request.QuantityChanged);
+
+            var transaction = new Transaction
+            {
+                InventoryId = command.InventoryId,
+                ChangeType = command.ChangeType,
+                QuantityChanged = command.Request.QuantityChanged,
+                Reason = command.Request.Reason
+            };
+
+            var beginTransaction = await unitOfWork.BeginTransactionAsync(ct);
+            try
+            {
+                switch (command.ChangeType)
+                {
+                    case InventoryChangeType.RETURN:
+                    case InventoryChangeType.IN:
+                        inventory.Quantity += command.Request.QuantityChanged;
+                        break;
+
+                    case InventoryChangeType.OUT:
+                        inventory.Quantity -= command.Request.QuantityChanged;
+                        break;
+
+                    default:
+                        return TransactionErrors.InvalidTransactionType(command.ChangeType.ToString());
+                }
+
+                await unitOfWork.TransactionRepository.AddAsync(transaction, ct);
+                await unitOfWork.InventoryRepository.UpdateAsync(inventory, ct);
+                await unitOfWork.CommitTransactionAsync(beginTransaction, ct);
+                return transaction.Id;
+
+            }
+            catch (Exception ex)
+            {
+                await unitOfWork.RollbackTransactionAsync(beginTransaction, ct);
+                logger.LogError(ex, "Failed to create transaction for inventory {InventoryId}", command.InventoryId);
+                throw;
+            }
+        }
+        catch (Exception ex)
+        {
+            logger.LogError(ex, "Error occurred while adding transaction for InventoryId: {InventoryId}", command.InventoryId);
+            return Error.Unexpected("Failed to complete the trunsactions");
+        }
     }
 }

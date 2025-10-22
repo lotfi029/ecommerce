@@ -30,8 +30,9 @@ public class AddInventoryCommandHandler(
             );
 
             var inventoryId = await unitOfWork.InventoryRepository.AddAsync(inventory, ct);
+            await unitOfWork.CommitChangesAsync(ct);
 
-            if (inventoryId == Guid.Empty)
+             if (inventoryId == Guid.Empty)
                 return InventoryErrors.InventoryCreationFailed(command.ProductId);
 
             return inventoryId;

@@ -13,6 +13,7 @@ public class UpdateReorderLevelCommandHandler(
     {
         if (await unitOfWork.InventoryRepository.FindAsync(ct, command.InventoryId) is not { } inventory) 
             return Result.Failure(Error.NotFound("Inventory.NotFound", $"Inventory with Id {command.InventoryId} not found."));
+
         inventory.ReorderLevel = command.ReorderLevel;
         try
         {            

@@ -2,10 +2,10 @@
 
 public class Inventory : BaseEntity, ISoftDeletable
 {
-    public Guid ProductId { get; set; } // fixed after creation
-    public string SKU { get; set; } = string.Empty; // fixed after creation
-    public int Quantity { get; set; } // will be updated by another entities (transaction and reservation)
-    public int ReorderLevel { get; set; } // low stock alert threshold 
+    public Guid ProductId { get; set; }
+    public string SKU { get; set; } = string.Empty;
+    public int Quantity { get; set; }
+    public int ReorderLevel { get; set; }
     public Guid WarehouseId { get; set; }
     public Warehouse Warehouse { get; set; } = null!;
     public ICollection<Reservation> Reservations { get; set; } = [];

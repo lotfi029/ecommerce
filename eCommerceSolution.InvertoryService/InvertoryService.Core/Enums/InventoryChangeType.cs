@@ -2,10 +2,9 @@
 
 public enum InventoryChangeType 
 {
-    Reserve = 1,
-    Release,
-    Deduct,
-    Restock
+    IN = 1,
+    OUT,
+    RETURN
 }
 
 // cart - payment - order - product - catalog

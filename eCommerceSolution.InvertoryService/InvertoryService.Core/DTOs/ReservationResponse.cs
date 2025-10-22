@@ -2,5 +2,6 @@
 public record ReservationResponse(
     Guid Id,
     Guid InventoryId,
-    int Quantity
+    int Quantity,
+    string Status
     );

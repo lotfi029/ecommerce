@@ -41,11 +41,11 @@ public class AddReservationCommandHandler(
                 CreatedAt = DateTime.UtcNow
             };
 
-            using var transaction = await _unitOfWork.BeginTransactionAsync(ct);
+            
             try
             {
                 var reservationId = await _unitOfWork.ReservationRepository.AddAsync(reservation, ct);
-                await _unitOfWork.CommitTransactionAsync(transaction, ct);
+                await _unitOfWork.CommitChangesAsync(ct);
 
                 _logger.LogInformation("Created reservation {ReservationId} for inventory {InventoryId}", 
                     reservationId, command.InventoryId);
@@ -54,7 +54,6 @@ public class AddReservationCommandHandler(
             }
             catch (Exception ex)
             {
-                await _unitOfWork.RollbackTransactionAsync(transaction, ct);
                 _logger.LogError(ex, "Failed to create reservation for inventory {InventoryId}", command.InventoryId);
                 throw;
             }

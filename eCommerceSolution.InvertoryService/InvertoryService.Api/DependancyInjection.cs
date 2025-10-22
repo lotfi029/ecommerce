@@ -1,7 +1,4 @@
-﻿using InventoryService.Api.Extensions;
-using InventoryService.Api.Infrastracture;
-
-namespace InventoryService.Api;
+﻿namespace InventoryService.Api;
 
 public static class DependancyInjection
 {

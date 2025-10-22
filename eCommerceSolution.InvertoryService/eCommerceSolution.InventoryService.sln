@@ -11,6 +11,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "InventoryService.Infrastruc
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "eCommerce.SharedKernal", "eCommerce.SharedKernal\eCommerce.SharedKernal.csproj", "{33E3D7C7-8550-BBA3-CBF7-21F883BE34C0}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "InventoryService.CoreTests", "InventoryService.CoreTests\InventoryService.CoreTests.csproj", "{B4A3B4FB-EE81-4E68-9E5D-869921B3CCBE}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,6 +35,10 @@ Global
 		{33E3D7C7-8550-BBA3-CBF7-21F883BE34C0}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{33E3D7C7-8550-BBA3-CBF7-21F883BE34C0}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{33E3D7C7-8550-BBA3-CBF7-21F883BE34C0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B4A3B4FB-EE81-4E68-9E5D-869921B3CCBE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B4A3B4FB-EE81-4E68-9E5D-869921B3CCBE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B4A3B4FB-EE81-4E68-9E5D-869921B3CCBE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B4A3B4FB-EE81-4E68-9E5D-869921B3CCBE}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -4,17 +4,15 @@ public class TransactionRequestValidator : AbstractValidator<TransactionRequest>
 {
     public TransactionRequestValidator()
     {
-        RuleFor(x => x.InventoryId)
-            .NotEmpty().WithMessage("Product ID is required.");
-        
         RuleFor(x => x.QuantityChanged)
-            .NotEmpty().WithMessage("Quantity changed is required.")
-            .GreaterThan(0).WithMessage("Quantity changed must be greater than zero.");
+            .NotEmpty().WithMessage("{PropertyName} is required.")
+            .GreaterThan(0).WithMessage("{PropertyName} must be greater than zero.");
 
-        RuleFor(x => x.ChangeType)
-            .IsInEnum().WithMessage("Change type is invalid.");
-        
-        RuleFor(x => x.CreatedAt)
-            .NotEmpty().WithMessage("Created at date is required.");
+        //RuleFor(x => x.ChangeType)
+        //    .IsInEnum().WithMessage("{PropertyName} is invalid.");
+
+        RuleFor(x => x.Reason)
+            .NotEmpty().WithMessage("{PropertyName} is required.")
+            .MaximumLength(1500).WithMessage("{PropertyName} must not exceed {MaxLength} characters.");
     }
 }

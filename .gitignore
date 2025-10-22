@@ -1,14 +1,103 @@
-# .NET stuff
-bin/
-obj/
-.vs/
-*.user
-*.suo
+# Ignore Visual Studio temporary files, build results, and
+# user-specific files.
 
-# Env and sensitive
-.env
-.env.*
+## Ignore Visual Studio user files
+*.user
+*.userosscache
+*.suo
+*.sln.docstates
+
+## Ignore build results
+[Bb]in/
+[Oo]bj/
+[Ll]og/
+[Ll]ogs/
+[Tt]est[Rr]esult*/
+[Bb]uild/
+x64/
+x86/
+[Aa][Rr][Mm]/
+[Aa][Rr][Mm]64/
+[Bb]uild[Ll]og.*
+
+## Ignore Rider / VS Code specific
+.idea/
+.vscode/
+*.DotSettings.user
+
+## Ignore Visual Studio database files
+*.mdf
+*.ldf
+
+## Ignore Auto Generated files
+Generated_*
+*.g.cs
+*.g.i.cs
+*.Designer.cs
+*.AssemblyInfo.cs
+
+## Ignore publish output
+*.Publish.xml
+*.pubxml
+*.pubxml.user
+*.publishsettings
+
+## Ignore .NET Core build artifacts
+project.lock.json
+project.fragment.lock.json
+artifacts/
+
+## Ignore temporary files
+*.tmp
+*.temp
+*.bak
+*.backup
+*.old
+
+## Ignore NuGet packages
+*.nupkg
+# Ignore package folders
+packages/
+**/packages/*
+!**/packages/build/
+*.snupkg
+
+## Ignore test and coverage results
+*.coverage
+*.coveragexml
+*.cov
+TestResults/
+CoverageReports/
+*.trx
+
+## Ignore Resharper and other IDE cache
+_ReSharper*/
+*.DotSettings
+
+## Ignore user-specific files in .NET projects
+*.userprefs
+
+## Ignore Azure publish settings
+*.azurePubxml
+*.pubxml
+
+## Ignore environment-specific files
+appsettings.*.local.json
+appsettings.Development.json
 secrets.json
 
-# Others
-logs/
+## Ignore global jsons and local tools caches
+.dotnet/
+*.local/
+.nuget/
+*.vsconfig
+
+## Ignore Visual Studio cache
+.vs/
+.vscode/
+
+## Ignore others
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+$RECYCLE.BIN/
