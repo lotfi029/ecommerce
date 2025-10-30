@@ -1,6 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 
-namespace eCommerceCatalogService.Core.Entities;
+namespace CatalogService.Core.Entities;
 [Owned]
 public class ProductImage : BaseEntity
 {

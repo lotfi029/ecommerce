@@ -1,7 +1,7 @@
-﻿using eCommerceCatalogService.Core.ExternalContractDTOs;
-using eCommerceCatalogService.Core.DTOContracts.Products;
+﻿using CatalogService.Core.ExternalContractDTOs;
+using CatalogService.Core.DTOContracts.Products;
 
-namespace eCommerceCatalogService.Core.IClients;
+namespace CatalogService.Core.IClients;
 
 public interface IProductClient
 {

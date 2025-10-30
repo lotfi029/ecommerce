@@ -1,9 +1,9 @@
 ﻿using CatalogService.Infrastructure.Persistense;
-using eCommerceCatalogService.Core.Entities;
-using eCommerceCatalogService.Core.IRepositories;
+using CatalogService.Core.Entities;
+using CatalogService.Core.IRepositories;
 using Microsoft.EntityFrameworkCore;
 
-namespace eCommerceCatalogService.Infrastructure.Repositories;
+namespace CatalogService.Infrastructure.Repositories;
 
 public class CatalogRepository(ApplicationDbContext context, ILogger<CatalogRepository> logger) : ICatalogRepository
 {

@@ -1,4 +1,4 @@
-﻿namespace eCommerceCatalogService.Infrastructure.RabbitMQ;
+﻿namespace CatalogService.Infrastructure.RabbitMQ;
 public class RabbitMQRoutingKeysConst
 {
     public const string ProductAdd = "product.add";

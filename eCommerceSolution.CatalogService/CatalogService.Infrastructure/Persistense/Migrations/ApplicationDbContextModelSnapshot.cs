@@ -8,7 +8,7 @@ using CatalogService.Infrastructure.Persistense;
 
 #nullable disable
 
-namespace eCommerceCatalogService.Infrastructure.Migrations
+namespace CatalogService.Infrastructure.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
     partial class ApplicationDbContextModelSnapshot : ModelSnapshot
@@ -22,7 +22,7 @@ namespace eCommerceCatalogService.Infrastructure.Migrations
 
             NpgsqlModelBuilderExtensions.UseIdentityByDefaultColumns(modelBuilder);
 
-            modelBuilder.Entity("eCommerceCatalogService.Infrastructure.Entities.CatalogProduct", b =>
+            modelBuilder.Entity("CatalogService.Infrastructure.Entities.CatalogProduct", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
@@ -62,9 +62,9 @@ namespace eCommerceCatalogService.Infrastructure.Migrations
                     b.ToTable("CatalogProducts");
                 });
 
-            modelBuilder.Entity("eCommerceCatalogService.Infrastructure.Entities.CatalogProduct", b =>
+            modelBuilder.Entity("CatalogService.Infrastructure.Entities.CatalogProduct", b =>
                 {
-                    b.OwnsMany("eCommerceCatalogService.Infrastructure.Entities.ProductImage", "ProductImages", b1 =>
+                    b.OwnsMany("CatalogService.Infrastructure.Entities.ProductImage", "ProductImages", b1 =>
                         {
                             b1.Property<Guid>("ProductId")
                                 .HasColumnType("uuid");

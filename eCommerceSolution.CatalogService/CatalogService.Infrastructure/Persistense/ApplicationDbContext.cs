@@ -1,5 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using eCommerceCatalogService.Core.Entities;
+using CatalogService.Core.Entities;
 
 namespace CatalogService.Infrastructure.Persistense;
 

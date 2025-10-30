@@ -1,7 +1,7 @@
-﻿using eCommerceCatalogService.Core.IConsumers;
+﻿using CatalogService.Core.IConsumers;
 using Microsoft.Extensions.Hosting;
 
-namespace eCommerceCatalogService.Infrastructure.RabbitMQ.HostedServices;
+namespace CatalogService.Infrastructure.RabbitMQ.HostedServices;
 
 public class RabbitMQProductHostedService(IRabbitMQProductAddedConsumer _productConsumer) : IHostedService
 {

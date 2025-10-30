@@ -1,4 +1,4 @@
-﻿namespace eCommerceCatalogService.Core.ExternalContractDTOs;
+﻿namespace CatalogService.Core.ExternalContractDTOs;
 public record ProductImageMessageDTO(
     Guid Id,
     string Name,

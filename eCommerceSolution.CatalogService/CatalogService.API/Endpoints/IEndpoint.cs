@@ -1,4 +1,4 @@
-﻿namespace eCommerceCatalogService.API.Endpoints;
+﻿namespace CatalogService.API.Endpoints;
 
 public interface IEndpoint
 {

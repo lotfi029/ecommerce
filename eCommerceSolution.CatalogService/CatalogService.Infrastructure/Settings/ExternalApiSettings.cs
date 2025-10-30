@@ -1,4 +1,4 @@
-﻿namespace eCommerceCatalogService.Infrastructure.Settings;
+﻿namespace CatalogService.Infrastructure.Settings;
 
 public class ExternalApiSettings
 {

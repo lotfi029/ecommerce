@@ -1,4 +1,4 @@
-﻿namespace eCommerceCatalogService.Core.DTOContracts.Products;
+﻿namespace CatalogService.Core.DTOContracts.Products;
 
 public record ProductResponse(
     Guid Id,

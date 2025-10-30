@@ -1,8 +1,8 @@
-﻿using eCommerceCatalogService.Core.Entities;
+﻿using CatalogService.Core.Entities;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
-namespace eCommerceCatalogService.Infrastructure.Persistense.Configurations;
+namespace CatalogService.Infrastructure.Persistense.Configurations;
 
 public class CatalogProductConfiguration : IEntityTypeConfiguration<CatalogProduct>
 {

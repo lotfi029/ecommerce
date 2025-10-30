@@ -1,8 +1,8 @@
-﻿using eCommerceCatalogService.Core.ExternalContractDTOs;
-using eCommerceCatalogService.Core.IRepositories;
+﻿using CatalogService.Core.ExternalContractDTOs;
+using CatalogService.Core.IRepositories;
 using Mapster;
 
-namespace eCommerceCatalogService.Core.Features.Catalog.Commands.Add;
+namespace CatalogService.Core.Features.Catalog.Commands.Add;
 
 public record AddCatalogProductCommand(ProductMessageDTO Request) : ICommand;
 

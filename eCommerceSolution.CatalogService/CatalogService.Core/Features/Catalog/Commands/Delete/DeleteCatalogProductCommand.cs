@@ -1,7 +1,7 @@
-﻿using eCommerceCatalogService.Core.Errors;
-using eCommerceCatalogService.Core.IRepositories;
+﻿using CatalogService.Core.Errors;
+using CatalogService.Core.IRepositories;
 
-namespace eCommerceCatalogService.Core.Features.Catalog.Commands.Delete;
+namespace CatalogService.Core.Features.Catalog.Commands.Delete;
 
 public record DeleteCatalogProductCommand(Guid Id) : ICommand;
 

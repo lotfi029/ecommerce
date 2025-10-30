@@ -1,9 +1,9 @@
-﻿using eCommerceCatalogService.Core.Errors;
-using eCommerceCatalogService.Core.ExternalContractDTOs;
-using eCommerceCatalogService.Core.IRepositories;
+﻿using CatalogService.Core.Errors;
+using CatalogService.Core.ExternalContractDTOs;
+using CatalogService.Core.IRepositories;
 using Mapster;
 
-namespace eCommerceCatalogService.Core.Features.Catalog.Commands.Update;
+namespace CatalogService.Core.Features.Catalog.Commands.Update;
 
 public record UpdateCatalogProductCommand(Guid Id, ProductMessageDTO Request) : ICommand;
 

@@ -1,4 +1,4 @@
-﻿namespace eCommerceCatalogService.Core.IConsumers;
+﻿namespace CatalogService.Core.IConsumers;
 
 public interface IRabbitMQProductAddedConsumer
 {

@@ -1,12 +1,12 @@
-﻿using eCommerceCatalogService.Core.ExternalContractDTOs;
-using eCommerceCatalogService.Core.RabbitMQ.IConsumers;
+﻿using CatalogService.Core.ExternalContractDTOs;
+using CatalogService.Core.RabbitMQ.IConsumers;
 using Microsoft.Extensions.Options;
 using RabbitMQ.Client;
 using RabbitMQ.Client.Events;
 using System.Text;
 using System.Text.Json;
 
-namespace eCommerceCatalogService.Infrastructure.RabbitMQ.Consumers;
+namespace CatalogService.Infrastructure.RabbitMQ.Consumers;
 
 public class RabbitMQProductUpdateConsumer(
     IOptions<RabbitMQSettings> options,

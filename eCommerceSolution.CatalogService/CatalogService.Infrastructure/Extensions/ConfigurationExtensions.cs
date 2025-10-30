@@ -1,6 +1,6 @@
 ﻿using Microsoft.Extensions.Configuration;
 
-namespace eCommerceCatalogService.Infrastructure.Extensions;
+namespace CatalogService.Infrastructure.Extensions;
 public static class ConfigurationExtensions
 {
     public static string GetConnectionStringOrThrow(this IConfiguration configuration, string name = "DefaultConnection")

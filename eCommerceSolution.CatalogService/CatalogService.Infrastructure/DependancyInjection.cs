@@ -1,23 +1,23 @@
-﻿using eCommerceCatalogService.Infrastructure.Authentication;
-using eCommerceCatalogService.Infrastructure.Clients;
-using eCommerceCatalogService.Infrastructure.RabbitMQ;
-using eCommerceCatalogService.Infrastructure.RabbitMQ.Consumers;
-using eCommerceCatalogService.Infrastructure.Repositories;
-using eCommerceCatalogService.Infrastructure.Settings;
-using eCommerceCatalogService.Core.IClients;
-using eCommerceCatalogService.Core.IRepositories;
-using eCommerceCatalogService.Infrastructure.Extensions;
-using eCommerceCatalogService.Infrastructure.RabbitMQ.HostedServices;
+﻿using CatalogService.Infrastructure.Authentication;
+using CatalogService.Infrastructure.Clients;
+using CatalogService.Infrastructure.RabbitMQ;
+using CatalogService.Infrastructure.RabbitMQ.Consumers;
+using CatalogService.Infrastructure.Repositories;
+using CatalogService.Infrastructure.Settings;
+using CatalogService.Core.IClients;
+using CatalogService.Core.IRepositories;
+using CatalogService.Infrastructure.Extensions;
+using CatalogService.Infrastructure.RabbitMQ.HostedServices;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.IdentityModel.Tokens;
 using System.Text;
-using eCommerceCatalogService.Core.IConsumers;
+using CatalogService.Core.IConsumers;
 using CatalogService.Infrastructure.Persistense;
 
-namespace eCommerceCatalogService.Infrastructure;
+namespace CatalogService.Infrastructure;
 
 public static class DependancyInjection
 {

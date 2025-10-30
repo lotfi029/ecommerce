@@ -1,9 +1,9 @@
-﻿using eCommerceCatalogService.Core.IClients;
-using eCommerceCatalogService.Core.IRepositories;
-using eCommerceCatalogService.Core.DTOContracts.Products;
+﻿using CatalogService.Core.IClients;
+using CatalogService.Core.IRepositories;
+using CatalogService.Core.DTOContracts.Products;
 using Mapster;
 
-namespace eCommerceCatalogService.Core.Features.Catalog.Query.External.GetAllExternal;
+namespace CatalogService.Core.Features.Catalog.Query.External.GetAllExternal;
 
 public record GetAllProductFromProductServiceQuery(string UserId) : IQuery<IEnumerable<ProductResponse>>;
 

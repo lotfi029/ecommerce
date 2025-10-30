@@ -1,10 +1,10 @@
-﻿using eCommerceCatalogService.API.Extensions;
-using eCommerceCatalogService.Core.DTOContracts.Products;
-using eCommerceCatalogService.Core.Features.Catalog.Query.External.GetAllExternal;
-using eCommerceCatalogService.Core.Features.Catalog.Query.GetAll;
-using eCommerceCatalogService.Core.Features.Catalog.Query.GetById;
+﻿using CatalogService.API.Extensions;
+using CatalogService.Core.DTOContracts.Products;
+using CatalogService.Core.Features.Catalog.Query.External.GetAllExternal;
+using CatalogService.Core.Features.Catalog.Query.GetAll;
+using CatalogService.Core.Features.Catalog.Query.GetById;
 
-namespace eCommerceCatalogService.API.Endpoints;
+namespace CatalogService.API.Endpoints;
 
 public class CatalogEndpoints : IEndpoint
 {

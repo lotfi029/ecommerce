@@ -1,8 +1,8 @@
-﻿using eCommerceCatalogService.API.Endpoints;
+﻿using CatalogService.API.Endpoints;
 using Microsoft.Extensions.DependencyInjection.Extensions;
 using System.Reflection;
 
-namespace eCommerceCatalogService.API.Extensions;
+namespace CatalogService.API.Extensions;
 
 public static class EndpointExtensions
 {

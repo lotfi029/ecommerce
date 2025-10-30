@@ -1,4 +1,4 @@
-﻿namespace eCommerceCatalogService.Core.Errors;
+﻿namespace CatalogService.Core.Errors;
 
 public class CatalogProductErrors
 {

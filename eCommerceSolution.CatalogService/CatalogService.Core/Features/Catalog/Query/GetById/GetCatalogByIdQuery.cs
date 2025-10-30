@@ -1,9 +1,9 @@
-﻿using eCommerceCatalogService.Core.Errors;
-using eCommerceCatalogService.Core.IRepositories;
-using eCommerceCatalogService.Core.DTOContracts.Products;
+﻿using CatalogService.Core.Errors;
+using CatalogService.Core.IRepositories;
+using CatalogService.Core.DTOContracts.Products;
 using Mapster;
 
-namespace eCommerceCatalogService.Core.Features.Catalog.Query.GetById;
+namespace CatalogService.Core.Features.Catalog.Query.GetById;
 
 public record GetCatalogByIdQuery(string UserId, Guid Id) : IQuery<ProductResponse>;
 

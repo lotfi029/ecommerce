@@ -1,8 +1,8 @@
-﻿using eCommerceCatalogService.Core.IClients;
-using eCommerceCatalogService.Core.DTOContracts.Products;
+﻿using CatalogService.Core.IClients;
+using CatalogService.Core.DTOContracts.Products;
 using Mapster;
 
-namespace eCommerceCatalogService.Core.Features.Catalog.Query.External.GetById;
+namespace CatalogService.Core.Features.Catalog.Query.External.GetById;
 
 public record GetProductByIdFromProductServiceQuery(Guid Id) : IQuery<ProductResponse>;
 

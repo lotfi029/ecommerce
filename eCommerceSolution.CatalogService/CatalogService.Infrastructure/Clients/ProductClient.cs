@@ -1,14 +1,14 @@
-﻿using eCommerceCatalogService.Core.DTOContracts.Products;
-using eCommerceCatalogService.Core.Errors;
-using eCommerceCatalogService.Core.ExternalContractDTOs;
-using eCommerceCatalogService.Core.IClients;
+﻿using CatalogService.Core.DTOContracts.Products;
+using CatalogService.Core.Errors;
+using CatalogService.Core.ExternalContractDTOs;
+using CatalogService.Core.IClients;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System.Net.Http.Headers;
 using System.Net.Http.Json;
 using System.Text.Json;
 
-namespace eCommerceCatalogService.Infrastructure.Clients;
+namespace CatalogService.Infrastructure.Clients;
 
 public class ProductClient : IProductClient
 {

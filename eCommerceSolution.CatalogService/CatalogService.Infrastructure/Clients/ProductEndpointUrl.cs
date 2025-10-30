@@ -1,4 +1,4 @@
-﻿namespace eCommerceCatalogService.Infrastructure.Clients;
+﻿namespace CatalogService.Infrastructure.Clients;
 
 public class ProductEndpointUrl
 {

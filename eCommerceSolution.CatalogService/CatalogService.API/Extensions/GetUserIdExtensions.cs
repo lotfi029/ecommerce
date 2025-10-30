@@ -1,6 +1,6 @@
 ﻿using System.Security.Claims;
 
-namespace eCommerceCatalogService.API.Extensions;
+namespace CatalogService.API.Extensions;
 
 public static class GetUserIdExtensions
 {

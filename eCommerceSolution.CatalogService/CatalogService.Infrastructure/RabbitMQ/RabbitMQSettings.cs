@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace eCommerceCatalogService.Infrastructure.RabbitMQ;
+namespace CatalogService.Infrastructure.RabbitMQ;
 public class RabbitMQSettings
 {
     public static string SectionsName => nameof(RabbitMQSettings);

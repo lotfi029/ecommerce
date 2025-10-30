@@ -1,7 +1,7 @@
-using eCommerceCatalogService.API;
-using eCommerceCatalogService.API.Extensions;
-using eCommerceCatalogService.Core;
-using eCommerceCatalogService.Infrastructure;
+using CatalogService.API;
+using CatalogService.API.Extensions;
+using CatalogService.Core;
+using CatalogService.Infrastructure;
 using Scalar.AspNetCore;
 using Serilog;
 

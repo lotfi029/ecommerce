@@ -7,4 +7,14 @@ public class Product : AuditableEntity
     public Guid? CategoryId { get; set; }
     public Category? Category { get; set; }
     public ICollection<ProductImage> Images { get; set; } = [];
+
+    public Product() { }
+
+    public Product(string name, string? description, decimal price, Guid categoryId)
+    {
+        Name = name;
+        Description = description;
+        Price = price;
+        CategoryId = categoryId;
+    }
 }

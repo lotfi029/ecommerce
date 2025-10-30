@@ -2,7 +2,7 @@
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 
-namespace eCommerceCatalogService.Core;
+namespace CatalogService.Core;
 
 public static class DependancyInjection
 {

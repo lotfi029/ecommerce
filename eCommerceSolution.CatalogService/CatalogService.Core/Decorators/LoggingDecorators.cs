@@ -1,7 +1,7 @@
 ﻿using Serilog;
 using Serilog.Context;
 
-namespace eCommerceCatalogService.Core.Decorators;
+namespace CatalogService.Core.Decorators;
 
 internal class LoggingDecorators
 {

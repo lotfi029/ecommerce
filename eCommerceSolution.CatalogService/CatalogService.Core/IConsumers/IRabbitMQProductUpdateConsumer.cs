@@ -1,4 +1,4 @@
-﻿namespace eCommerceCatalogService.Core.RabbitMQ.IConsumers;
+﻿namespace CatalogService.Core.RabbitMQ.IConsumers;
 
 public interface IRabbitMQProductUpdateConsumer
 {

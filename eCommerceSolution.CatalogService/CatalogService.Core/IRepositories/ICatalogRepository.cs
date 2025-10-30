@@ -1,4 +1,4 @@
-﻿namespace eCommerceCatalogService.Core.IRepositories;
+﻿namespace CatalogService.Core.IRepositories;
 
 public interface ICatalogRepository : IRepository<CatalogProduct>
 {

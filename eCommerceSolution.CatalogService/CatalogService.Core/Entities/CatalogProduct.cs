@@ -1,4 +1,4 @@
-﻿namespace eCommerceCatalogService.Core.Entities;
+﻿namespace CatalogService.Core.Entities;
 
 public class CatalogProduct : BaseEntity
 {

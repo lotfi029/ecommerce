@@ -1,6 +1,6 @@
-﻿using eCommerceCatalogService.API.Extensions;
+﻿using CatalogService.API.Extensions;
 
-namespace eCommerceCatalogService.API;
+namespace CatalogService.API;
 
 public static class DependancyInjection
 {

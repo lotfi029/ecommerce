@@ -2,13 +2,13 @@
 using System.Text;
 using System.Text.Json;
 using Microsoft.Extensions.DependencyInjection;
-using eCommerceCatalogService.Core.IConsumers;
+using CatalogService.Core.IConsumers;
 using RabbitMQ.Client;
 using RabbitMQ.Client.Events;
-using eCommerceCatalogService.Core.ExternalContractDTOs;
-using eCommerceCatalogService.Core.Features.Catalog.Commands.Add;
+using CatalogService.Core.ExternalContractDTOs;
+using CatalogService.Core.Features.Catalog.Commands.Add;
 
-namespace eCommerceCatalogService.Infrastructure.RabbitMQ.Consumers;
+namespace CatalogService.Infrastructure.RabbitMQ.Consumers;
 
 public class RabbitMQProductAddedConsumer(
     IOptions<RabbitMQSettings> options,

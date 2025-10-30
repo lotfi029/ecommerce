@@ -3,4 +3,4 @@ global using eCommerce.SharedKernal.Interfaces;
 global using eCommerce.SharedKernal.Messaging;
 global using eCommerce.SharedKernal.Abstractions;
 
-global using eCommerceCatalogService.Core.Entities;
+global using CatalogService.Core.Entities;

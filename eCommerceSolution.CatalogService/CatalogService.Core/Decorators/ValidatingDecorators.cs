@@ -1,4 +1,4 @@
-﻿namespace eCommerceCatalogService.Core.Decorators;
+﻿namespace CatalogService.Core.Decorators;
 
 internal class ValidatingDecorators
 {
