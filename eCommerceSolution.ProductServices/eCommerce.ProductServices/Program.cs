@@ -15,9 +15,6 @@ builder.Services
 
 var app = builder.Build();
 
-
-
-
 await app.ApplyMigration();
  
 app.MapOpenApi();

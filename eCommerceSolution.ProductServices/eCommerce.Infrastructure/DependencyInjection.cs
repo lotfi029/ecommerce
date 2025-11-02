@@ -29,11 +29,12 @@ public static class DependencyInjection
             .Replace("$POSTGRES_DATABASE", Environment.GetEnvironmentVariable("POSTGRES_DATABASE"))
             .Replace("$POSTGRES_USER", Environment.GetEnvironmentVariable("POSTGRES_USER"))
             .Replace("$POSTGRES_PASSWORD", Environment.GetEnvironmentVariable("POSTGRES_PASSWORD"));
+        Console.WriteLine(" ConnectionString " + connectionString);
         services.AddDbContext<ApplicationDbContext>(options =>
         {
             options.UseNpgsql(connectionString);
         });
-        services.AddScoped<DapperDbContext>();
+        //services.AddScoped<DapperDbContext>();
         services.AddAuth(configuration);
         services.AddRabbitMQ();
         return services;
