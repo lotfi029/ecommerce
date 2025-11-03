@@ -25,6 +25,8 @@ public class ProductEndpoint : IEndpoint
             .WithTags(Tags.Product)
             .RequireAuthorization();
 
+        // this group is the group for all endpoints
+
         group.MapPost("/", AddProductAsync);
         group.MapPost("add-image/{id:guid}", AddProductImage)
             .DisableAntiforgery();
