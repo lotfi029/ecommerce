@@ -12,7 +12,7 @@ public class CatalogEndpoints : IEndpoint
     {
         var group = app.MapGroup("api/catalogs")
             .RequireAuthorization();
-
+        // this for streck
         group.MapGet("/get-all", GetAllProduct);
         group.MapGet("/get-all-from-out-service", GetAllProductFromOutService);
         group.MapGet("/get-by-id/{id:guid}", GetCatalogById);
