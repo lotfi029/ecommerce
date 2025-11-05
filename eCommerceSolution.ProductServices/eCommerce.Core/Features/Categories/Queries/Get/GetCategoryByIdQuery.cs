@@ -12,14 +12,14 @@ public class GetCategoryByIdQueryHandler(ICategoryRepository categoryRepository)
             var category = await categoryRepository.GetByIdAsync(query.Id, ct);
 
             if (category is null)
-                return CategoryErrors.CategoryNotFound;
+                return CategoryErrors.NotFound;
 
             var response = category.Adapt<CategoryResponse>();
             return response;
         }
         catch
         {
-            return CategoryErrors.CategoryNotFound;
+            return CategoryErrors.NotFound;
         }
     }
 }

@@ -9,7 +9,7 @@ public class DeleteCategoryCommandHandler(ICategoryRepository categoryRepository
         {
             var result = await categoryRepository.DeleteAsync(command.Id, ct);
             return result == 0
-                ? CategoryErrors.CategoryNotFound
+                ? CategoryErrors.NotFound
                 : Result.Success();
         }
         catch

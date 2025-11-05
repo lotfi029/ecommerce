@@ -9,9 +9,9 @@ public class UpdateCategoryCommandRequest(ICategoryRepository categoryRepository
     public async Task<Result> Handle(UpdateCategoryCommand command, CancellationToken ct)
     {
         if (await categoryRepository.GetByIdAsync(command.Id, ct) is not { } category)
-            return CategoryErrors.CategoryNotFound;
+            return CategoryErrors.NotFound;
         if (category.CreatedBy != command.UserId)
-            return CategoryErrors.InvalidCategoryAccess;
+            return CategoryErrors.InvalidAccess;
 
         category = command.Request.Adapt(category);
 
