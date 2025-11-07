@@ -7,15 +7,15 @@ public class DeleteProductImageCommandHandler(
     public async Task<Result> Handle(DeleteProductImageCommand command, CancellationToken ct)
     {
         if (await productRepository.GetProductByIdAsync(command.Id, ct) is not { } product)
-            return ProductErrors.ProductNotFound;
+            return ProductErrors.NotFound;
 
         if (product.CreatedBy != command.UserId)
-            return ProductErrors.InvalidProductAccess;
+            return ProductErrors.InvalidAccess;
 
         var rowsAffected = await productRepository.DeleteProductImageAsync(command.Id, command.UserId, command.ImageName, ct);
 
         return rowsAffected == 0
-            ? ProductErrors.InvalidProductImage
+            ? ProductErrors.InvalidImage
             : Result.Success();
     }
 }

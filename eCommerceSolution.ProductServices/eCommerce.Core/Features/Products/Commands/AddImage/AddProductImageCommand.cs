@@ -37,7 +37,7 @@ public class AddProductImageCommandHandler(
         {
             var rowAffected = await productRepository.UploadProductImage(command.Id, productImages, ct);
             if (rowAffected == 0)
-                return ProductErrors.ProductNotFound;
+                return ProductErrors.NotFound;
             return Result.Success();
         }
         catch (Exception ex)

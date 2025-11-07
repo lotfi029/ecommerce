@@ -6,7 +6,7 @@ public class DeleteProductCommandHandler(IProductRepository productRepository) :
     public async Task<Result> Handle(DeleteProductCommand request, CancellationToken ct)
     {
         if (await productRepository.GetProductByIdAsync(request.Id, ct) is null)
-            return ProductErrors.ProductNotFound;
+            return ProductErrors.NotFound;
 
         var rowsAffected = await productRepository.DeleteProductAsync(e => e.Id == request.Id, ct);
 

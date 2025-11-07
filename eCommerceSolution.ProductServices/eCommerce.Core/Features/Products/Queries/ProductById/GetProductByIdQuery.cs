@@ -8,7 +8,7 @@ public class GetProductByIdQueryHandler(IProductRepository productRepository) : 
         var product = await productRepository.GetProductByIdAsync(query.Id, ct);
 
         if (product is null)
-            return ProductErrors.ProductNotFound;
+            return ProductErrors.NotFound;
 
         var response = product.Adapt<ProductResponse>();
 

@@ -6,17 +6,17 @@ public class UpdateProductCommandHandler(IProductRepository productRepository) :
     public async Task<Result> Handle(UpdateProductCommand command, CancellationToken ct)
     {
         if(await productRepository.GetProductByIdAsync(command.Id, ct) is not { } product)
-            return ProductErrors.ProductNotFound;
+            return ProductErrors.NotFound;
 
         if (product.CreatedBy != command.UserId)
-            return ProductErrors.InvalidProductAccess;
+            return ProductErrors.InvalidAccess;
 
         product = command.ProductRequest.Adapt(product);
 
         var rowsAffected = await productRepository.UpdateProductAsync(command.Id, product, ct);
 
         if (rowsAffected == 0)
-            return ProductErrors.ProductNotFound;
+            return ProductErrors.NotFound;
 
         return Result.Success();
     }
